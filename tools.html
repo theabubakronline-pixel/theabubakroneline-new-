@@ -28,6 +28,67 @@
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://theabubakronline.com/tools">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Free Business & AI Tools",
+        "description": "Handcrafted tools and resources to help entrepreneurs automate workflows, make better decisions, and grow faster.",
+        "url": "https://theabubakronline.com/tools",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "The Abubakr Online",
+            "url": "https://theabubakronline.com"
+        },
+        "hasPart": {
+            "@type": "ItemList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "item": {
+                        "@type": "SoftwareApplication",
+                        "name": "Dino QR Code Generator",
+                        "operatingSystem": "Web",
+                        "applicationCategory": "BusinessApplication",
+                        "description": "Create custom dinosaur-themed QR codes with unique shapes, color customization, and download-ready PNG/SVG files.",
+                        "url": "https://theabubakronline.com/tool/dino-qr-code-generator/",
+                        "image": "https://theabubakronline.com/assets/images/the-abubakr-online-logo-muhammad-abubakr-ai-tech-marketing.png",
+                        "author": {
+                            "@type": "Person",
+                            "name": "Muhammad Abubakr"
+                        },
+                        "offers": {
+                            "@type": "Offer",
+                            "price": "0",
+                            "priceCurrency": "USD",
+                            "availability": "https://schema.org/InStock"
+                        }
+                    }
+                }
+            ]
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://theabubakronline.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Tools",
+                    "item": "https://theabubakronline.com/tools"
+                }
+            ]
+        }
+    }
+    </script>
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/main.css">
@@ -161,34 +222,34 @@
             </div>
         </section>
 
-        <!-- Category Filter Section -->
-        <section class="tools-categories-section">
-            <div class="tools-page-container">
-                <div class="tools-categories">
-                    <button class="tool-category-filter active" data-category="all" aria-label="Show all tools">All Tools</button>
-                    <button class="tool-category-filter" data-category="ai" aria-label="Filter AI tools">AI Tools</button>
-                    <button class="tool-category-filter" data-category="marketing" aria-label="Filter Marketing tools">Marketing</button>
-                    <button class="tool-category-filter" data-category="productivity" aria-label="Filter Productivity tools">Productivity</button>
-                    <button class="tool-category-filter" data-category="calculators" aria-label="Filter Calculators">Calculators</button>
-                    <button class="tool-category-filter" data-category="automation" aria-label="Filter Automation tools">Automation</button>
-                </div>
-            </div>
-        </section>
-
         <!-- Tools Grid Section -->
         <section class="tools-grid-section">
             <div class="tools-page-container">
-                <!-- Tools Grid -->
-                <div class="tools-grid" id="toolsGrid">
-                    <!-- Tool cards will be inserted here dynamically -->
-                    <!-- Example tools will be added via JavaScript -->
-                </div>
-
-                <!-- Empty State -->
-                <div class="tools-empty-state" id="toolsEmptyState" style="display: none;">
-                    <div class="tools-empty-icon">🔍</div>
-                    <h3 class="tools-empty-title">No tools found</h3>
-                    <p class="tools-empty-text">Try selecting a different category.</p>
+                <div class="tools-grid single-tool-grid">
+                    <article class="tool-card tool-card-feature">
+                        <div class="tool-icon">🦖</div>
+                        <div class="tool-content">
+                            <h3 class="tool-title">Dino QR Code Generator</h3>
+                            <p class="tool-description">
+                                Generate stunning dinosaur-themed QR codes with fully visible shapes integrated into the pattern. Customize colors, choose from 10 unique dinosaur templates, and download high-quality PNG/SVG files.
+                            </p>
+                            <div class="tool-tags">
+                                <span class="tool-tag">10 Dino Templates</span>
+                                <span class="tool-tag">Custom Colors</span>
+                                <span class="tool-tag">High Error Correction</span>
+                                <span class="tool-tag">PNG &amp; SVG</span>
+                            </div>
+                        </div>
+                        <div class="tool-action">
+                            <a href="tool/dino-qr-code-generator/" class="tool-link" target="_blank" rel="noopener noreferrer">
+                                Use Dino QR
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                                </svg>
+                            </a>
+                            <span class="tool-status new">new</span>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -256,7 +317,6 @@
     <script src="js/mobile-nav.js"></script>
     <script src="js/main.js"></script>
     <script src="js/navigation.js"></script>
-    <script src="js/tools.js"></script>
     <script>
         (function(){
             var y = document.getElementById('yearCopy');
