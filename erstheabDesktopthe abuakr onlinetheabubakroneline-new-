@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>About | Muhammad Abubakr | Entrepreneur & AI Marketing Expert</title>
+    <meta name="title" content="About | Muhammad Abubakr | Entrepreneur & AI Marketing Expert">
+    <meta name="description" content="Learn about Muhammad Abubakr's journey as an entrepreneur building AI-driven businesses. Discover how I help founders scale with technology, marketing, and smart systems.">
+    <meta name="keywords" content="Muhammad Abubakr, entrepreneur, AI expert, digital marketing, technology consultant, business scaling, digital transformation">
+    <meta name="author" content="Muhammad Abubakr">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://theabubakronline.com/about">
+    <meta property="og:title" content="About | Muhammad Abubakr | Entrepreneur & AI Marketing Expert">
+    <meta property="og:description" content="Learn about Muhammad Abubakr's journey as an entrepreneur building AI-driven businesses.">
+    <meta property="og:image" content="https://theabubakronline.com/assets/images/abubakr-profile-new.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://theabubakronline.com/about">
+    <meta property="twitter:title" content="About | Muhammad Abubakr | Entrepreneur & AI Marketing Expert">
+    <meta property="twitter:description" content="Learn about Muhammad Abubakr's journey as an entrepreneur building AI-driven businesses.">
+    <meta property="twitter:image" content="https://theabubakronline.com/assets/images/abubakr-profile-new.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://theabubakronline.com/about">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon-the-abubakr-online-muhammad-abubakr.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+</head>
+<body>
+    <!-- Mobile-Optimized Header Component -->
+    <header class="header">
+        <div class="header-container">
+            <!-- Logo/Brand -->
+            <div class="logo">
+                <a href="index.html" class="logo-link">
+                    <div class="logo-container">
+                        <div class="logo-image">
+                            <img src="assets/images/the-abubakr-online-logo-muhammad-abubakr-ai-tech-marketing.png" alt="The Abubakr Online logo — personal brand of Muhammad Abubakr, focused on AI, Technology, and Marketing." title="The Abubakr Online | Muhammad Abubakr" class="profile-img" id="profileImg" loading="lazy" width="512" height="512" onload="this.style.opacity='1'" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                            <div class="profile-fallback" style="display: none;">MA</div>
+                        </div>
+                        <span class="logo-text">Muhammad Abubakr</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav-desktop">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link active">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="projects.html" class="nav-link">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="blog.html" class="nav-link">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="tools.html" class="nav-link">Tools</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Header Actions -->
+            <div class="header-actions">
+                <!-- CTA Button - Desktop Only -->
+                <a href="contact.html#contact-form" class="cta-button cta-desktop">
+                    <span class="cta-text">Want to talk?</span>
+                </a>
+
+                <!-- Theme Toggle -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span class="theme-icon light-icon">☀️</span>
+                    <span class="theme-icon dark-icon">🌙</span>
+                </button>
+
+                <!-- Mobile Hamburger Menu Toggle -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true">
+        <div class="mobile-nav-content">
+            <nav class="mobile-nav">
+                <ul class="mobile-nav-list">
+                    <li class="mobile-nav-item">
+                        <a href="index.html" class="mobile-nav-link">Home</a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="about.html" class="mobile-nav-link active">About</a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="projects.html" class="mobile-nav-link">Projects</a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="blog.html" class="mobile-nav-link">Blog</a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="tools.html" class="mobile-nav-link">Tools</a>
+                    </li>
+                    <li class="mobile-nav-item">
+                        <a href="contact.html" class="mobile-nav-link">Contact</a>
+                    </li>
+                    <li class="mobile-nav-item mobile-nav-cta">
+                        <a href="contact.html#contact-form" class="mobile-cta-button">
+                            <span class="mobile-cta-text">Want to talk?</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- About Page Main Content -->
+    <main class="about-page">
+        <!-- About Hero Section -->
+        <section class="about-hero">
+            <div class="about-hero-container">
+                <div class="about-hero-content">
+                    <div class="about-hero-text">
+                        <h1 class="about-hero-heading">
+                            Building AI-Driven Businesses.<br>
+                            Helping Founders Scale Smarter.
+                        </h1>
+                        
+                        <p class="about-hero-subtext">
+                            I'm <strong>Muhammad Abubakr</strong>, an entrepreneur passionate 
