@@ -38,7 +38,7 @@ const Header = () => {
                   MA
                 </div>
               </div>
-              <span className="text-sm sm:text-base md:text-lg font-bold text-white drop-shadow-lg whitespace-nowrap hidden xs:inline">
+              <span className="text-sm sm:text-base md:text-lg font-bold text-white drop-shadow-lg whitespace-nowrap">
                 <span className="hidden sm:inline">Muhammad Abubakr</span>
                 <span className="sm:hidden">M. Abubakr</span>
               </span>
