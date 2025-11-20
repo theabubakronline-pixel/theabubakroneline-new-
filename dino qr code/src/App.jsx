@@ -63,7 +63,7 @@ function App() {
     <div className="min-h-screen relative overflow-hidden">
       {isLoading && <LoadingAnimation onComplete={() => setIsLoading(false)} />}
       <Header />
-      <div className={`pt-24 md:pt-28 pb-8 px-4 sm:px-6 lg:px-8 transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+      <div className={`pt-20 sm:pt-24 md:pt-28 pb-8 px-4 sm:px-6 lg:px-8 transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
       {/* Decorative background elements with dinosaur patterns */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <div className="absolute top-20 left-10 text-9xl opacity-5 animate-float particle parallax-slow">🦖</div>
