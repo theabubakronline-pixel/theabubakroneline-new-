@@ -92,7 +92,7 @@ function App() {
         <section id="workspace" className="mb-12">
           <div className="text-center mb-6">
             <p className="text-sm uppercase tracking-[0.3em] text-gray-500 font-semibold">Build first</p>
-            <h2 className="text-3xl font-extrabold text-gray-900 mt-2">Enter your content, preview, then download</h2>
+            <h2 className="text-3xl font-extrabold text-gray-900 mt-2">Enter your URL, preview, then download</h2>
             <p className="text-gray-600 mt-3">Keep everything important—input, preview, and export—within reach.</p>
           </div>
           <div className="grid grid-cols-1 lg:[grid-template-columns:1.15fr_0.85fr] gap-10 xl:gap-12 items-start">
