@@ -5,7 +5,6 @@ import InputField from './components/InputField'
 import DinoTemplateSelector from './components/DinoTemplateSelector'
 import LogoUpload from './components/LogoUpload'
 import ColorCustomizer from './components/ColorCustomizer'
-import BackgroundPatternSelector from './components/BackgroundPatternSelector'
 import PreviewSection from './components/PreviewSection'
 import DownloadShareButtons from './components/DownloadShareButtons'
 
@@ -29,7 +28,7 @@ function App() {
   const [customLogo, setCustomLogo] = useState(null)
   const [foregroundColor, setForegroundColor] = useState('#000000')
   const [backgroundColor, setBackgroundColor] = useState('#FFFFFF')
-  const [backgroundPattern, setBackgroundPattern] = useState('footprints')
+  const backgroundPattern = 'footprints'
   const [error, setError] = useState('')
   const [copied, setCopied] = useState(false)
   const qrRef = useRef(null)
@@ -75,7 +74,7 @@ function App() {
     <div className="min-h-screen relative overflow-hidden">
       {isLoading && <LoadingAnimation onComplete={() => setIsLoading(false)} />}
       <Header />
-      <div className={`pt-20 sm:pt-24 md:pt-28 pb-8 px-4 sm:px-6 lg:px-8 transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
+      <div className={`relative pt-20 sm:pt-24 md:pt-28 pb-8 px-4 sm:px-6 lg:px-8 transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
       {/* Decorative background elements with dinosaur patterns */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <div className="absolute top-20 left-10 text-9xl opacity-5 animate-float particle parallax-slow">🦖</div>
@@ -98,7 +97,7 @@ function App() {
         </svg>
       </div>
       
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-6xl xl:max-w-7xl mx-auto relative z-10">
         {/* SEO-Optimized Hero Section */}
         <header className="text-center mb-16 fade-in">
           <div className="inline-block mb-6 animate-float">
@@ -113,7 +112,7 @@ function App() {
             Welcome to the ultimate QR code generator — where fun meets functionality. Create dinosaur-themed QR codes, upload your brand logo, or design standard custom QR codes with ease. Whether for events, marketing campaigns, classroom activities, or social media, our tool lets you generate fully scannable, high-quality QR codes in seconds.
           </p>
           <div className="mt-8 max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-left items-stretch">
               <div className="flex items-start gap-3 p-4 bg-white/80 backdrop-blur-sm rounded-xl shadow-md border border-gray-200">
                 <span className="text-2xl">⚡</span>
                 <div>
@@ -167,7 +166,7 @@ function App() {
         </header>
 
         {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <div className="grid grid-cols-1 lg:[grid-template-columns:1.15fr_0.85fr] gap-10 xl:gap-12 items-start mb-8">
           {/* Left Column - Controls */}
           <div className="space-y-6">
             {/* Input Field */}
@@ -212,14 +211,6 @@ function App() {
                 backgroundColor={backgroundColor}
                 onForegroundChange={setForegroundColor}
                 onBackgroundChange={setBackgroundColor}
-              />
-            </div>
-
-            {/* Background Pattern Selector */}
-            <div className="stagger-item">
-              <BackgroundPatternSelector
-                selectedPattern={backgroundPattern}
-                onSelectPattern={setBackgroundPattern}
               />
             </div>
 
