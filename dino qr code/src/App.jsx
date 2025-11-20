@@ -3,7 +3,6 @@ import Header from './components/Header'
 import LoadingAnimation from './components/LoadingAnimation'
 import InputField from './components/InputField'
 import DinoTemplateSelector from './components/DinoTemplateSelector'
-import LogoUpload from './components/LogoUpload'
 import ColorCustomizer from './components/ColorCustomizer'
 import PreviewSection from './components/PreviewSection'
 import DownloadShareButtons from './components/DownloadShareButtons'
@@ -11,14 +10,6 @@ import DownloadShareButtons from './components/DownloadShareButtons'
 const DINOSAUR_TEMPLATES = [
   { id: 'trex', name: 'T-Rex', emoji: '🦖', color: 'from-red-500 to-orange-600', pattern: 'roar' },
   { id: 'stegosaurus', name: 'Stegosaurus', emoji: '🦕', color: 'from-green-500 to-emerald-600', pattern: 'plates' },
-  { id: 'triceratops', name: 'Triceratops', emoji: '🦏', color: 'from-blue-500 to-cyan-600', pattern: 'horns' },
-  { id: 'brontosaurus', name: 'Brontosaurus', emoji: '🦕', color: 'from-purple-500 to-pink-600', pattern: 'neck' },
-  { id: 'raptor', name: 'Raptor', emoji: '🦖', color: 'from-yellow-500 to-amber-600', pattern: 'claws' },
-  { id: 'pterodactyl', name: 'Pterodactyl', emoji: '🦅', color: 'from-indigo-500 to-blue-600', pattern: 'wings' },
-  { id: 'spinosaurus', name: 'Spinosaurus', emoji: '🦖', color: 'from-teal-500 to-cyan-600', pattern: 'sail' },
-  { id: 'ankylosaurus', name: 'Ankylosaurus', emoji: '🦏', color: 'from-amber-500 to-orange-600', pattern: 'armor' },
-  { id: 'velociraptor', name: 'Velociraptor', emoji: '🦖', color: 'from-violet-500 to-purple-600', pattern: 'speed' },
-  { id: 'diplodocus', name: 'Diplodocus', emoji: '🦕', color: 'from-emerald-500 to-green-600', pattern: 'tail' },
 ]
 
 function App() {
@@ -28,7 +19,7 @@ function App() {
   const [customLogo, setCustomLogo] = useState(null)
   const [foregroundColor, setForegroundColor] = useState('#000000')
   const [backgroundColor, setBackgroundColor] = useState('#FFFFFF')
-  const backgroundPattern = 'footprints'
+  const backgroundPattern = 'none'
   const [error, setError] = useState('')
   const [copied, setCopied] = useState(false)
   const qrRef = useRef(null)
@@ -98,6 +89,87 @@ function App() {
       </div>
       
       <div className="max-w-6xl xl:max-w-7xl mx-auto relative z-10">
+        <section id="workspace" className="mb-12">
+          <div className="text-center mb-6">
+            <p className="text-sm uppercase tracking-[0.3em] text-gray-500 font-semibold">Build first</p>
+            <h2 className="text-3xl font-extrabold text-gray-900 mt-2">Enter your content, preview, then download</h2>
+            <p className="text-gray-600 mt-3">Keep everything important—input, preview, and export—within reach.</p>
+          </div>
+          <div className="grid grid-cols-1 lg:[grid-template-columns:1.15fr_0.85fr] gap-10 xl:gap-12 items-start">
+            <div className="space-y-6">
+              <InputField value={inputValue} onChange={handleInputChange} error={error} onValidate={validateInput} />
+              <DinoTemplateSelector
+                templates={DINOSAUR_TEMPLATES}
+                selectedTemplate={selectedTemplate}
+                customLogo={customLogo}
+                onLogoUpload={handleLogoUpload}
+                onRemoveLogo={handleRemoveLogo}
+                onSelectTemplate={(template) => {
+                  setSelectedTemplate(template)
+                  if (customLogo) {
+                    setCustomLogo(null)
+                  }
+                }}
+              />
+              <ColorCustomizer
+                foregroundColor={foregroundColor}
+                backgroundColor={backgroundColor}
+                onForegroundChange={setForegroundColor}
+                onBackgroundChange={setBackgroundColor}
+              />
+              <button
+                onClick={handleCopyToClipboard}
+                className={`btn-primary w-full font-semibold py-4 px-6 rounded-xl flex items-center justify-center gap-2 relative overflow-hidden shadow-lg ${
+                  copied
+                    ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white scale-in'
+                    : 'bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 text-white hover:from-blue-600 hover:via-purple-700 hover:to-pink-700 hover:shadow-xl'
+                }`}
+              >
+                {copied ? (
+                  <>
+                    <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="font-bold">Copied to Clipboard!</span>
+                  </>
+                ) : (
+                  <>
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                    <span>Copy URL to Clipboard</span>
+                  </>
+                )}
+              </button>
+            </div>
+            <div className="lg:sticky lg:top-8">
+              <PreviewSection
+                inputValue={inputValue}
+                selectedTemplate={selectedTemplate}
+                customLogo={customLogo}
+                foregroundColor={foregroundColor}
+                backgroundColor={backgroundColor}
+                backgroundPattern={backgroundPattern}
+                qrRef={qrRef}
+              />
+              {inputValue.trim() ? (
+                <div className="mt-6">
+                  <DownloadShareButtons
+                    qrRef={qrRef}
+                    inputValue={inputValue}
+                    selectedTemplate={selectedTemplate}
+                    backgroundPattern={backgroundPattern}
+                    backgroundColor={backgroundColor}
+                  />
+                </div>
+              ) : (
+                <div className="mt-6 bg-white rounded-2xl shadow-lg border border-dashed border-gray-200 p-6 text-center text-gray-500">
+                  Add a URL or text to enable PNG/SVG downloads.
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
         {/* SEO-Optimized Hero Section */}
         <header className="text-center mb-16 fade-in">
           <div className="inline-block mb-6 animate-float">
@@ -164,109 +236,6 @@ function App() {
             </div>
           </div>
         </header>
-
-        {/* Main Content */}
-        <div className="grid grid-cols-1 lg:[grid-template-columns:1.15fr_0.85fr] gap-10 xl:gap-12 items-start mb-8">
-          {/* Left Column - Controls */}
-          <div className="space-y-6">
-            {/* Input Field */}
-            <div className="stagger-item">
-              <InputField
-                value={inputValue}
-                onChange={handleInputChange}
-                error={error}
-                onValidate={validateInput}
-              />
-            </div>
-
-            {/* Logo Upload */}
-            <div className="stagger-item">
-              <LogoUpload
-                onLogoUpload={handleLogoUpload}
-                currentLogo={customLogo}
-                onRemoveLogo={handleRemoveLogo}
-              />
-            </div>
-
-            {/* Dinosaur Template Selector */}
-            <div className="stagger-item">
-              <DinoTemplateSelector
-                templates={DINOSAUR_TEMPLATES}
-                selectedTemplate={selectedTemplate}
-                onSelectTemplate={(template) => {
-                  setSelectedTemplate(template)
-                  // Clear custom logo when selecting a dinosaur template
-                  if (customLogo) {
-                    setCustomLogo(null)
-                  }
-                }}
-                disabled={!!customLogo}
-              />
-            </div>
-
-            {/* Color Customizer */}
-            <div className="stagger-item">
-              <ColorCustomizer
-                foregroundColor={foregroundColor}
-                backgroundColor={backgroundColor}
-                onForegroundChange={setForegroundColor}
-                onBackgroundChange={setBackgroundColor}
-              />
-            </div>
-
-            {/* Copy to Clipboard */}
-            <div className="stagger-item">
-              <button
-                onClick={handleCopyToClipboard}
-                className={`btn-primary w-full font-semibold py-4 px-6 rounded-xl flex items-center justify-center gap-2 relative overflow-hidden shadow-lg ${
-                  copied
-                    ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white scale-in'
-                    : 'bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 text-white hover:from-blue-600 hover:via-purple-700 hover:to-pink-700 hover:shadow-xl'
-                }`}
-              >
-                {copied ? (
-                  <>
-                    <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="font-bold">Copied to Clipboard!</span>
-                  </>
-                ) : (
-                  <>
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                    </svg>
-                    <span>Copy URL to Clipboard</span>
-                  </>
-                )}
-              </button>
-            </div>
-          </div>
-
-          {/* Right Column - Preview */}
-          <div className="lg:sticky lg:top-8">
-            <PreviewSection
-              inputValue={inputValue}
-              selectedTemplate={selectedTemplate}
-              customLogo={customLogo}
-              foregroundColor={foregroundColor}
-              backgroundColor={backgroundColor}
-              backgroundPattern={backgroundPattern}
-              qrRef={qrRef}
-            />
-          </div>
-        </div>
-
-        {/* Download & Share Section */}
-        {inputValue.trim() && (
-          <DownloadShareButtons
-            qrRef={qrRef}
-            inputValue={inputValue}
-            selectedTemplate={selectedTemplate}
-            backgroundPattern={backgroundPattern}
-            backgroundColor={backgroundColor}
-          />
-        )}
 
         {/* SEO Content Sections */}
         
