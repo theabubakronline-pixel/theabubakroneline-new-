@@ -3,6 +3,7 @@ import Header from './components/Header'
 import LoadingAnimation from './components/LoadingAnimation'
 import InputField from './components/InputField'
 import DinoTemplateSelector from './components/DinoTemplateSelector'
+import LogoUpload from './components/LogoUpload'
 import ColorCustomizer from './components/ColorCustomizer'
 import BackgroundPatternSelector from './components/BackgroundPatternSelector'
 import PreviewSection from './components/PreviewSection'
@@ -25,12 +26,23 @@ function App() {
   const [isLoading, setIsLoading] = useState(true)
   const [inputValue, setInputValue] = useState('')
   const [selectedTemplate, setSelectedTemplate] = useState(DINOSAUR_TEMPLATES[0])
+  const [customLogo, setCustomLogo] = useState(null)
   const [foregroundColor, setForegroundColor] = useState('#000000')
   const [backgroundColor, setBackgroundColor] = useState('#FFFFFF')
   const [backgroundPattern, setBackgroundPattern] = useState('footprints')
   const [error, setError] = useState('')
   const [copied, setCopied] = useState(false)
   const qrRef = useRef(null)
+
+  const handleLogoUpload = (logoUrl, file) => {
+    setCustomLogo(logoUrl)
+    // Optionally switch to a standard template when using custom logo
+    // setSelectedTemplate(DINOSAUR_TEMPLATES[0])
+  }
+
+  const handleRemoveLogo = () => {
+    setCustomLogo(null)
+  }
 
   const handleInputChange = (value) => {
     setInputValue(value)
@@ -98,7 +110,7 @@ function App() {
             <span className="text-gray-800 text-shadow">Custom QR Code Maker Online</span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-gray-600 font-medium max-w-3xl mx-auto leading-relaxed mb-6">
-            Welcome to the ultimate QR code generator — where fun meets functionality. Create dinosaur-themed QR codes or standard custom QR codes with ease. Whether for events, marketing campaigns, classroom activities, or social media, our tool lets you generate fully scannable, high-quality QR codes in seconds.
+            Welcome to the ultimate QR code generator — where fun meets functionality. Create dinosaur-themed QR codes, upload your brand logo, or design standard custom QR codes with ease. Whether for events, marketing campaigns, classroom activities, or social media, our tool lets you generate fully scannable, high-quality QR codes in seconds.
           </p>
           <div className="mt-8 max-w-4xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
@@ -112,8 +124,8 @@ function App() {
               <div className="flex items-start gap-3 p-4 bg-white/80 backdrop-blur-sm rounded-xl shadow-md border border-gray-200">
                 <span className="text-2xl">🦖</span>
                 <div>
-                  <p className="font-semibold text-gray-800 mb-1">Choose dinosaur or standard styles</p>
-                  <p className="text-sm text-gray-600">T-Rex, Stegosaurus, Triceratops, or standard QR code styles.</p>
+                  <p className="font-semibold text-gray-800 mb-1">Choose dinosaur or upload your logo</p>
+                  <p className="text-sm text-gray-600">T-Rex, Stegosaurus, Triceratops, or upload your brand logo/image.</p>
                 </div>
               </div>
               <div className="flex items-start gap-3 p-4 bg-white/80 backdrop-blur-sm rounded-xl shadow-md border border-gray-200">
@@ -168,12 +180,28 @@ function App() {
               />
             </div>
 
+            {/* Logo Upload */}
+            <div className="stagger-item">
+              <LogoUpload
+                onLogoUpload={handleLogoUpload}
+                currentLogo={customLogo}
+                onRemoveLogo={handleRemoveLogo}
+              />
+            </div>
+
             {/* Dinosaur Template Selector */}
             <div className="stagger-item">
               <DinoTemplateSelector
                 templates={DINOSAUR_TEMPLATES}
                 selectedTemplate={selectedTemplate}
-                onSelectTemplate={setSelectedTemplate}
+                onSelectTemplate={(template) => {
+                  setSelectedTemplate(template)
+                  // Clear custom logo when selecting a dinosaur template
+                  if (customLogo) {
+                    setCustomLogo(null)
+                  }
+                }}
+                disabled={!!customLogo}
               />
             </div>
 
@@ -229,6 +257,7 @@ function App() {
             <PreviewSection
               inputValue={inputValue}
               selectedTemplate={selectedTemplate}
+              customLogo={customLogo}
               foregroundColor={foregroundColor}
               backgroundColor={backgroundColor}
               backgroundPattern={backgroundPattern}

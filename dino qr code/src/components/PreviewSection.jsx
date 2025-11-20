@@ -11,6 +11,7 @@ import DinoQRCode from './DinoQRCode'
 const PreviewSection = ({
   inputValue,
   selectedTemplate,
+  customLogo,
   foregroundColor,
   backgroundColor,
   backgroundPattern,
@@ -62,12 +63,23 @@ const PreviewSection = ({
                 size={280}
               />
               {/* Optional: Small center logo/icon overlay */}
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-                <div className="bg-white rounded-full p-3 shadow-xl border-2 border-purple-200 animate-pulse-slow">
-                  <span className="text-4xl select-none">
-                    {selectedTemplate.emoji}
-                  </span>
-                </div>
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10">
+                {customLogo ? (
+                  <div className="bg-white rounded-full p-2 sm:p-3 shadow-xl border-2 border-purple-200 flex items-center justify-center">
+                    <img
+                      src={customLogo}
+                      alt="Custom logo"
+                      className="w-12 h-12 sm:w-16 sm:h-16 object-contain rounded-full"
+                      style={{ maxWidth: '64px', maxHeight: '64px' }}
+                    />
+                  </div>
+                ) : (
+                  <div className="bg-white rounded-full p-3 shadow-xl border-2 border-purple-200 animate-pulse-slow">
+                    <span className="text-4xl select-none">
+                      {selectedTemplate.emoji}
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -82,12 +94,21 @@ const PreviewSection = ({
 
       {hasInput && (
         <div className="mt-6 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full">
-            <span className="text-sm font-bold text-gray-700">
-              Selected: <span className="text-purple-600">{selectedTemplate.name}</span>
-            </span>
-            <span className="text-2xl">{selectedTemplate.emoji}</span>
-          </div>
+          {customLogo ? (
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full">
+              <span className="text-sm font-bold text-gray-700">
+                Using: <span className="text-purple-600">Custom Logo</span>
+              </span>
+              <span className="text-2xl">🎨</span>
+            </div>
+          ) : (
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full">
+              <span className="text-sm font-bold text-gray-700">
+                Selected: <span className="text-purple-600">{selectedTemplate.name}</span>
+              </span>
+              <span className="text-2xl">{selectedTemplate.emoji}</span>
+            </div>
+          )}
           <div className="mt-3 flex flex-col items-center justify-center gap-2">
             <div className="flex items-center justify-center gap-2 text-xs text-gray-500 bg-green-50 px-4 py-2 rounded-lg border border-green-200 animate-pulse-slow">
               <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
