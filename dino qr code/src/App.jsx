@@ -1,4 +1,6 @@
 import { useState, useRef } from 'react'
+import Header from './components/Header'
+import LoadingAnimation from './components/LoadingAnimation'
 import InputField from './components/InputField'
 import DinoTemplateSelector from './components/DinoTemplateSelector'
 import ColorCustomizer from './components/ColorCustomizer'
@@ -20,6 +22,7 @@ const DINOSAUR_TEMPLATES = [
 ]
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true)
   const [inputValue, setInputValue] = useState('')
   const [selectedTemplate, setSelectedTemplate] = useState(DINOSAUR_TEMPLATES[0])
   const [foregroundColor, setForegroundColor] = useState('#000000')
@@ -57,7 +60,10 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden">
+      {isLoading && <LoadingAnimation onComplete={() => setIsLoading(false)} />}
+      <Header />
+      <div className={`pt-24 md:pt-28 pb-8 px-4 sm:px-6 lg:px-8 transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
       {/* Decorative background elements with dinosaur patterns */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <div className="absolute top-20 left-10 text-9xl opacity-5 animate-float particle parallax-slow">🦖</div>
@@ -437,6 +443,7 @@ function App() {
             <span className="text-gray-600 text-sm font-medium">| Create amazing QR codes!</span>
           </div>
         </footer>
+      </div>
       </div>
     </div>
   )
