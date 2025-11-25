@@ -75,7 +75,7 @@ function App() {
         <div className="absolute top-40 right-20 text-8xl opacity-[0.03] animate-float particle parallax-slow" style={{ animationDelay: '1s' }}>🦕</div>
         <div className="absolute bottom-20 left-1/4 text-7xl opacity-[0.03] animate-float particle parallax-slow" style={{ animationDelay: '2s' }}>🦏</div>
       </div>
-
+      
       <div className={`relative pt-24 sm:pt-28 md:pt-32 pb-12 px-4 sm:px-6 lg:px-8 transition-opacity duration-500 ${isLoading ? 'opacity-0' : 'opacity-100'}`}>
         <div className="max-w-7xl mx-auto relative z-10">
           
@@ -175,13 +175,13 @@ function App() {
                     <span className="text-xs sm:text-sm font-medium hidden sm:inline">Download</span>
                   </div>
                 </div>
-              </div>
+          </div>
 
               <div className="p-6 sm:p-8 lg:p-10">
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.9fr] gap-6 sm:gap-8 lg:gap-12 items-start">
                   
                   {/* Left Column - Step-by-Step Controls */}
-                  <div className="space-y-6">
+            <div className="space-y-6">
                     
                     {/* Step 1: Input Field */}
                     <div className="relative">
@@ -193,7 +193,7 @@ function App() {
                           <span className="text-2xl">📝</span>
                           <h3 className="text-lg font-bold text-gray-900 dark:text-white">Enter Your Content</h3>
                         </div>
-                        <InputField value={inputValue} onChange={handleInputChange} error={error} onValidate={validateInput} />
+              <InputField value={inputValue} onChange={handleInputChange} error={error} onValidate={validateInput} />
                       </div>
                     </div>
                     
@@ -207,19 +207,19 @@ function App() {
                           <span className="text-2xl">🎨</span>
                           <h3 className="text-lg font-bold text-gray-900 dark:text-white">Choose Style or Logo</h3>
                         </div>
-                        <DinoTemplateSelector
-                          templates={DINOSAUR_TEMPLATES}
-                          selectedTemplate={selectedTemplate}
-                          customLogo={customLogo}
-                          onLogoUpload={handleLogoUpload}
-                          onRemoveLogo={handleRemoveLogo}
-                          onSelectTemplate={(template) => {
-                            setSelectedTemplate(template)
-                            if (customLogo) {
-                              setCustomLogo(null)
-                            }
-                          }}
-                        />
+              <DinoTemplateSelector
+                templates={DINOSAUR_TEMPLATES}
+                selectedTemplate={selectedTemplate}
+                customLogo={customLogo}
+                onLogoUpload={handleLogoUpload}
+                onRemoveLogo={handleRemoveLogo}
+                onSelectTemplate={(template) => {
+                  setSelectedTemplate(template)
+                  if (customLogo) {
+                    setCustomLogo(null)
+                  }
+                }}
+              />
                       </div>
                     </div>
                     
@@ -233,44 +233,44 @@ function App() {
                           <span className="text-2xl">🎨</span>
                           <h3 className="text-lg font-bold text-gray-900 dark:text-white">Customize Colors</h3>
                         </div>
-                        <ColorCustomizer
-                          foregroundColor={foregroundColor}
-                          backgroundColor={backgroundColor}
-                          onForegroundChange={setForegroundColor}
-                          onBackgroundChange={setBackgroundColor}
-                        />
+              <ColorCustomizer
+                foregroundColor={foregroundColor}
+                backgroundColor={backgroundColor}
+                onForegroundChange={setForegroundColor}
+                onBackgroundChange={setBackgroundColor}
+              />
                       </div>
                     </div>
                     
                     {/* Quick Action: Copy URL */}
-                    <button
-                      onClick={handleCopyToClipboard}
+              <button
+                onClick={handleCopyToClipboard}
                       className={`w-full font-semibold py-4 px-6 rounded-xl flex items-center justify-center gap-2 relative overflow-hidden shadow-xl transition-all duration-300 transform hover:scale-[1.02] ${
-                        copied
+                  copied
                           ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white'
                           : 'bg-gradient-to-r from-blue-500 via-purple-600 to-pink-600 text-white hover:shadow-2xl'
-                      }`}
-                    >
-                      {copied ? (
-                        <>
-                          <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          <span className="font-bold">Copied to Clipboard!</span>
-                        </>
-                      ) : (
-                        <>
-                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                          </svg>
-                          <span>Copy URL to Clipboard</span>
-                        </>
-                      )}
-                    </button>
-                  </div>
+                }`}
+              >
+                {copied ? (
+                  <>
+                    <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="font-bold">Copied to Clipboard!</span>
+                  </>
+                ) : (
+                  <>
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                    <span>Copy URL to Clipboard</span>
+                  </>
+                )}
+              </button>
+            </div>
                   
                   {/* Right Column - Live Preview & Download */}
-                  <div className="lg:sticky lg:top-8">
+            <div className="lg:sticky lg:top-8">
                     <div className="bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-6 sm:p-8 shadow-2xl border-2 border-purple-200 dark:border-purple-800">
                       {/* Preview Header */}
                       <div className="text-center mb-6">
@@ -284,31 +284,31 @@ function App() {
                       </div>
                       
                       {/* QR Code Preview */}
-                      <PreviewSection
-                        inputValue={inputValue}
-                        selectedTemplate={selectedTemplate}
-                        customLogo={customLogo}
-                        foregroundColor={foregroundColor}
-                        backgroundColor={backgroundColor}
-                        backgroundPattern={backgroundPattern}
-                        qrRef={qrRef}
-                      />
+              <PreviewSection
+                inputValue={inputValue}
+                selectedTemplate={selectedTemplate}
+                customLogo={customLogo}
+                foregroundColor={foregroundColor}
+                backgroundColor={backgroundColor}
+                backgroundPattern={backgroundPattern}
+                qrRef={qrRef}
+              />
                       
                       {/* Download Section */}
-                      {inputValue.trim() ? (
-                        <div className="mt-6">
+              {inputValue.trim() ? (
+                <div className="mt-6">
                           <div className="text-center mb-4">
                             <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Ready to download?</span>
                           </div>
-                          <DownloadShareButtons
-                            qrRef={qrRef}
-                            inputValue={inputValue}
-                            selectedTemplate={selectedTemplate}
-                            backgroundPattern={backgroundPattern}
-                            backgroundColor={backgroundColor}
-                          />
-                        </div>
-                      ) : (
+                  <DownloadShareButtons
+                    qrRef={qrRef}
+                    inputValue={inputValue}
+                    selectedTemplate={selectedTemplate}
+                    backgroundPattern={backgroundPattern}
+                    backgroundColor={backgroundColor}
+                  />
+                </div>
+              ) : (
                         <div className="mt-6 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl border-2 border-dashed border-gray-300 dark:border-gray-700 p-6 text-center">
                           <div className="text-4xl mb-3">⬆️</div>
                           <p className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">
@@ -317,13 +317,13 @@ function App() {
                           <p className="text-xs text-gray-500 dark:text-gray-500">
                             Your QR code will appear here
                           </p>
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                </div>
+              )}
+            </div>
+          </div>
                 </div>
               </div>
-            </div>
+                </div>
           </section>
           {/* Features Section - Redesigned */}
           <section className="mb-16 sm:mb-20">
@@ -409,7 +409,7 @@ function App() {
                   <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent">
                     How to Create Dino QR Codes & Branded QR Codes with Logo
                   </span>
-                </h2>
+            </h2>
               </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
               {[
@@ -445,7 +445,7 @@ function App() {
                   <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent">
                     Perfect for Creating Dino QR Codes & Branded QR Codes
                   </span>
-                </h2>
+            </h2>
               </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
               {[
@@ -479,7 +479,7 @@ function App() {
                   <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent">
                     Frequently Asked Questions
                   </span>
-                </h2>
+            </h2>
               </div>
             <div className="max-w-3xl mx-auto space-y-4">
               {[
@@ -558,7 +558,7 @@ function App() {
                         <span className="text-purple-600 dark:text-purple-400 text-xl font-extrabold flex-shrink-0 mt-0.5">Q:</span>
                         <h3 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-white flex-1">
                           {faq.q}
-                        </h3>
+                  </h3>
                       </div>
                       <div className={`flex-shrink-0 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}>
                         <svg 
@@ -579,9 +579,9 @@ function App() {
                       <div className="px-6 sm:px-8 pb-6 sm:pb-8 pt-0">
                         <p className="text-gray-700 dark:text-gray-300 leading-relaxed flex items-start gap-3">
                           <span className="text-green-600 dark:text-green-400 font-bold text-lg flex-shrink-0">A:</span>
-                          <span className="flex-1">{faq.a}</span>
-                        </p>
-                      </div>
+                    <span className="flex-1">{faq.a}</span>
+                  </p>
+                </div>
                     </div>
                   </div>
                 )
@@ -629,13 +629,13 @@ function App() {
           <footer className="mt-16 sm:mt-20 mb-12 text-center">
             <div className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-xl border border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all duration-300 hover:scale-105">
               <span className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">Made with</span>
-              <span className="text-red-500 animate-pulse-slow text-xl">❤️</span>
+            <span className="text-red-500 animate-pulse-slow text-xl">❤️</span>
               <span className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">and</span>
-              <span className="text-2xl animate-bounce">🦖</span>
+            <span className="text-2xl animate-bounce">🦖</span>
               <span className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm font-medium">| Create amazing QR codes!</span>
-            </div>
-          </footer>
-        </div>
+          </div>
+        </footer>
+      </div>
       </div>
     </div>
   )
