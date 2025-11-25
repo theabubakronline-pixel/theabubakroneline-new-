@@ -99,7 +99,7 @@ function App() {
             </h1>
             
             <p className="text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-medium max-w-4xl mx-auto leading-relaxed mb-8">
-              Create unique <strong className="text-purple-600 dark:text-purple-400">dino QR codes</strong> with Jurassic World dinosaur themes or professional <strong className="text-pink-600 dark:text-pink-400">branded QR codes with logo</strong> for your business. Our <strong className="text-purple-600 dark:text-purple-400">dino QR code generator free</strong> works as a web app directly in your browser - better than Google Chrome QR Code Generator, no redirects, no tracking. Upload your logo, customize colors, and use our <strong className="text-purple-600 dark:text-purple-400">dino QR code generator download</strong> feature to get fancy, fully scannable QR codes instantly.
+              Create unique <strong className="text-purple-600 dark:text-purple-400">custom QR codes</strong> with Jurassic World dinosaur themes or professional <strong className="text-pink-600 dark:text-pink-400">custom QR codes with logo</strong> for your business. Our <strong className="text-purple-600 dark:text-purple-400">custom QR code generator free</strong> works as a web app directly in your browser - better than Google Chrome QR Code Generator, no redirects, no tracking. Design your <strong className="text-purple-600 dark:text-purple-400">custom QR code design</strong> by uploading your logo, customizing colors and shapes, and download instantly with our free custom QR code generator with logo free features.
             </p>
 
             {/* Quick Stats */}
@@ -335,7 +335,7 @@ function App() {
                 </div>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4">
                   <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent">
-                    Why Choose Our Dino QR Code Generator
+                    Why Choose Our Custom QR Code Generator
                   </span>
                 </h2>
               </div>
@@ -348,14 +348,14 @@ function App() {
               
               <div className="group relative p-6 sm:p-8 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl border border-blue-200 dark:border-blue-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div className="text-5xl mb-4">🏢</div>
-                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">Custom QR Code with Logo</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Upload your company logo to create professional <strong>branded QR codes</strong>. Perfect for business cards, marketing materials, product packaging, and corporate branding. Your logo, your brand, your QR code.</p>
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">Custom QR Code with Logo - Free</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Create professional <strong>custom QR codes with logo</strong> using our free generator. Perfect for business cards, marketing materials, product packaging, stickers, signs, plaques, and corporate branding. Our <strong>custom QR code generator with logo free</strong> lets you upload your logo and customize your design instantly.</p>
               </div>
               
               <div className="group relative p-6 sm:p-8 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl border border-green-200 dark:border-green-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div className="text-5xl mb-4">🎨</div>
-                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">Aesthetic QR Code Generator</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Create fancy, aesthetic QR codes with beautiful designs, custom colors, and integrated logos. Our aesthetic QR code generator produces visually stunning codes perfect for design-conscious projects and marketing materials.</p>
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">Custom QR Code Design & Shapes</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Create stunning <strong>custom QR code design</strong> with unique <strong>custom QR code shapes</strong> including dinosaur themes. Our <strong>custom QR code generator</strong> lets you design beautiful QR codes with custom colors, logos, and creative shapes perfect for stickers, signs, plaques, and stands.</p>
               </div>
               
               <div className="group relative p-6 sm:p-8 bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 rounded-2xl border border-orange-200 dark:border-orange-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
@@ -372,8 +372,8 @@ function App() {
               
               <div className="group relative p-6 sm:p-8 bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-teal-900/20 dark:to-cyan-900/20 rounded-2xl border border-teal-200 dark:border-teal-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div className="text-5xl mb-4">🆓</div>
-                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">Free QR Code Generator Without Redirect</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Our QR code generator works without redirects - your links go directly to the destination. Create unlimited <strong>dino QR codes</strong> and <strong>custom branded QR codes</strong> completely free. No registration, no tracking, no redirects.</p>
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">Custom QR Code Generator Free - No Redirects</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Our <strong>custom QR code generator free</strong> works without redirects - your links go directly to the destination. Create unlimited <strong>custom QR codes</strong>, <strong>custom QR codes with logo</strong>, and custom designs completely free. No registration, no tracking, no redirects. Perfect for custom QR code stickers, signs, plaques, and stands.</p>
               </div>
               
               <div className="group relative p-6 sm:p-8 bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-900/20 dark:to-purple-900/20 rounded-2xl border border-violet-200 dark:border-violet-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
@@ -414,8 +414,8 @@ function App() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
               {[
                 { step: 1, title: 'Enter Your URL or Text', desc: 'Type your URL, text, or content in the input field. Works for websites, social media links, WiFi passwords, and more.', icon: '📝' },
-                { step: 2, title: 'Choose Dino QR Code or Upload Logo', desc: 'Select a fun dinosaur-themed QR code template (T-Rex, Stegosaurus) or upload your company logo to create a branded QR code.', icon: '🦖' },
-                { step: 3, title: 'Customize Colors & Branding', desc: 'Customize foreground and background colors to match your brand. Perfect for creating branded QR codes with your brand colors.', icon: '🎨' },
+                { step: 2, title: 'Create Custom QR Code Design or Upload Logo', desc: 'Select fun custom QR code shapes like dinosaur themes (T-Rex, Stegosaurus) or upload your company logo to create custom QR codes with logo.', icon: '🦖' },
+                { step: 3, title: 'Customize Your QR Code Design', desc: 'Design your custom QR code with unique shapes, colors, and branding. Perfect for creating custom QR code design that matches your brand colors and style.', icon: '🎨' },
                 { step: 4, title: 'Preview Your QR Code', desc: 'See your dino QR code or branded QR code update in real-time as you customize. Ensure everything looks perfect before downloading.', icon: '👀' },
                 { step: 5, title: 'Download High-Quality File', desc: 'Export your QR code as PNG or SVG using our dino QR code generator download feature. Perfect for print materials, digital campaigns, or business cards. Fully scannable and high-resolution - download instantly.', icon: '📥' },
                 { step: 6, title: 'Use in Your Marketing', desc: 'Print on business cards, use in social media posts, add to product packaging, or include in marketing materials. Works everywhere!', icon: '🌐' },
@@ -443,16 +443,16 @@ function App() {
                 </div>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4">
                   <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent">
-                    Perfect for Creating Dino QR Codes & Branded QR Codes
+                    Perfect for Creating Custom QR Codes & Custom QR Codes with Logo
                   </span>
             </h2>
               </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
               {[
-                { title: 'Businesses & Marketers', desc: 'Create professional branded QR codes with your logo for marketing campaigns, business cards, and product packaging. Stand out with custom-branded QR codes.', icon: '🏢', color: 'from-purple-500 to-pink-500' },
+                { title: 'Businesses & Marketers', desc: 'Create professional custom QR codes with logo for marketing campaigns, business cards, product packaging, custom QR code stickers, signs, and plaques. Use our custom QR code generator free to stand out with branded designs.', icon: '🏢', color: 'from-purple-500 to-pink-500' },
                 { title: 'Event Planners & Organizers', desc: 'Use fun dino QR codes for events, tickets, and promotions. Or create branded QR codes with your event logo for a professional touch.', icon: '🎪', color: 'from-blue-500 to-cyan-500' },
                 { title: 'Educators & Parents', desc: 'Create engaging dino QR codes for worksheets, treasure hunts, classroom activities, and educational materials. Kids love dinosaur-themed QR codes!', icon: '📚', color: 'from-orange-500 to-amber-500' },
-                { title: 'Designers & Creators', desc: 'Create fancy, aesthetic QR codes with beautiful designs for client projects, creative portfolios, and branded content. Our aesthetic QR code generator produces visually stunning codes perfect for design-conscious creators.', icon: '🎨', color: 'from-green-500 to-emerald-500' },
+                { title: 'Designers & Creators', desc: 'Create stunning custom QR code design with unique custom QR code shapes for client projects, creative portfolios, stickers, signs, and stands. Our custom QR code generator produces visually stunning codes perfect for design-conscious creators.', icon: '🎨', color: 'from-green-500 to-emerald-500' },
                 { title: 'Social Media Influencers', desc: 'Share unique dino QR codes to engage followers and drive traffic. Or use branded QR codes with your logo for professional content marketing.', icon: '📱', color: 'from-indigo-500 to-purple-500' },
                 { title: 'E-commerce & Online Stores', desc: 'Add branded QR codes to product packaging, shipping labels, and promotional materials. Direct customers to your online store or product pages instantly.', icon: '🛍️', color: 'from-rose-500 to-red-500' },
               ].map((useCase, idx) => (
@@ -488,8 +488,8 @@ function App() {
                   a: 'A dino QR code features actual dinosaur shapes (like T-Rex or Stegosaurus) integrated directly into the QR code pattern, not just colors. Our dino QR code generator creates fun, unique QR codes that remain fully scannable while being visually engaging and memorable.',
                 },
                 {
-                  q: 'Can I add my company logo to create a branded QR code?',
-                  a: 'Absolutely! Our branded QR code generator allows you to upload your company logo directly into the QR code. Create professional branded QR codes perfect for business cards, marketing materials, product packaging, and corporate branding.',
+                  q: 'Can I create custom QR codes with logo?',
+                  a: 'Absolutely! Our <strong>custom QR code generator with logo free</strong> allows you to upload your company logo directly into the QR code. Create professional <strong>custom QR codes with logo</strong> perfect for business cards, marketing materials, product packaging, stickers, signs, plaques, and corporate branding. All completely free!',
                 },
                 {
                   q: 'Are dino QR codes scannable like regular QR codes?',
@@ -500,16 +500,16 @@ function App() {
                   a: 'Yes! Our tool is versatile - you can create fun dino QR codes for creative projects or professional branded QR codes with your logo for business use. Choose a dinosaur template or upload your logo to get started.',
                 },
                 {
-                  q: 'Is this dino QR code generator free?',
-                  a: 'Yes, completely free! Our dino QR code generator free version lets you create unlimited dino QR codes and branded QR codes with logo upload. No registration, no payment, no hidden fees. The dino QR code generator free tier includes all features - download, customize colors, add logos, and more. All processing happens in your browser.',
+                  q: 'Is this custom QR code generator free?',
+                  a: 'Yes, completely free! Our <strong>custom QR code generator free</strong> version lets you create unlimited <strong>custom QR codes</strong>, <strong>custom QR codes with logo</strong>, and custom designs with logo upload. No registration, no payment, no hidden fees. The <strong>custom QR code free</strong> tier includes all features - download, customize colors, add logos, create custom shapes, and more. All processing happens in your browser.',
                 },
                 {
                   q: 'What file formats can I download my QR codes in?',
                   a: 'You can download both dino QR codes and branded QR codes as high-quality PNG or SVG files. PNG is perfect for digital use and social media, while SVG is ideal for print materials and scalable graphics.',
                 },
                 {
-                  q: 'Can I customize the colors of my dino QR code or branded QR code?',
-                  a: 'Yes! Customize foreground and background colors for both dino QR codes and branded QR codes. Match your brand colors when creating branded QR codes, or choose fun colors for dino QR codes.',
+                  q: 'Can I create custom QR code designs with unique shapes?',
+                  a: 'Yes! Our <strong>custom QR code generator</strong> lets you create unique <strong>custom QR code design</strong> with <strong>custom QR code shapes</strong> including dinosaur themes. Customize foreground and background colors, upload logos, and create professional <strong>custom QR codes</strong> perfect for stickers, signs, plaques, stands, or any marketing material. Design your perfect custom QR code!',
                 },
                 {
                   q: 'Does this QR code generator work without redirects?',
@@ -533,15 +533,19 @@ function App() {
                 },
                 {
                   q: 'Can I create QR codes without dinosaur themes, like a Chrome QR code without dinosaur?',
-                  a: 'Absolutely! While we specialize in fun dino QR codes, you can also create professional branded QR codes with your logo - perfect for those who want a Chrome QR code without dinosaur themes. Simply upload your logo and customize colors to create clean, professional QR codes suitable for any business use.',
+                  a: 'Absolutely! While we specialize in fun dino QR codes, you can also create professional custom QR codes with logo - perfect for those who want a Chrome QR code without dinosaur themes. Simply upload your logo and customize colors to create clean, professional custom QR code design suitable for any business use.',
+                },
+                {
+                  q: 'What makes this the best custom QR code generator free?',
+                  a: 'Our <strong>custom QR code generator free</strong> offers everything you need: create <strong>custom QR codes with logo</strong>, design unique <strong>custom QR code design</strong> with <strong>custom QR code shapes</strong>, download for stickers, signs, plaques, and stands - all completely free. Unlike other generators, we offer dinosaur themes plus professional branding, all without redirects or registration. Perfect <strong>custom QR code generator</strong> for any project!',
                 },
                 {
                   q: 'Can I create Jurassic World themed QR codes?',
                   a: 'Yes! Our dinosaur QR code generator includes T-Rex and Stegosaurus templates that work perfectly for Jurassic World themed projects. Create QR codes with dinosaur shapes that capture the excitement of Jurassic World - ideal for events, marketing campaigns, or themed activities.',
                 },
                 {
-                  q: 'What makes this the best dino QR code generator?',
-                  a: 'We\'re the only QR code generator that offers actual dinosaur-themed QR codes with integrated shapes, plus professional branded QR codes with logo upload. Combine fun dino QR codes with business-ready branded QR codes - all in one free tool that works without redirects!',
+                  q: 'What makes this the best custom QR code generator?',
+                  a: 'We\'re the best <strong>custom QR code generator</strong> that offers actual dinosaur-themed custom QR code shapes, plus professional <strong>custom QR codes with logo</strong>. Our <strong>custom QR code generator free</strong> combines fun designs with business-ready branding - create custom QR code design for stickers, signs, plaques, and stands, all in one free tool that works without redirects!',
                 },
               ].map((faq, idx) => {
                 const isExpanded = expandedFaq === idx
@@ -605,7 +609,7 @@ function App() {
                 Start Creating Dino QR Codes & Branded QR Codes Today
               </h2>
               <p className="text-lg md:text-xl mb-10 text-white/95 max-w-3xl mx-auto leading-relaxed">
-                Create unique <strong>dino QR codes</strong> with Jurassic World dinosaur themes or professional <strong>branded QR codes with logo</strong> for your business. Our <strong>dino QR code generator free</strong> version works as a web app - better than Google Chrome QR Code Generator, no redirects, direct links. Upload your logo, customize colors, preview in real-time, and use our <strong>dino QR code generator download</strong> feature to get high-quality PNG/SVG files instantly. Works with any dinosaur QR code scanner - perfect for any project!
+                Create unique <strong>custom QR codes</strong> with Jurassic World dinosaur themes or professional <strong>custom QR codes with logo</strong> for your business. Our <strong>custom QR code generator free</strong> works as a web app - better than Google Chrome QR Code Generator, no redirects, direct links. Design your <strong>custom QR code design</strong> with unique shapes, upload your logo, customize colors, preview in real-time, and download instantly. Perfect for custom QR code stickers, signs, plaques, and stands!
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <a href="#qr-input" className="btn-primary bg-white text-purple-600 font-bold py-4 px-8 md:px-10 rounded-xl hover:bg-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-lg">
