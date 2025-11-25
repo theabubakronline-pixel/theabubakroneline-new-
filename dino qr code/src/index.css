@@ -284,6 +284,24 @@
     animation: scale-in 0.3s ease-out;
   }
   
+  /* Gradient animation for text */
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .animate-gradient {
+    background-size: 200% auto;
+    animation: gradient 3s linear infinite;
+  }
+  
   /* Shimmer effect */
   @keyframes shimmer {
     0% {

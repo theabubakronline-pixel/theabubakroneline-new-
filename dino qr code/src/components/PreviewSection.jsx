@@ -28,13 +28,8 @@ const PreviewSection = ({
   }, [qrRef, hasInput])
 
   return (
-    <div className="card-enhanced p-6">
-      <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center gap-2">
-        <span className="text-2xl animate-pulse-slow">👀</span>
-        <span className="gradient-text">Live Preview</span>
-      </h2>
-      
-      <div className="flex flex-col items-center justify-center min-h-[350px] bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 rounded-xl p-8 border-2 border-dashed border-purple-200 relative overflow-hidden">
+    <div>
+      <div className="flex flex-col items-center justify-center min-h-[320px] sm:min-h-[380px] bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 dark:from-purple-900/20 dark:via-pink-900/20 dark:to-orange-900/20 rounded-xl p-6 sm:p-8 border-2 border-dashed border-purple-200 dark:border-purple-800 relative overflow-hidden">
         <div className="absolute inset-0 shimmer opacity-20"></div>
         
         {/* Animated floating dinosaur elements */}
@@ -46,7 +41,7 @@ const PreviewSection = ({
         </div>
         
         {hasInput ? (
-          <div ref={containerRef} className="bg-white p-6 rounded-2xl shadow-2xl border-4 border-purple-100 qr-container fade-in scale-in relative z-10 backdrop-blur-sm" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)' }}>
+          <div ref={containerRef} className="bg-white dark:bg-gray-900 p-4 sm:p-6 rounded-2xl shadow-2xl border-4 border-purple-100 dark:border-purple-900 qr-container fade-in scale-in relative z-10 backdrop-blur-sm" style={{ backgroundColor: 'rgba(255, 255, 255, 0.95)' }}>
             <div className="relative inline-block" ref={qrRef}>
               {/* 
                 DinoQRCode component generates QR code with dinosaur shapes
@@ -84,41 +79,41 @@ const PreviewSection = ({
             </div>
           </div>
         ) : (
-          <div className="text-center text-gray-400">
-            <div className="text-8xl mb-6 animate-float">🦖</div>
-            <p className="text-xl font-semibold text-gray-500 mb-2">Enter text or URL to see preview</p>
-            <p className="text-sm text-gray-400">Your amazing QR code will appear here</p>
+          <div className="text-center text-gray-500 dark:text-gray-400">
+            <div className="text-6xl sm:text-8xl mb-4 sm:mb-6 animate-float">🦖</div>
+            <p className="text-lg sm:text-xl font-semibold text-gray-600 dark:text-gray-400 mb-2">Enter text or URL to see preview</p>
+            <p className="text-sm text-gray-500 dark:text-gray-500">Your amazing QR code will appear here</p>
           </div>
         )}
       </div>
 
       {hasInput && (
-        <div className="mt-6 text-center">
+        <div className="mt-4 text-center">
           {customLogo ? (
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full">
-              <span className="text-sm font-bold text-gray-700">
-                Using: <span className="text-purple-600">Custom Logo</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-full">
+              <span className="text-xs sm:text-sm font-bold text-gray-700 dark:text-gray-300">
+                Using: <span className="text-purple-600 dark:text-purple-400">Custom Logo</span>
               </span>
-              <span className="text-2xl">🎨</span>
+              <span className="text-xl sm:text-2xl">🎨</span>
             </div>
           ) : (
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full">
-              <span className="text-sm font-bold text-gray-700">
-                Selected: <span className="text-purple-600">{selectedTemplate.name}</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-full">
+              <span className="text-xs sm:text-sm font-bold text-gray-700 dark:text-gray-300">
+                Selected: <span className="text-purple-600 dark:text-purple-400">{selectedTemplate.name}</span>
               </span>
-              <span className="text-2xl">{selectedTemplate.emoji}</span>
+              <span className="text-xl sm:text-2xl">{selectedTemplate.emoji}</span>
             </div>
           )}
           <div className="mt-3 flex flex-col items-center justify-center gap-2">
-            <div className="flex items-center justify-center gap-2 text-xs text-gray-500 bg-green-50 px-4 py-2 rounded-lg border border-green-200 animate-pulse-slow">
-              <svg className="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="flex items-center justify-center gap-2 text-xs text-gray-600 dark:text-gray-400 bg-green-50 dark:bg-green-900/20 px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg border border-green-200 dark:border-green-800 animate-pulse-slow">
+              <svg className="w-4 h-4 text-green-500 dark:text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <span className="font-semibold">Dinosaur shapes integrated - Fully scannable!</span>
+              <span className="font-semibold">Fully scannable with integrated shapes!</span>
             </div>
-            <div className="flex items-center gap-2 text-xs text-gray-400">
+            <div className="flex items-center gap-2 text-xs text-gray-500 dark:text-gray-500">
               <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-              <span>High error correction (Level H) ensures scannability</span>
+              <span>High error correction (Level H)</span>
             </div>
           </div>
         </div>

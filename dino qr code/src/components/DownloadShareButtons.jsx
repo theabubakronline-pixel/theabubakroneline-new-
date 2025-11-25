@@ -373,3 +373,5 @@ const DownloadShareButtons = ({ qrRef, inputValue, selectedTemplate, backgroundP
 }
 
 export default DownloadShareButtons
+
+

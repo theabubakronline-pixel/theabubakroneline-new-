@@ -49,10 +49,9 @@ const DinoTemplateSelector = ({ templates, selectedTemplate, onSelectTemplate, c
   }
 
   return (
-    <div className={`bg-white rounded-xl shadow-lg p-6 border border-gray-100`}>
-      <label className="block text-sm font-bold text-gray-800 mb-5 flex items-center gap-2">
-        <span className="text-xl">🦖</span>
-        <span>Choose Your Dinosaur</span>
+    <div>
+      <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-4">
+        <span>Choose Template or Upload Logo</span>
       </label>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
         {templates.map((template) => {
@@ -156,8 +155,8 @@ const DinoTemplateSelector = ({ templates, selectedTemplate, onSelectTemplate, c
           )}
         </div>
       </div>
-      <div className="mt-5 flex items-start gap-2 text-xs text-gray-500 bg-purple-50 p-3 rounded-lg border border-purple-100">
-        <span className="text-base">💡</span>
+      <div className="mt-4 flex items-start gap-2 text-xs text-gray-600 dark:text-gray-400 bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg border border-purple-200 dark:border-purple-800">
+        <span className="text-base flex-shrink-0">💡</span>
         <span>Each dinosaur has unique shapes integrated into the QR code pattern!</span>
       </div>
     </div>

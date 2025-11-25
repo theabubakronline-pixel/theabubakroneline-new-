@@ -24,41 +24,6 @@ const ColorCustomizer = ({
     { name: 'Stone', value: '#E5E7EB' },
   ]
 
-  const themeCombos = [
-    {
-      id: 'studio',
-      name: 'Studio Glow',
-      description: 'Bold ink on a frosted background',
-      foreground: '#2D1B69',
-      background: '#F7F1FF',
-      accent: '✨',
-    },
-    {
-      id: 'forest',
-      name: 'Forest Canopy',
-      description: 'Deep green on parchment',
-      foreground: '#065F46',
-      background: '#F0FDF4',
-      accent: '🌿',
-    },
-    {
-      id: 'noir',
-      name: 'Noir Neon',
-      description: 'Near-black with neon cyan',
-      foreground: '#0F172A',
-      background: '#E0F2FF',
-      accent: '💡',
-    },
-    {
-      id: 'sunset',
-      name: 'Sunset Social',
-      description: 'Warm gradient-ready palette',
-      foreground: '#BE123C',
-      background: '#FFF7ED',
-      accent: '🌅',
-    },
-  ]
-
   const swapColors = () => {
     const prevFg = foregroundColor
     onForegroundChange(backgroundColor)
@@ -102,18 +67,19 @@ const ColorCustomizer = ({
     : 'Adjust colors to see contrast tips'
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-      <label className="block text-sm font-bold text-gray-800 mb-3 flex items-center gap-2">
-        <span className="text-xl">🎨</span>
-        <span>Customization Lab</span>
+    <div>
+      <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+        <span>Customize Your Colors</span>
       </label>
-      <p className="text-xs text-gray-500 mb-4">
-        Apply a curated palette or dial in precise brand colors for your QR foreground and background.
+      <p className="text-xs text-gray-600 dark:text-gray-400 mb-4">
+        Choose colors that match your brand or style.
       </p>
 
       <div className="mb-6">
         <div className="flex items-center justify-between mb-3">
-          <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide">Curated themes</p>
+          <label className="block text-xs font-medium text-gray-600">
+            QR Code Color (Foreground)
+          </label>
           <div className="flex gap-2 text-xs">
             <button onClick={swapColors} className="px-3 py-1 rounded-full border border-gray-200 text-gray-700 hover:border-purple-300 hover:text-purple-600 transition text-[11px]">
               Swap colors
@@ -123,50 +89,21 @@ const ColorCustomizer = ({
             </button>
           </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {themeCombos.map((theme) => (
-            <button
-              key={theme.id}
-              className="text-left border border-gray-200 rounded-2xl p-4 hover:border-purple-300 hover:shadow-md transition flex gap-3 items-center"
-              onClick={() => {
-                onForegroundChange(theme.foreground)
-                onBackgroundChange(theme.background)
-              }}
-            >
-              <div
-                className="w-12 h-12 rounded-xl shadow-inner border border-white ring-2 ring-white"
-                style={{ background: `radial-gradient(circle at top, ${theme.foreground}, ${theme.background})` }}
-              />
-              <div>
-                <p className="font-semibold text-sm text-gray-800 flex items-center gap-1">
-                  {theme.accent} {theme.name}
-                </p>
-                <p className="text-xs text-gray-500">{theme.description}</p>
-              </div>
-            </button>
-          ))}
-        </div>
-      </div>
-      
-      <div className="mb-6">
-        <label className="block text-xs font-medium text-gray-600 mb-2">
-          QR Code Color (Foreground)
-        </label>
         <div className="flex items-center gap-3 mb-3">
           <div className="relative">
             <input
               type="color"
               value={foregroundColor}
               onChange={(e) => onForegroundChange(e.target.value)}
-              className="w-14 h-14 rounded-xl cursor-pointer border-2 border-gray-300 shadow-md hover:shadow-lg transition-shadow"
+              className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl cursor-pointer border-2 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-shadow"
             />
-            <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-purple-500 rounded-full border-2 border-white"></div>
+            <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-purple-500 rounded-full border-2 border-white dark:border-gray-800"></div>
           </div>
           <input
             type="text"
             value={foregroundColor}
             onChange={(e) => onForegroundChange(e.target.value)}
-            className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-purple-200 focus:border-purple-500 transition-all font-mono text-sm"
+            className="flex-1 px-4 py-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-4 focus:ring-purple-200 dark:focus:ring-purple-900 focus:border-purple-500 dark:focus:border-purple-500 transition-all font-mono text-sm text-gray-800 dark:text-white"
             placeholder="#000000"
           />
         </div>
@@ -175,10 +112,10 @@ const ColorCustomizer = ({
             <button
               key={color.value}
               onClick={() => onForegroundChange(color.value)}
-              className={`color-picker-btn w-10 h-10 rounded-full border-2 ${
+              className={`color-picker-btn w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 transition-all ${
                 foregroundColor === color.value
-                  ? 'border-purple-500 ring-4 ring-purple-200 scale-110 shadow-lg'
-                  : 'border-gray-300 hover:border-purple-300'
+                  ? 'border-purple-500 dark:border-purple-400 ring-4 ring-purple-200 dark:ring-purple-900 scale-110 shadow-lg'
+                  : 'border-gray-300 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-600'
               }`}
               style={{ backgroundColor: color.value }}
               title={color.name}
@@ -188,7 +125,7 @@ const ColorCustomizer = ({
       </div>
 
       <div className="mt-6">
-        <label className="block text-xs font-medium text-gray-600 mb-2">
+        <label className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-2">
           Background Color
         </label>
         <div className="flex items-center gap-3 mb-3">
@@ -197,15 +134,15 @@ const ColorCustomizer = ({
               type="color"
               value={backgroundColor}
               onChange={(e) => onBackgroundChange(e.target.value)}
-              className="w-14 h-14 rounded-xl cursor-pointer border-2 border-gray-300 shadow-md hover:shadow-lg transition-shadow"
+              className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl cursor-pointer border-2 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-md hover:shadow-lg transition-shadow"
             />
-            <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-pink-500 rounded-full border-2 border-white"></div>
+            <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-pink-500 rounded-full border-2 border-white dark:border-gray-800"></div>
           </div>
           <input
             type="text"
             value={backgroundColor}
             onChange={(e) => onBackgroundChange(e.target.value)}
-            className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-4 focus:ring-pink-200 focus:border-pink-500 transition-all font-mono text-sm"
+            className="flex-1 px-4 py-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-4 focus:ring-pink-200 dark:focus:ring-pink-900 focus:border-pink-500 dark:focus:border-pink-500 transition-all font-mono text-sm text-gray-800 dark:text-white"
             placeholder="#FFFFFF"
           />
         </div>
@@ -214,10 +151,10 @@ const ColorCustomizer = ({
             <button
               key={color.value}
               onClick={() => onBackgroundChange(color.value)}
-              className={`color-picker-btn w-10 h-10 rounded-full border-2 ${
+              className={`color-picker-btn w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 transition-all ${
                 backgroundColor === color.value
-                  ? 'border-pink-500 ring-4 ring-pink-200 scale-110 shadow-lg'
-                  : 'border-gray-300 hover:border-pink-300'
+                  ? 'border-pink-500 dark:border-pink-400 ring-4 ring-pink-200 dark:ring-pink-900 scale-110 shadow-lg'
+                  : 'border-gray-300 dark:border-gray-700 hover:border-pink-300 dark:hover:border-pink-600'
               }`}
               style={{ backgroundColor: color.value }}
               title={color.name}
@@ -226,15 +163,15 @@ const ColorCustomizer = ({
         </div>
       </div>
 
-      <div className="mt-6 p-4 rounded-xl border border-gray-100 bg-gray-50">
-        <p className="text-xs font-semibold text-gray-600 flex items-center gap-2">
+      <div className="mt-6 p-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+        <p className="text-xs font-semibold text-gray-600 dark:text-gray-400 flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           Contrast helper
         </p>
-        <p className="text-sm font-semibold text-gray-800 mt-2">
+        <p className="text-sm font-semibold text-gray-800 dark:text-white mt-2">
           {contrastRatio ? `Ratio: ${contrastRatio}:1` : 'No ratio yet'}
         </p>
-        <p className="text-xs text-gray-500">{contrastMessage}</p>
+        <p className="text-xs text-gray-600 dark:text-gray-400">{contrastMessage}</p>
       </div>
     </div>
   )
