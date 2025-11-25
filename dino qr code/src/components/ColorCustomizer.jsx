@@ -68,23 +68,23 @@ const ColorCustomizer = ({
 
   return (
     <div>
-      <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+      <label className="block text-sm font-semibold text-gray-800 dark:text-gray-200 mb-2">
         <span>Customize Your Colors</span>
       </label>
-      <p className="text-xs text-gray-600 dark:text-gray-400 mb-4">
+      <p className="text-xs text-gray-700 dark:text-gray-300 mb-4">
         Choose colors that match your brand or style.
       </p>
 
       <div className="mb-6">
         <div className="flex items-center justify-between mb-3">
-          <label className="block text-xs font-medium text-gray-600">
+          <label className="block text-xs font-medium text-gray-700 dark:text-gray-300">
             QR Code Color (Foreground)
           </label>
           <div className="flex gap-2 text-xs">
-            <button onClick={swapColors} className="px-3 py-1 rounded-full border border-gray-200 text-gray-700 hover:border-purple-300 hover:text-purple-600 transition text-[11px]">
+            <button onClick={swapColors} className="px-3 py-1 rounded-full border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:border-purple-300 dark:hover:border-purple-500 hover:text-purple-600 dark:hover:text-purple-400 transition text-[11px] font-medium">
               Swap colors
             </button>
-            <button onClick={resetColors} className="px-3 py-1 rounded-full border border-gray-200 text-gray-500 hover:border-gray-400 transition text-[11px]">
+            <button onClick={resetColors} className="px-3 py-1 rounded-full border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:border-gray-400 dark:hover:border-gray-500 transition text-[11px] font-medium">
               Reset
             </button>
           </div>
@@ -125,7 +125,7 @@ const ColorCustomizer = ({
       </div>
 
       <div className="mt-6">
-        <label className="block text-xs font-medium text-gray-600 dark:text-gray-400 mb-2">
+        <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-2">
           Background Color
         </label>
         <div className="flex items-center gap-3 mb-3">
@@ -163,15 +163,15 @@ const ColorCustomizer = ({
         </div>
       </div>
 
-      <div className="mt-6 p-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
-        <p className="text-xs font-semibold text-gray-600 dark:text-gray-400 flex items-center gap-2">
+      <div className="mt-6 p-4 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800/50">
+        <p className="text-xs font-semibold text-gray-700 dark:text-gray-300 flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           Contrast helper
         </p>
         <p className="text-sm font-semibold text-gray-800 dark:text-white mt-2">
           {contrastRatio ? `Ratio: ${contrastRatio}:1` : 'No ratio yet'}
         </p>
-        <p className="text-xs text-gray-600 dark:text-gray-400">{contrastMessage}</p>
+        <p className="text-xs text-gray-700 dark:text-gray-300">{contrastMessage}</p>
       </div>
     </div>
   )
