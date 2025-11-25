@@ -88,37 +88,41 @@ function App() {
               </div>
             </div>
             
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
               <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent animate-gradient">
                 Dino QR Code Generator
               </span>
               <br />
-              <span className="text-gray-800 dark:text-gray-100 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+              <span className="text-gray-800 dark:text-gray-100 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
                 Create Custom & Branded QR Codes with Logo
               </span>
             </h1>
             
             <p className="text-lg sm:text-xl md:text-2xl text-gray-700 dark:text-gray-300 font-medium max-w-4xl mx-auto leading-relaxed mb-8">
-              Create unique <strong className="text-purple-600 dark:text-purple-400">dino QR codes</strong> with dinosaur themes or professional <strong className="text-pink-600 dark:text-pink-400">branded QR codes with logo</strong> for your business. Our free dino QR code generator lets you upload your logo, customize colors, and generate fully scannable QR codes instantly.
+              Create unique <strong className="text-purple-600 dark:text-purple-400">dino QR codes</strong> with Jurassic World dinosaur themes or professional <strong className="text-pink-600 dark:text-pink-400">branded QR codes with logo</strong> for your business. Our <strong className="text-purple-600 dark:text-purple-400">dino QR code generator free</strong> works as a web app directly in your browser - better than Google Chrome QR Code Generator, no redirects, no tracking. Upload your logo, customize colors, and use our <strong className="text-purple-600 dark:text-purple-400">dino QR code generator download</strong> feature to get fancy, fully scannable QR codes instantly.
             </p>
 
             {/* Quick Stats */}
             <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mb-12">
-              <div className="flex items-center gap-2 px-4 sm:px-6 py-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-lg border border-gray-200 dark:border-gray-700">
+              <div className="flex items-center gap-2 px-3 sm:px-5 py-2.5 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-lg border border-gray-200 dark:border-gray-700">
                 <span className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
-                <span className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-200">Fully Scannable</span>
+                <span className="text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-200">Fully Scannable</span>
               </div>
-              <div className="flex items-center gap-2 px-4 sm:px-6 py-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-lg border border-gray-200 dark:border-gray-700">
+              <div className="flex items-center gap-2 px-3 sm:px-5 py-2.5 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-lg border border-gray-200 dark:border-gray-700">
                 <span className="text-xl sm:text-2xl">🦖</span>
-                <span className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-200">Dino Themes</span>
+                <span className="text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-200">Dino Themes</span>
               </div>
-              <div className="flex items-center gap-2 px-4 sm:px-6 py-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-lg border border-gray-200 dark:border-gray-700">
+              <div className="flex items-center gap-2 px-3 sm:px-5 py-2.5 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-lg border border-gray-200 dark:border-gray-700">
                 <span className="text-xl sm:text-2xl">🏢</span>
-                <span className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-200">Logo Upload</span>
+                <span className="text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-200">Logo Upload</span>
               </div>
-              <div className="flex items-center gap-2 px-4 sm:px-6 py-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-lg border border-gray-200 dark:border-gray-700">
+              <div className="flex items-center gap-2 px-3 sm:px-5 py-2.5 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-lg border border-gray-200 dark:border-gray-700">
                 <span className="text-xl sm:text-2xl">🆓</span>
-                <span className="text-sm sm:text-base font-semibold text-gray-800 dark:text-gray-200">100% Free</span>
+                <span className="text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-200">100% Free</span>
+              </div>
+              <div className="flex items-center gap-2 px-3 sm:px-5 py-2.5 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-lg border border-gray-200 dark:border-gray-700">
+                <span className="text-xl sm:text-2xl">🎨</span>
+                <span className="text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-200">No Redirects</span>
               </div>
             </div>
           </header>
@@ -182,9 +186,9 @@ function App() {
                     {/* Step 1: Input Field */}
                     <div className="relative">
                       <div className="absolute -left-3 sm:-left-4 top-0 flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full shadow-lg z-10">
-                        <span className="text-white font-bold text-sm sm:text-base">1</span>
+                        <span className="text-white font-bold text-xs sm:text-sm">1</span>
                       </div>
-                      <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-6 shadow-lg border-2 border-purple-200 dark:border-purple-800 ml-4">
+                      <div className="bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl p-6 shadow-lg border-2 border-purple-200 dark:border-purple-800 sm:ml-4">
                         <div className="flex items-center gap-2 mb-4">
                           <span className="text-2xl">📝</span>
                           <h3 className="text-lg font-bold text-gray-900 dark:text-white">Enter Your Content</h3>
@@ -196,9 +200,9 @@ function App() {
                     {/* Step 2: Template & Logo Selection */}
                     <div className="relative">
                       <div className="absolute -left-3 sm:-left-4 top-0 flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full shadow-lg z-10">
-                        <span className="text-white font-bold text-sm sm:text-base">2</span>
+                        <span className="text-white font-bold text-xs sm:text-sm">2</span>
                       </div>
-                      <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl p-6 shadow-lg border-2 border-blue-200 dark:border-blue-800 ml-4">
+                      <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl p-6 shadow-lg border-2 border-blue-200 dark:border-blue-800 sm:ml-4">
                         <div className="flex items-center gap-2 mb-4">
                           <span className="text-2xl">🎨</span>
                           <h3 className="text-lg font-bold text-gray-900 dark:text-white">Choose Style or Logo</h3>
@@ -222,9 +226,9 @@ function App() {
                     {/* Step 3: Color Customization */}
                     <div className="relative">
                       <div className="absolute -left-3 sm:-left-4 top-0 flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full shadow-lg z-10">
-                        <span className="text-white font-bold text-sm sm:text-base">3</span>
+                        <span className="text-white font-bold text-xs sm:text-sm">3</span>
                       </div>
-                      <div className="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 rounded-2xl p-6 shadow-lg border-2 border-orange-200 dark:border-orange-800 ml-4">
+                      <div className="bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 rounded-2xl p-6 shadow-lg border-2 border-orange-200 dark:border-orange-800 sm:ml-4">
                         <div className="flex items-center gap-2 mb-4">
                           <span className="text-2xl">🎨</span>
                           <h3 className="text-lg font-bold text-gray-900 dark:text-white">Customize Colors</h3>
@@ -323,7 +327,7 @@ function App() {
           </section>
           {/* Features Section - Redesigned */}
           <section className="mb-16 sm:mb-20">
-            <div className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-3xl sm:rounded-[2rem] shadow-2xl border border-gray-200/50 dark:border-gray-700/50 p-8 sm:p-10 lg:p-12">
+            <div className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-3xl sm:rounded-[2rem] shadow-2xl border border-gray-200/50 dark:border-gray-700/50 p-6 sm:p-10 lg:p-12">
               <div className="text-center mb-12">
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-full mb-4">
                   <span className="text-lg">⭐</span>
@@ -338,8 +342,8 @@ function App() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               <div className="group relative p-6 sm:p-8 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl border border-purple-200 dark:border-purple-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div className="text-5xl mb-4">🦖</div>
-                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">Dino QR Code Generator</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Create unique <strong>dino QR codes</strong> with actual dinosaur shapes integrated into the QR pattern. Choose from T-Rex, Stegosaurus, and other fun dinosaur templates that make your QR codes memorable and engaging.</p>
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">Dino QR Code Generator Free</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Create unique <strong>dino QR codes</strong> with actual dinosaur shapes integrated into the QR pattern. Perfect for Jurassic World themed projects! Choose from T-Rex, Stegosaurus, and other fun dinosaur templates that make your QR codes memorable and engaging. Our dino QR code generator free version includes all features.</p>
               </div>
               
               <div className="group relative p-6 sm:p-8 bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 rounded-2xl border border-blue-200 dark:border-blue-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
@@ -350,26 +354,26 @@ function App() {
               
               <div className="group relative p-6 sm:p-8 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-2xl border border-green-200 dark:border-green-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div className="text-5xl mb-4">🎨</div>
-                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">Branded QR Code Generator</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Create professional <strong>branded QR codes</strong> with your logo and brand colors. Perfect for marketing campaigns, business cards, and corporate materials. Stand out with custom-branded QR codes.</p>
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">Aesthetic QR Code Generator</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Create fancy, aesthetic QR codes with beautiful designs, custom colors, and integrated logos. Our aesthetic QR code generator produces visually stunning codes perfect for design-conscious projects and marketing materials.</p>
               </div>
               
               <div className="group relative p-6 sm:p-8 bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20 rounded-2xl border border-orange-200 dark:border-orange-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div className="text-5xl mb-4">📥</div>
-                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">High-Quality Downloads</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Download your <strong>dino QR codes</strong> or <strong>branded QR codes</strong> as high-quality PNG or SVG files. Perfect for digital use, print materials, and large-scale printing. Exactly as previewed.</p>
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">Easy Download - Dino QR Code Generator Download</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Download your <strong>dino QR codes</strong> or <strong>branded QR codes</strong> instantly as high-quality PNG or SVG files. Our dino QR code generator download feature works instantly - perfect for digital use, print materials, and large-scale printing. No waiting, just download and use.</p>
               </div>
               
               <div className="group relative p-6 sm:p-8 bg-gradient-to-br from-pink-50 to-rose-50 dark:from-pink-900/20 dark:to-rose-900/20 rounded-2xl border border-pink-200 dark:border-pink-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div className="text-5xl mb-4">✅</div>
-                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">Fully Scannable</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">All <strong>dino QR codes</strong> and <strong>branded QR codes</strong> are fully scannable with any smartphone camera or QR code scanner. High error correction ensures reliability.</p>
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">Works with Any Dinosaur QR Code Scanner</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">All <strong>dino QR codes</strong> and <strong>branded QR codes</strong> are fully scannable with any dinosaur QR code scanner, smartphone camera, or standard QR code reader. High error correction ensures your codes work perfectly with any scanner app or device.</p>
               </div>
               
               <div className="group relative p-6 sm:p-8 bg-gradient-to-br from-teal-50 to-cyan-50 dark:from-teal-900/20 dark:to-cyan-900/20 rounded-2xl border border-teal-200 dark:border-teal-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div className="text-5xl mb-4">🆓</div>
-                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">Free & No Signup Required</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Create unlimited <strong>dino QR codes</strong> and <strong>custom branded QR codes</strong> completely free. No registration, no payment, no limits. Works entirely in your browser.</p>
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">Free QR Code Generator Without Redirect</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Our QR code generator works without redirects - your links go directly to the destination. Create unlimited <strong>dino QR codes</strong> and <strong>custom branded QR codes</strong> completely free. No registration, no tracking, no redirects.</p>
               </div>
               
               <div className="group relative p-6 sm:p-8 bg-gradient-to-br from-violet-50 to-purple-50 dark:from-violet-900/20 dark:to-purple-900/20 rounded-2xl border border-violet-200 dark:border-violet-800 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
@@ -395,7 +399,7 @@ function App() {
 
           {/* Step-by-Step Instructions Section - Redesigned */}
           <section className="mb-16 sm:mb-20">
-            <div className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-3xl sm:rounded-[2rem] shadow-2xl border border-gray-200/50 dark:border-gray-700/50 p-8 sm:p-10 lg:p-12">
+            <div className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-3xl sm:rounded-[2rem] shadow-2xl border border-gray-200/50 dark:border-gray-700/50 p-6 sm:p-10 lg:p-12">
               <div className="text-center mb-12">
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-full mb-4">
                   <span className="text-lg">📋</span>
@@ -413,7 +417,7 @@ function App() {
                 { step: 2, title: 'Choose Dino QR Code or Upload Logo', desc: 'Select a fun dinosaur-themed QR code template (T-Rex, Stegosaurus) or upload your company logo to create a branded QR code.', icon: '🦖' },
                 { step: 3, title: 'Customize Colors & Branding', desc: 'Customize foreground and background colors to match your brand. Perfect for creating branded QR codes with your brand colors.', icon: '🎨' },
                 { step: 4, title: 'Preview Your QR Code', desc: 'See your dino QR code or branded QR code update in real-time as you customize. Ensure everything looks perfect before downloading.', icon: '👀' },
-                { step: 5, title: 'Download High-Quality File', desc: 'Export your QR code as PNG or SVG. Perfect for print materials, digital campaigns, or business cards. Fully scannable and high-resolution.', icon: '📥' },
+                { step: 5, title: 'Download High-Quality File', desc: 'Export your QR code as PNG or SVG using our dino QR code generator download feature. Perfect for print materials, digital campaigns, or business cards. Fully scannable and high-resolution - download instantly.', icon: '📥' },
                 { step: 6, title: 'Use in Your Marketing', desc: 'Print on business cards, use in social media posts, add to product packaging, or include in marketing materials. Works everywhere!', icon: '🌐' },
               ].map((item) => (
                 <div key={item.step} className="group relative p-6 sm:p-8 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl border-2 border-gray-200 dark:border-gray-700 hover:border-purple-300 dark:hover:border-purple-600 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden">
@@ -431,7 +435,7 @@ function App() {
 
           {/* Use Cases Section - Redesigned */}
           <section className="mb-16 sm:mb-20">
-            <div className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-3xl sm:rounded-[2rem] shadow-2xl border border-gray-200/50 dark:border-gray-700/50 p-8 sm:p-10 lg:p-12">
+            <div className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-3xl sm:rounded-[2rem] shadow-2xl border border-gray-200/50 dark:border-gray-700/50 p-6 sm:p-10 lg:p-12">
               <div className="text-center mb-12">
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-full mb-4">
                   <span className="text-lg">🎯</span>
@@ -448,7 +452,7 @@ function App() {
                 { title: 'Businesses & Marketers', desc: 'Create professional branded QR codes with your logo for marketing campaigns, business cards, and product packaging. Stand out with custom-branded QR codes.', icon: '🏢', color: 'from-purple-500 to-pink-500' },
                 { title: 'Event Planners & Organizers', desc: 'Use fun dino QR codes for events, tickets, and promotions. Or create branded QR codes with your event logo for a professional touch.', icon: '🎪', color: 'from-blue-500 to-cyan-500' },
                 { title: 'Educators & Parents', desc: 'Create engaging dino QR codes for worksheets, treasure hunts, classroom activities, and educational materials. Kids love dinosaur-themed QR codes!', icon: '📚', color: 'from-orange-500 to-amber-500' },
-                { title: 'Designers & Creators', desc: 'Design custom branded QR codes with logos for client projects, creative portfolios, and branded content. Professional branded QR codes made easy.', icon: '🎨', color: 'from-green-500 to-emerald-500' },
+                { title: 'Designers & Creators', desc: 'Create fancy, aesthetic QR codes with beautiful designs for client projects, creative portfolios, and branded content. Our aesthetic QR code generator produces visually stunning codes perfect for design-conscious creators.', icon: '🎨', color: 'from-green-500 to-emerald-500' },
                 { title: 'Social Media Influencers', desc: 'Share unique dino QR codes to engage followers and drive traffic. Or use branded QR codes with your logo for professional content marketing.', icon: '📱', color: 'from-indigo-500 to-purple-500' },
                 { title: 'E-commerce & Online Stores', desc: 'Add branded QR codes to product packaging, shipping labels, and promotional materials. Direct customers to your online store or product pages instantly.', icon: '🛍️', color: 'from-rose-500 to-red-500' },
               ].map((useCase, idx) => (
@@ -465,7 +469,7 @@ function App() {
 
           {/* FAQ Section - Redesigned */}
           <section className="mb-16 sm:mb-20">
-            <div className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-3xl sm:rounded-[2rem] shadow-2xl border border-gray-200/50 dark:border-gray-700/50 p-8 sm:p-10 lg:p-12">
+            <div className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-3xl sm:rounded-[2rem] shadow-2xl border border-gray-200/50 dark:border-gray-700/50 p-6 sm:p-10 lg:p-12">
               <div className="text-center mb-12">
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-900/30 dark:to-pink-900/30 rounded-full mb-4">
                   <span className="text-lg">❓</span>
@@ -496,8 +500,8 @@ function App() {
                   a: 'Yes! Our tool is versatile - you can create fun dino QR codes for creative projects or professional branded QR codes with your logo for business use. Choose a dinosaur template or upload your logo to get started.',
                 },
                 {
-                  q: 'Is this dino QR code generator really free?',
-                  a: 'Yes, completely free! Create unlimited dino QR codes and branded QR codes with logo upload. No registration, no payment, no hidden fees. All processing happens in your browser.',
+                  q: 'Is this dino QR code generator free?',
+                  a: 'Yes, completely free! Our dino QR code generator free version lets you create unlimited dino QR codes and branded QR codes with logo upload. No registration, no payment, no hidden fees. The dino QR code generator free tier includes all features - download, customize colors, add logos, and more. All processing happens in your browser.',
                 },
                 {
                   q: 'What file formats can I download my QR codes in?',
@@ -508,8 +512,36 @@ function App() {
                   a: 'Yes! Customize foreground and background colors for both dino QR codes and branded QR codes. Match your brand colors when creating branded QR codes, or choose fun colors for dino QR codes.',
                 },
                 {
+                  q: 'Does this QR code generator work without redirects?',
+                  a: 'Yes! Our QR code generator creates direct links without redirects. When someone scans your QR code, they go straight to your destination URL - no intermediate pages, no tracking redirects, just direct access. Perfect for creating QR codes without redirect hassles.',
+                },
+                {
+                  q: 'Can I create fancy or aesthetic QR codes?',
+                  a: 'Absolutely! Our free fancy QR code generator lets you create beautiful, aesthetic QR codes with custom colors, logos, and dinosaur themes. Whether you want a fancy design for a special event or an aesthetic QR code for your brand, we make it easy to create visually stunning codes.',
+                },
+                {
+                  q: 'Can I embed or hide a QR code in an image?',
+                  a: 'Yes, you can download your QR code as a PNG or SVG file and integrate it into any design or image. Many users create QR codes that are hidden within marketing images, artwork, or promotional materials. The downloadable formats make it easy to embed your QR code anywhere.',
+                },
+                {
+                  q: 'How does this compare to the Google Chrome QR Code Generator or Google QR Code Generator?',
+                  a: 'While Google Chrome QR Code Generator and Google QR Code Generator offer basic functionality, our dino QR code generator provides much more. Unlike Chrome QR code without dinosaur themes, we offer fun dinosaur designs plus professional branded options. Create fancy QR codes with logos, aesthetic designs with custom colors, and download high-quality PNG/SVG files - features that the Google QR Code Generator doesn\'t offer.',
+                },
+                {
+                  q: 'Can I use this as a dino QR code generator app?',
+                  a: 'Yes! Our dino QR code generator works as a web app that runs directly in your browser on any device - no installation needed. Access it from your phone, tablet, or computer. Unlike traditional apps, our dino QR code generator app works instantly without downloads or updates, and you can create unlimited QR codes.',
+                },
+                {
+                  q: 'Can I create QR codes without dinosaur themes, like a Chrome QR code without dinosaur?',
+                  a: 'Absolutely! While we specialize in fun dino QR codes, you can also create professional branded QR codes with your logo - perfect for those who want a Chrome QR code without dinosaur themes. Simply upload your logo and customize colors to create clean, professional QR codes suitable for any business use.',
+                },
+                {
+                  q: 'Can I create Jurassic World themed QR codes?',
+                  a: 'Yes! Our dinosaur QR code generator includes T-Rex and Stegosaurus templates that work perfectly for Jurassic World themed projects. Create QR codes with dinosaur shapes that capture the excitement of Jurassic World - ideal for events, marketing campaigns, or themed activities.',
+                },
+                {
                   q: 'What makes this the best dino QR code generator?',
-                  a: 'We\'re the only QR code generator that offers actual dinosaur-themed QR codes with integrated shapes, plus professional branded QR codes with logo upload. Combine fun dino QR codes with business-ready branded QR codes - all in one free tool!',
+                  a: 'We\'re the only QR code generator that offers actual dinosaur-themed QR codes with integrated shapes, plus professional branded QR codes with logo upload. Combine fun dino QR codes with business-ready branded QR codes - all in one free tool that works without redirects!',
                 },
               ].map((faq, idx) => {
                 const isExpanded = expandedFaq === idx
@@ -560,7 +592,7 @@ function App() {
 
           {/* CTA Section - Redesigned */}
           <section className="mb-16 sm:mb-20">
-            <div className="relative p-8 sm:p-10 md:p-12 lg:p-16 bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 rounded-3xl sm:rounded-[2rem] text-center text-white shadow-2xl overflow-hidden">
+            <div className="relative p-6 sm:p-10 md:p-12 lg:p-16 bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 rounded-3xl sm:rounded-[2rem] text-center text-white shadow-2xl overflow-hidden">
             {/* Decorative background elements */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute top-10 left-10 text-6xl animate-float">🦖</div>
@@ -573,7 +605,7 @@ function App() {
                 Start Creating Dino QR Codes & Branded QR Codes Today
               </h2>
               <p className="text-lg md:text-xl mb-10 text-white/95 max-w-3xl mx-auto leading-relaxed">
-                Create unique <strong>dino QR codes</strong> with fun dinosaur themes or professional <strong>branded QR codes with logo</strong> for your business. Upload your logo, customize colors, preview in real-time, and download high-quality PNG/SVG files instantly. Free, fast, fully scannable, and perfect for any project - from marketing campaigns to educational materials.
+                Create unique <strong>dino QR codes</strong> with Jurassic World dinosaur themes or professional <strong>branded QR codes with logo</strong> for your business. Our <strong>dino QR code generator free</strong> version works as a web app - better than Google Chrome QR Code Generator, no redirects, direct links. Upload your logo, customize colors, preview in real-time, and use our <strong>dino QR code generator download</strong> feature to get high-quality PNG/SVG files instantly. Works with any dinosaur QR code scanner - perfect for any project!
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <a href="#qr-input" className="btn-primary bg-white text-purple-600 font-bold py-4 px-8 md:px-10 rounded-xl hover:bg-gray-100 hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-lg">
@@ -596,9 +628,9 @@ function App() {
           {/* Footer - Redesigned */}
           <footer className="mt-16 sm:mt-20 mb-12 text-center">
             <div className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-4 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full shadow-xl border border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all duration-300 hover:scale-105">
-              <span className="text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300">Made with</span>
+              <span className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">Made with</span>
               <span className="text-red-500 animate-pulse-slow text-xl">❤️</span>
-              <span className="text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300">and</span>
+              <span className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300">and</span>
               <span className="text-2xl animate-bounce">🦖</span>
               <span className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm font-medium">| Create amazing QR codes!</span>
             </div>
