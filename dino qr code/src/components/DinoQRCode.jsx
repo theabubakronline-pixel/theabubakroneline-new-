@@ -44,7 +44,10 @@ const DinoQRCode = ({
       const timer = setTimeout(() => {
         const svg = svgRef.current?.querySelector('svg')
         if (svg) {
-          addDinoShapesToQR(svg, templateId, foregroundColor)
+          // Only add shapes if not simple template
+          if (templateId !== 'simple') {
+            addDinoShapesToQR(svg, templateId, foregroundColor)
+          }
           addBackgroundPattern(svg, backgroundPattern, backgroundColor)
           
           // Mark SVG as ready for download

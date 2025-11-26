@@ -148,3 +148,5 @@
 **Focus**: Dino QR Code (Primary) + Custom/Branded QR Codes (Secondary)
 **Unique Selling Point**: Only tool with dinosaur-themed QR codes + logo upload for branding
 
+
+
