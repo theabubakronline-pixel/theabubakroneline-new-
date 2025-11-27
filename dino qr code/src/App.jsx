@@ -96,11 +96,11 @@ function App() {
             </h1>
             
             <p className="text-xl sm:text-2xl md:text-3xl text-gray-700 dark:text-gray-300 font-medium mb-4">
-              Create Custom & Branded QR Codes with Logo
+              Free Online QR Code Generator - Create QR Codes with Logo
             </p>
             
             <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed mb-10">
-              Design unique <strong className="text-blue-600 dark:text-blue-400">custom QR codes</strong> with Jurassic World dinosaur themes or professional <strong className="text-purple-600 dark:text-purple-400">custom QR codes with logo</strong>. Our <strong className="text-pink-600 dark:text-pink-400">custom QR code generator free</strong> works directly in your browser - no redirects, no tracking, instant results.
+              Our <strong className="text-blue-600 dark:text-blue-400">free dino QR code generator</strong> helps you create unique <strong className="text-purple-600 dark:text-purple-400">QR codes with logo</strong> instantly. Learn <strong className="text-pink-600 dark:text-pink-400">how to make QR code with logo free</strong> for links, websites, and locations. Upload your logo in the middle, customize colors, and download - all completely free, no signup required.
             </p>
 
             {/* Quick Stats - Minimalist */}
@@ -275,8 +275,8 @@ function App() {
                 },
                 { 
                   icon: '🏢', 
-                  title: 'Custom QR Code with Logo - Free', 
-                  desc: 'Create professional custom QR codes with logo using our free generator. Perfect for business cards, marketing materials, product packaging, stickers, signs, plaques, and corporate branding.',
+                  title: 'QR Code with Logo - Free Generator', 
+                  desc: 'Learn how to make QR code with logo free using our generator. Create QR code with logo in the middle for business cards, marketing materials, product packaging, and corporate branding. All features completely free.',
                   gradient: 'from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20',
                   border: 'border-blue-200 dark:border-blue-800'
                 },
@@ -351,19 +351,19 @@ function App() {
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
                 <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                  How to Create Dino QR Codes & Branded QR Codes
+                  How to Make QR Code with Logo - Step by Step Guide
                 </span>
               </h2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
               {[
-                { step: 1, title: 'Enter Your URL or Text', desc: 'Type your URL, text, or content in the input field. Works for websites, social media links, WiFi passwords, and more.', icon: '📝' },
-                { step: 2, title: 'Create Custom QR Code Design', desc: 'Select fun custom QR code shapes like dinosaur themes (T-Rex, Stegosaurus) or upload your company logo to create custom QR codes with logo.', icon: '🦖' },
-                { step: 3, title: 'Customize Your Design', desc: 'Design your custom QR code with unique shapes, colors, and branding. Perfect for creating custom QR code design that matches your brand colors.', icon: '🎨' },
-                { step: 4, title: 'Preview Your QR Code', desc: 'See your dino QR code or branded QR code update in real-time as you customize. Ensure everything looks perfect before downloading.', icon: '👀' },
-                { step: 5, title: 'Download High-Quality File', desc: 'Export your QR code as PNG or SVG. Perfect for print materials, digital campaigns, or business cards. Fully scannable and high-resolution.', icon: '📥' },
-                { step: 6, title: 'Use in Your Marketing', desc: 'Print on business cards, use in social media posts, add to product packaging, or include in marketing materials. Works everywhere!', icon: '🌐' },
+                { step: 1, title: 'Enter Your URL or Text', desc: 'Type your URL, text, or content to make QR code for link, website, or location. Works for websites, social media links, WiFi passwords, and more.', icon: '📝' },
+                { step: 2, title: 'Upload Logo or Choose Dino Theme', desc: 'To create QR code with logo, upload your company logo. Or choose fun dinosaur themes (T-Rex, Stegosaurus) for themed QR codes. Logo appears in the middle automatically.', icon: '🦖' },
+                { step: 3, title: 'Customize Colors & Design', desc: 'Design your QR code with logo by customizing colors to match your brand. Our QR code with logo generator offers full color control for professional results.', icon: '🎨' },
+                { step: 4, title: 'Preview QR Code with Logo', desc: 'See your QR code with logo in the middle update in real-time. Preview ensures your QR code with logo looks perfect before downloading.', icon: '👀' },
+                { step: 5, title: 'Download High-Quality QR Code', desc: 'Export your QR code with logo as high-quality PNG. Perfect for print materials, digital campaigns, or business cards. Fully scannable QR codes with logo.', icon: '📥' },
+                { step: 6, title: 'Use QR Code Everywhere', desc: 'Your QR code with logo works on business cards, social media posts, product packaging, marketing materials, stickers, signs, and more. Use anywhere!', icon: '🌐' },
               ].map((item) => (
                 <div 
                   key={item.step} 
@@ -389,14 +389,14 @@ function App() {
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
                 <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                  Perfect for Creating Custom QR Codes
+                  Perfect for Creating QR Codes with Logo
                 </span>
               </h2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
               {[
-                { title: 'Businesses & Marketers', desc: 'Create professional custom QR codes with logo for marketing campaigns, business cards, product packaging, custom QR code stickers, signs, and plaques.', icon: '🏢', color: 'from-blue-500 to-cyan-500' },
+                { title: 'Businesses & Marketers', desc: 'Create professional QR codes with logo for marketing campaigns, business cards, product packaging, stickers, signs, and plaques. Learn how to make QR code with logo free for all your branding needs.', icon: '🏢', color: 'from-blue-500 to-cyan-500' },
                 { title: 'Event Planners', desc: 'Use fun dino QR codes for events, tickets, and promotions. Or create branded QR codes with your event logo for a professional touch.', icon: '🎪', color: 'from-purple-500 to-pink-500' },
                 { title: 'Educators & Parents', desc: 'Create engaging dino QR codes for worksheets, treasure hunts, classroom activities, and educational materials. Kids love dinosaur-themed QR codes!', icon: '📚', color: 'from-orange-500 to-amber-500' },
                 { title: 'Designers & Creators', desc: 'Create stunning custom QR code design with unique custom QR code shapes for client projects, creative portfolios, stickers, signs, and stands.', icon: '🎨', color: 'from-green-500 to-emerald-500' },
@@ -438,8 +438,24 @@ function App() {
                     a: 'A dino QR code features actual dinosaur shapes (like T-Rex or Stegosaurus) integrated directly into the QR code pattern, not just colors. Our dino QR code generator creates fun, unique QR codes that remain fully scannable while being visually engaging and memorable.',
                   },
                   {
-                    q: 'Can I create custom QR codes with logo?',
-                    a: 'Absolutely! Our custom QR code generator with logo free allows you to upload your company logo directly into the QR code. Create professional custom QR codes with logo perfect for business cards, marketing materials, product packaging, stickers, signs, plaques, and corporate branding. All completely free!',
+                    q: 'How to make QR code with logo?',
+                    a: 'To make QR code with logo: use our free dino QR code generator, enter your URL or text, click upload logo button, select your logo image, and it will automatically appear in the middle of your QR code. You can customize colors, preview in real-time, and download your QR code with logo free. Creating QR codes with logo takes just seconds!',
+                  },
+                  {
+                    q: 'Can I create QR code with logo in the middle?',
+                    a: 'Yes! Our free QR code generator automatically places your logo in the middle of the QR code. When you upload a logo, it appears centered while maintaining full scannability. Perfect for creating professional QR codes with logo in the middle for branding purposes.',
+                  },
+                  {
+                    q: 'How to make QR code for link?',
+                    a: 'To make QR code for link: paste your website URL in the input field, customize the design (add logo, choose colors, select dinosaur theme if desired), preview your QR code, and download. Our free generator creates QR codes for links instantly - perfect for business cards, marketing materials, or social media.',
+                  },
+                  {
+                    q: 'Is QR code with logo free?',
+                    a: 'Yes! Creating QR code with logo is completely free. Our dino QR code generator offers logo upload, custom colors, logo positioning in the middle, and all features at no cost. No registration, no payment, no hidden fees - just free QR codes with logo.',
+                  },
+                  {
+                    q: 'How to create QR code with logo?',
+                    a: 'To create QR code with logo: use our free online generator, enter your content, upload your logo image, customize colors if needed, and download. Our tool creates QR codes with logo in the middle automatically. Perfect for creating branded QR codes for business use.',
                   },
                   {
                     q: 'Are dino QR codes scannable like regular QR codes?',
@@ -518,10 +534,10 @@ function App() {
               <div className="relative z-10">
                 <div className="text-6xl mb-6 animate-float">🦖</div>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-                  Start Creating Custom QR Codes Today
+                  Start Creating QR Codes with Logo Today
                 </h2>
                 <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed">
-                  Create unique custom QR codes with Jurassic World dinosaur themes or professional custom QR codes with logo. Design your custom QR code design with unique shapes, upload your logo, customize colors, and download instantly.
+                  Use our free dino QR code generator to create QR codes with logo instantly. Learn how to make QR code with logo free for links, websites, and locations. Upload your logo in the middle, customize colors, and download - all completely free, no signup required.
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
                   <a 
