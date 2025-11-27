@@ -44,21 +44,29 @@ const PreviewSection = ({
                 size={220}
               />
               {/* Center Logo/Icon Overlay - Show logo if uploaded, or emoji if not simple */}
+              {/* Logo must be small enough to not block critical QR code data */}
               {(customLogo || !selectedTemplate.isSimple) && (
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10">
                   {customLogo ? (
-                    <div className="bg-white rounded-full p-2 sm:p-3 shadow-xl border-2 border-purple-200 dark:border-purple-800 flex items-center justify-center">
+                    <div className="bg-white rounded-full p-2 shadow-xl border-2 border-purple-200 dark:border-purple-800 flex items-center justify-center" style={{ width: '44px', height: '44px', minWidth: '44px', minHeight: '44px' }}>
                       <img
                         src={customLogo}
                         alt="Custom logo"
-                        className="w-12 h-12 sm:w-16 sm:h-16 object-contain rounded-full"
-                        style={{ maxWidth: '64px', maxHeight: '64px' }}
+                        className="object-contain rounded-full"
+                        style={{ 
+                          width: '36px', 
+                          height: '36px',
+                          maxWidth: '36px', 
+                          maxHeight: '36px',
+                          display: 'block',
+                          borderRadius: '50%'
+                        }}
                       />
                     </div>
                   ) : (
                     !selectedTemplate.isSimple && (
-                      <div className="bg-white dark:bg-gray-900 rounded-full p-3 shadow-xl border-2 border-purple-200 dark:border-purple-800">
-                        <span className="text-4xl select-none">
+                      <div className="bg-white dark:bg-gray-900 rounded-full p-2 shadow-xl border border-purple-200 dark:border-purple-800">
+                        <span className="text-2xl select-none">
                           {selectedTemplate.emoji}
                         </span>
                       </div>

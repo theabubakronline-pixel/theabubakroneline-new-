@@ -1,23 +1,40 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 
 const DinoTemplateSelector = ({ templates, selectedTemplate, onSelectTemplate, customLogo, onLogoUpload, onRemoveLogo }) => {
   const [isDragging, setIsDragging] = useState(false)
   const fileInputRef = useRef(null)
 
+  // Reset file input whenever logo is cleared (when switching templates or removing logo)
+  useEffect(() => {
+    if (!customLogo && fileInputRef.current) {
+      fileInputRef.current.value = ''
+    }
+  }, [customLogo])
+
   const handleFileSelect = (file) => {
     if (!file) return
     if (!file.type?.startsWith('image/')) {
       alert('Please upload an image file (PNG, JPG, SVG, etc.)')
+      if (fileInputRef.current) fileInputRef.current.value = ''
       return
     }
     if (file.size > 5 * 1024 * 1024) {
       alert('Image size must be less than 5MB')
+      if (fileInputRef.current) fileInputRef.current.value = ''
       return
     }
     const reader = new FileReader()
     reader.onload = (e) => {
       const imageUrl = e.target.result
       onLogoUpload(imageUrl, file)
+      // Reset the input value after successful upload so the same file can be selected again
+      if (fileInputRef.current) {
+        fileInputRef.current.value = ''
+      }
+    }
+    reader.onerror = () => {
+      alert('Error reading file. Please try again.')
+      if (fileInputRef.current) fileInputRef.current.value = ''
     }
     reader.readAsDataURL(file)
   }
@@ -120,7 +137,12 @@ const DinoTemplateSelector = ({ templates, selectedTemplate, onSelectTemplate, c
               <p className="text-[10px] font-bold text-gray-800 dark:text-gray-200">Logo</p>
               <div className="flex gap-1 justify-center">
                 <button
-                  onClick={() => fileInputRef.current?.click()}
+                  onClick={() => {
+                    if (fileInputRef.current) {
+                      fileInputRef.current.value = '' // Reset input to allow same file selection
+                      fileInputRef.current.click()
+                    }
+                  }}
                   className="px-2 py-1 text-[10px] font-semibold rounded bg-purple-600 text-white hover:bg-purple-700 transition-colors"
                 >
                   Change
@@ -141,7 +163,12 @@ const DinoTemplateSelector = ({ templates, selectedTemplate, onSelectTemplate, c
               <div className="text-2xl mb-0.5">📤</div>
               <p className="text-[10px] font-bold text-gray-800 dark:text-gray-200 leading-tight">Upload<br/>Logo</p>
               <button
-                onClick={() => fileInputRef.current?.click()}
+                onClick={() => {
+                  if (fileInputRef.current) {
+                    fileInputRef.current.value = '' // Reset input to allow same file selection
+                    fileInputRef.current.click()
+                  }
+                }}
                 className="mt-1 px-2 py-1 text-[10px] font-semibold bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded shadow-sm hover:shadow-md transition-all duration-200"
               >
                 Upload
