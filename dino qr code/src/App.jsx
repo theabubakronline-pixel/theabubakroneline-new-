@@ -123,6 +123,91 @@ function App() {
             </div>
           </section>
 
+          {/* Blog Guide Banner - Creative & Eye-Catching */}
+          <section className="mb-12 sm:mb-16">
+            <a 
+              href="https://theabubakronline.com/how-to-make-qr-code-with-logo.html" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group block relative overflow-hidden rounded-2xl sm:rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2"
+            >
+              {/* Animated Gradient Background */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 opacity-90 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAzNGMwIDQuNDE4LTMuNTgyIDgtOCA4cy04LTMuNTgyLTgtOCAzLjU4Mi04IDgtOCA4IDMuNTgyIDggOHoiIGZpbGw9IndoaXRlIiBmaWxsLW9wYWNpdHk9IjAuMSIvPjwvZz48L3N2Zz4=')] opacity-20 animate-pulse"></div>
+              </div>
+              
+              {/* Floating Dinosaur Icons */}
+              <div className="absolute top-4 right-4 text-6xl sm:text-7xl opacity-20 group-hover:opacity-30 transition-opacity duration-500 animate-float">🦖</div>
+              <div className="absolute bottom-4 left-4 text-5xl sm:text-6xl opacity-20 group-hover:opacity-30 transition-opacity duration-500 animate-float" style={{ animationDelay: '1s' }}>🦕</div>
+              
+              {/* Content */}
+              <div className="relative z-10 p-8 sm:p-12 lg:p-16 text-white">
+                <div className="max-w-4xl mx-auto">
+                  {/* Badge */}
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/20 backdrop-blur-md rounded-full mb-6 border border-white/30">
+                    <span className="text-lg">📚</span>
+                    <span className="text-xs sm:text-sm font-semibold uppercase tracking-wider">Complete Guide</span>
+                  </div>
+                  
+                  {/* Main Heading */}
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+                    <span className="block mb-2">Learn How to Make</span>
+                    <span className="block bg-gradient-to-r from-yellow-200 via-pink-200 to-purple-200 bg-clip-text text-transparent">
+                      QR Code with Logo
+                    </span>
+                    <span className="block text-2xl sm:text-3xl md:text-4xl mt-2 text-white/90 font-normal">
+                      Free Step-by-Step Guide
+                    </span>
+                  </h2>
+                  
+                  {/* Description */}
+                  <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 leading-relaxed max-w-3xl">
+                    Master the art of creating professional QR codes with logos. Our comprehensive guide covers everything from basic setup to advanced branding techniques.
+                  </p>
+                  
+                  {/* Features List */}
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+                    <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20">
+                      <span className="text-2xl">📸</span>
+                      <span className="text-sm sm:text-base font-medium">Step-by-Step Screenshots</span>
+                    </div>
+                    <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20">
+                      <span className="text-2xl">💡</span>
+                      <span className="text-sm sm:text-base font-medium">Pro Tips & Best Practices</span>
+                    </div>
+                    <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md rounded-lg p-4 border border-white/20">
+                      <span className="text-2xl">✅</span>
+                      <span className="text-sm sm:text-base font-medium">Complete FAQ Section</span>
+                    </div>
+                  </div>
+                  
+                  {/* CTA Button */}
+                  <div className="flex flex-wrap items-center gap-4">
+                    <div className="inline-flex items-center gap-3 bg-white text-blue-600 font-bold py-4 px-8 rounded-xl shadow-xl group-hover:shadow-2xl transition-all duration-300 transform group-hover:scale-105">
+                      <span className="text-xl">📖</span>
+                      <span className="text-base sm:text-lg">Read Complete Guide</span>
+                      <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </div>
+                    <div className="flex items-center gap-2 text-white/80 text-sm sm:text-base">
+                      <span>⏱️</span>
+                      <span>12 min read</span>
+                      <span className="mx-2">•</span>
+                      <span>🆓</span>
+                      <span>100% Free</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Shine Effect on Hover */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+              </div>
+            </a>
+          </section>
+
           {/* Main Workspace - Efficient Horizontal Layout */}
           <section id="workspace" className="mb-12 sm:mb-16">
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
