@@ -20,7 +20,7 @@ function renderHomepageBlogCard(post) {
                 </div>
                 <h3 class="blog-card-title">${post.title}</h3>
                 <p class="blog-card-excerpt">${post.excerpt}</p>
-                <a href="${post.slug}" class="blog-read-more">
+                <a href="${post.slug ? post.slug + '.html' : 'blog-post.html'}" class="blog-read-more">
                     Read More
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -54,7 +54,7 @@ function renderBlogListingCard(post) {
                 </div>
                 <h3 class="blog-post-title">${post.title}</h3>
                 <p class="blog-post-excerpt">${post.excerpt}</p>
-                <a href="${post.slug}" class="blog-post-read-more">
+                <a href="${post.slug ? post.slug + '.html' : 'blog-post.html'}" class="blog-post-read-more">
                     Read More
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M7 17L17 7M17 7H7M17 7V17"/>

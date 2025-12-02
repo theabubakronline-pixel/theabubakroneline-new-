@@ -304,7 +304,7 @@ function renderRelatedPosts(currentPost) {
                     </div>
                     <h3 class="related-post-title">${post.title || 'Untitled'}</h3>
                     <p class="related-post-excerpt">${post.excerpt || 'No excerpt available.'}</p>
-                    <a href="${post.slug || 'blog-post.html'}" class="related-post-link">
+                    <a href="${post.slug ? post.slug + '.html' : 'blog-post.html'}" class="related-post-link">
                         Read Article
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M7 17L17 7M17 7H7M17 7V17"/>
