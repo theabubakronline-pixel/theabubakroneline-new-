@@ -188,6 +188,59 @@ function renderBlogPost(post) {
     
     // Update related posts (show other posts from same category or latest posts)
     renderRelatedPosts(post);
+    
+    // Initialize FAQ accordion if present
+    setTimeout(() => {
+        initFAQAccordion();
+        initScrollReveal();
+    }, 100);
+}
+
+// Initialize Scroll Reveal Animations
+function initScrollReveal() {
+    const elements = document.querySelectorAll('.scroll-reveal:not([data-reveal-initialized])');
+    if (elements.length === 0) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                entry.target.setAttribute('data-reveal-initialized', 'true');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.05,
+        rootMargin: '0px 0px -20px 0px'
+    });
+
+    elements.forEach(el => observer.observe(el));
+}
+
+// Initialize FAQ Accordion
+function initFAQAccordion() {
+    const faqQuestions = document.querySelectorAll('.faq-question:not([data-faq-initialized])');
+    
+    if (faqQuestions.length === 0) return; // Already initialized
+    
+    faqQuestions.forEach(question => {
+        // Mark as initialized to prevent duplicate listeners
+        question.setAttribute('data-faq-initialized', 'true');
+        
+        question.addEventListener('click', function() {
+            const faqItem = this.closest('.faq-item');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            
+            // Toggle current FAQ
+            if (isExpanded) {
+                this.setAttribute('aria-expanded', 'false');
+                faqItem.classList.remove('active');
+            } else {
+                this.setAttribute('aria-expanded', 'true');
+                faqItem.classList.add('active');
+            }
+        });
+    });
 }
 
 // Render "Post Not Found" message
