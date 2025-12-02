@@ -2,24 +2,24 @@
 
 // Get post ID or slug from URL
 function getPostIdFromURL() {
-    // Check for URL hash (#post-id)
+    // Priority 1: Check pathname first (for clean URLs like /how-to-make-qr-code-with-logo.html)
+    const pathname = window.location.pathname;
+    const pathMatch = pathname.match(/\/([^\/]+)\.html$/);
+    if (pathMatch && pathMatch[1] !== 'blog-post' && pathMatch[1] !== 'blog') {
+        return pathMatch[1];
+    }
+    
+    // Priority 2: Check for URL hash (#post-id)
     const hash = window.location.hash.replace('#', '');
     if (hash) return hash;
     
-    // Check for URL parameter (?id=post-id or ?slug=post-slug)
+    // Priority 3: Check for URL parameter (?id=post-id or ?slug=post-slug) - for backward compatibility
     const urlParams = new URLSearchParams(window.location.search);
-    const id = urlParams.get('id');
-    if (id) return id;
-    
     const slug = urlParams.get('slug');
     if (slug) return slug;
     
-    // Check pathname (blog-post.html or blog/post-slug.html)
-    const pathname = window.location.pathname;
-    const match = pathname.match(/\/([^\/]+)\.html$/);
-    if (match && match[1] !== 'blog-post') {
-        return match[1];
-    }
+    const id = urlParams.get('id');
+    if (id) return id;
     
     return null;
 }
@@ -304,7 +304,7 @@ function renderRelatedPosts(currentPost) {
                     </div>
                     <h3 class="related-post-title">${post.title || 'Untitled'}</h3>
                     <p class="related-post-excerpt">${post.excerpt || 'No excerpt available.'}</p>
-                    <a href="${post.slug || 'blog-post.html'}?id=${post.id}" class="related-post-link">
+                    <a href="${post.slug || 'blog-post.html'}" class="related-post-link">
                         Read Article
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M7 17L17 7M17 7H7M17 7V17"/>
