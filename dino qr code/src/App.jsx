@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import Header from './components/Header'
 import LoadingAnimation from './components/LoadingAnimation'
 import InputField from './components/InputField'
+import QRCodeTypeSelector, { QR_CODE_TYPES } from './components/QRCodeTypeSelector'
 import DinoTemplateSelector from './components/DinoTemplateSelector'
 import ColorCustomizer from './components/ColorCustomizer'
 import PreviewSection from './components/PreviewSection'
@@ -16,6 +17,7 @@ const DINOSAUR_TEMPLATES = [
 function App() {
   const [isLoading, setIsLoading] = useState(true)
   const [inputValue, setInputValue] = useState('')
+  const [selectedQRType, setSelectedQRType] = useState(QR_CODE_TYPES[0]) // URL is default
   const [selectedTemplate, setSelectedTemplate] = useState(DINOSAUR_TEMPLATES[0]) // Simple is now first
   const [customLogo, setCustomLogo] = useState(null)
   const [foregroundColor, setForegroundColor] = useState('#000000')
@@ -38,6 +40,11 @@ function App() {
     setInputValue(value)
     setError('')
     if (copied) setCopied(false)
+  }
+
+  const handleInputGenerate = (generatedValue) => {
+    setInputValue(generatedValue)
+    setError('')
   }
 
   const validateInput = () => {
@@ -100,7 +107,7 @@ function App() {
             </p>
             
             <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed mb-10">
-              The best <strong className="text-blue-600 dark:text-blue-400">free QR code generator no sign up</strong> - generate QR codes instantly without registration! Create <strong className="text-blue-600 dark:text-blue-400">QR code with dinosaur</strong> shapes using our fast <strong className="text-purple-600 dark:text-purple-400">QR code dino</strong> generator. Make unique <strong className="text-pink-600 dark:text-pink-400">QR codes with logo</strong> in seconds for links, websites, and locations. No signup, no waiting - just instant QR code generation with dinosaur themes, logo uploads, and custom colors.
+              The best <strong className="text-blue-600 dark:text-blue-400">free QR code generator no sign up</strong> - generate QR codes instantly without registration! Create QR codes for <strong className="text-blue-600 dark:text-blue-400">location, WhatsApp, website, link, business card, and Google Forms</strong>. Make <strong className="text-purple-600 dark:text-purple-400">QR codes with dinosaur</strong> shapes and <strong className="text-pink-600 dark:text-pink-400">QR codes with logo</strong> in seconds. No signup, no waiting - just instant QR code generation with dinosaur themes, logo uploads, and custom colors.
             </p>
 
             {/* Quick Stats - Minimalist */}
@@ -158,17 +165,34 @@ function App() {
                   {/* Left: All Controls in Single Column */}
                   <div className="space-y-3">
                     
+                    {/* QR Code Type Selector */}
+                    <div className="bg-gray-50 dark:bg-gray-900/50 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
+                      <QRCodeTypeSelector
+                        selectedType={selectedQRType}
+                        onTypeChange={setSelectedQRType}
+                        onInputGenerate={handleInputGenerate}
+                      />
+                    </div>
+
                     {/* Input Section */}
                     <div className="bg-gray-50 dark:bg-gray-900/50 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
                       <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                        Enter URL or Text
+                        {selectedQRType.id === 'whatsapp' || selectedQRType.id === 'location' || selectedQRType.id === 'business-card'
+                          ? 'Generated QR Code Content'
+                          : `Enter ${selectedQRType.name}`}
                       </label>
                       <InputField 
                         value={inputValue} 
                         onChange={handleInputChange} 
                         error={error} 
-                        onValidate={validateInput} 
+                        onValidate={validateInput}
+                        placeholder={selectedQRType.placeholder}
                       />
+                      {selectedQRType.id !== 'whatsapp' && selectedQRType.id !== 'location' && selectedQRType.id !== 'business-card' && (
+                        <p className="text-[10px] text-gray-500 dark:text-gray-400 mt-1.5">
+                          {selectedQRType.description}
+                        </p>
+                      )}
                     </div>
                     
                     {/* Template & Logo - Horizontal Layout */}
@@ -372,6 +396,34 @@ function App() {
                   desc: 'Create unique QR code with dinosaur shapes integrated into the QR pattern. Our QR code dino generator makes fun, memorable QR codes perfect for themed projects!',
                   gradient: 'from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20',
                   border: 'border-red-200 dark:border-red-800'
+                },
+                { 
+                  icon: '💬', 
+                  title: 'QR Code Generator for WhatsApp', 
+                  desc: 'Create QR code generator for WhatsApp easily! Generate WhatsApp QR codes that open direct chats or messages. Perfect for customer support, sales teams, or personal contacts. Free QR code generator for WhatsApp - no signup required!',
+                  gradient: 'from-green-50 to-teal-50 dark:from-green-900/20 dark:to-teal-900/20',
+                  border: 'border-green-200 dark:border-green-800'
+                },
+                { 
+                  icon: '📍', 
+                  title: 'QR Code Generator for Location', 
+                  desc: 'Create QR code generator for location and GPS coordinates. Generate location QR codes that open Google Maps with exact coordinates or addresses. Perfect for event venues, businesses, or sharing locations instantly. Free location QR code generator!',
+                  gradient: 'from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20',
+                  border: 'border-red-200 dark:border-red-800'
+                },
+                { 
+                  icon: '👤', 
+                  title: 'QR Code Generator for Business Card', 
+                  desc: 'Create QR code generator for business card with vCard format. Generate professional business card QR codes with contact details, phone, email, company, and title. Perfect for networking, events, and professional branding.',
+                  gradient: 'from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20',
+                  border: 'border-purple-200 dark:border-purple-800'
+                },
+                { 
+                  icon: '📝', 
+                  title: 'QR Code Generator for Google Forms', 
+                  desc: 'Create QR code generator for Google Forms instantly! Generate QR codes that link directly to your Google Forms. Perfect for surveys, registrations, feedback collection, and event management. Free and instant!',
+                  gradient: 'from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20',
+                  border: 'border-blue-200 dark:border-blue-800'
                 },
                 { 
                   icon: '🏢', 
@@ -592,6 +644,26 @@ function App() {
                   {
                     q: 'How fast can I generate QR codes?',
                     a: 'Our free QR code generator no sign up creates QR codes instantly in real-time. As you type, your QR code updates automatically - there\'s no waiting, no processing delay, just instant results. Generate unlimited QR codes as fast as you can type, with no signup required. Get your QR code ready in seconds, not minutes!',
+                  },
+                  {
+                    q: 'How to create QR code generator for WhatsApp?',
+                    a: 'Create QR code generator for WhatsApp easily with our tool! Select the WhatsApp option, enter the phone number (with country code), optionally add a message, and click generate. The QR code will create a WhatsApp deep link that opens a chat when scanned. Perfect for customer support and quick communication!',
+                  },
+                  {
+                    q: 'How to create QR code generator for location?',
+                    a: 'Create QR code generator for location in seconds! Select the Location option, enter GPS coordinates (latitude and longitude) or an address, and generate. The QR code will open Google Maps with the exact location when scanned. Perfect for events, businesses, or sharing locations!',
+                  },
+                  {
+                    q: 'Can I create QR code generator for business card?',
+                    a: 'Yes! Our QR code generator for business card creates professional vCard QR codes. Select Business Card, enter your name, phone, email, company, and title, then generate. When scanned, it saves all your contact details directly to the phone. Perfect for networking events and professional contacts!',
+                  },
+                  {
+                    q: 'How to create QR code generator for Google Forms?',
+                    a: 'Create QR code generator for Google Forms instantly! Just select Google Forms, paste your Google Forms URL, and generate the QR code. When scanned, it opens your form directly. Perfect for surveys, registrations, feedback collection, and event management - all completely free!',
+                  },
+                  {
+                    q: 'Can I create QR code generator for website or link?',
+                    a: 'Yes! Our QR code generator for website and link is simple - just select Website/URL type, paste any URL or link, and generate instantly. Works for any website, social media profile, product page, or online resource. Create QR codes for links in seconds!',
                   },
                 ].map((faq, idx) => {
                   const isExpanded = expandedFaq === idx

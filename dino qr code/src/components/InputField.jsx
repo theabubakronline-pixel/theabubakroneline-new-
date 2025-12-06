@@ -1,4 +1,4 @@
-const InputField = ({ value, onChange, error, onValidate }) => {
+const InputField = ({ value, onChange, error, onValidate, placeholder = "https://example.com or any text..." }) => {
   return (
     <div className="space-y-2">
       <div className="relative">
@@ -8,7 +8,7 @@ const InputField = ({ value, onChange, error, onValidate }) => {
           value={value}
           onChange={(e) => onChange(e.target.value)}
           onBlur={onValidate}
-          placeholder="https://example.com or any text..."
+          placeholder={placeholder}
           className={`w-full px-4 py-2.5 pr-10 bg-white dark:bg-gray-800 border-2 rounded-lg focus:outline-none focus:ring-2 transition-all duration-200 text-sm text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 ${
             error 
               ? 'border-red-400 focus:border-red-500 focus:ring-red-200 dark:focus:ring-red-900/30' 
