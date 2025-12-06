@@ -21,11 +21,11 @@ const DownloadShareButtons = ({ qrRef, inputValue, selectedTemplate, backgroundP
       
       const container = qrRef.current
       
-      // Find the preview container that includes background patterns
-      // The container with background patterns is the parent of the QR code white box
-      let previewContainer = container.closest('.bg-white')?.parentElement
+      // Find the white container that includes both QR code and "Scan Me!" text
+      // This is the container with bg-white that contains everything
+      let previewContainer = container.closest('.bg-white')
       
-      // If not found, try finding by class pattern
+      // If not found, try finding by class pattern (for background patterns)
       if (!previewContainer) {
         const allContainers = document.querySelectorAll('[class*="min-h"]')
         previewContainer = Array.from(allContainers).find(el => 
@@ -33,9 +33,9 @@ const DownloadShareButtons = ({ qrRef, inputValue, selectedTemplate, backgroundP
         )
       }
       
-      // Fallback to the QR code container itself
+      // Final fallback
       if (!previewContainer) {
-        previewContainer = container.closest('.bg-white') || container
+        previewContainer = container
       }
       
       // Use html-to-image to capture exactly what's shown (including background patterns)

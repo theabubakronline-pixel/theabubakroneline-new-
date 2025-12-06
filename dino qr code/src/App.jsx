@@ -22,10 +22,14 @@ function App() {
   const [customLogo, setCustomLogo] = useState(null)
   const [foregroundColor, setForegroundColor] = useState('#000000')
   const [backgroundColor, setBackgroundColor] = useState('#FFFFFF')
+  const [scanText, setScanText] = useState('SCAN ME!')
+  const [scanTextColor, setScanTextColor] = useState('#9333EA') // Default purple
   const backgroundPattern = 'none'
   const [error, setError] = useState('')
   const [copied, setCopied] = useState(false)
   const [expandedFaq, setExpandedFaq] = useState(null)
+  const [useCasesExpanded, setUseCasesExpanded] = useState(false)
+  const [faqsExpanded, setFaqsExpanded] = useState(false)
   const qrRef = useRef(null)
 
   const handleLogoUpload = (logoUrl, file) => {
@@ -131,25 +135,25 @@ function App() {
             </div>
           </section>
 
-          {/* Main Workspace - Efficient Horizontal Layout */}
+          {/* Main Workspace - Spacious Clean Layout */}
           <section id="workspace" className="mb-12 sm:mb-16">
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
               
-              {/* Efficient Header */}
-              <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 px-4 sm:px-6 py-3">
+              {/* Header */}
+              <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 px-6 sm:px-8 py-4">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-base sm:text-lg font-bold text-white">Create Your QR Code</h2>
-                  <div className="flex items-center gap-1.5">
+                  <h2 className="text-lg sm:text-xl font-bold text-white">Create Your QR Code</h2>
+                  <div className="flex items-center gap-2">
                     {[1, 2, 3].map((step, idx) => (
                       <div key={step} className="flex items-center">
-                        <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
+                        <div className={`w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold transition-all ${
                           step === 1 && inputValue.trim()
                             ? 'bg-white text-blue-600' 
                             : 'bg-white/30 text-white'
                         }`}>
                           {step === 1 && inputValue.trim() ? '✓' : step}
                         </div>
-                        {idx < 2 && <div className={`w-3 h-0.5 mx-1 ${
+                        {idx < 2 && <div className={`w-4 h-0.5 mx-1.5 ${
                           step === 1 && inputValue.trim() ? 'bg-white' : 'bg-white/30'
                         }`}></div>}
                       </div>
@@ -158,116 +162,224 @@ function App() {
                 </div>
               </div>
 
-              {/* Efficient Workspace - Horizontal Layout */}
-              <div className="p-4 sm:p-5">
-                <div className="grid grid-cols-1 xl:grid-cols-[1fr_0.8fr] gap-4 sm:gap-5">
-                  
-                  {/* Left: All Controls in Single Column */}
-                  <div className="space-y-3">
+              {/* Workspace - Horizontal Layout with Better Spacing */}
+              <div className="p-6 sm:p-8 lg:p-10">
+                <div className="max-w-7xl mx-auto">
+                  <div className="grid grid-cols-1 xl:grid-cols-[1fr_0.85fr] gap-6 sm:gap-8">
                     
-                    {/* QR Code Type Selector */}
-                    <div className="bg-gray-50 dark:bg-gray-900/50 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
-                      <QRCodeTypeSelector
-                        selectedType={selectedQRType}
-                        onTypeChange={setSelectedQRType}
-                        onInputGenerate={handleInputGenerate}
-                      />
-                    </div>
-
-                    {/* Input Section */}
-                    <div className="bg-gray-50 dark:bg-gray-900/50 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
-                      <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                        {selectedQRType.id === 'whatsapp' || selectedQRType.id === 'location' || selectedQRType.id === 'business-card'
-                          ? 'Generated QR Code Content'
-                          : `Enter ${selectedQRType.name}`}
-                      </label>
-                      <InputField 
-                        value={inputValue} 
-                        onChange={handleInputChange} 
-                        error={error} 
-                        onValidate={validateInput}
-                        placeholder={selectedQRType.placeholder}
-                      />
-                      {selectedQRType.id !== 'whatsapp' && selectedQRType.id !== 'location' && selectedQRType.id !== 'business-card' && (
-                        <p className="text-[10px] text-gray-500 dark:text-gray-400 mt-1.5">
-                          {selectedQRType.description}
-                        </p>
-                      )}
-                    </div>
-                    
-                    {/* Template & Logo - Horizontal Layout */}
-                    <div className="bg-gray-50 dark:bg-gray-900/50 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
-                      <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                        Choose Style or Upload Logo
-                      </label>
-                      <DinoTemplateSelector
-                        templates={DINOSAUR_TEMPLATES}
-                        selectedTemplate={selectedTemplate}
-                        customLogo={customLogo}
-                        onLogoUpload={handleLogoUpload}
-                        onRemoveLogo={handleRemoveLogo}
-                        onSelectTemplate={(template) => {
-                          setSelectedTemplate(template)
-                          if (customLogo) {
-                            setCustomLogo(null)
-                          }
-                        }}
-                      />
-                    </div>
-                    
-                    {/* Colors - Compact Horizontal */}
-                    <div className="bg-gray-50 dark:bg-gray-900/50 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
-                      <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                        Customize Colors
-                      </label>
-                      <ColorCustomizer
-                        foregroundColor={foregroundColor}
-                        backgroundColor={backgroundColor}
-                        onForegroundChange={setForegroundColor}
-                        onBackgroundChange={setBackgroundColor}
-                      />
-                    </div>
-                  </div>
-                  
-                  {/* Right: Preview with Download */}
-                  <div className="xl:sticky xl:top-4 h-fit">
-                    <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
-                      {/* Compact Preview Header */}
-                      <div className="flex items-center justify-between mb-3">
-                        <div className="flex items-center gap-1.5 px-2 py-1 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 rounded-full">
-                          <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
-                          <span className="text-[10px] font-semibold text-blue-700 dark:text-blue-300 uppercase">Live</span>
+                    {/* Left: All Controls in Single Column */}
+                    <div className="space-y-5 sm:space-y-6">
+                      
+                      {/* QR Code Type Selector */}
+                      <div className="bg-gradient-to-br from-blue-50/50 to-purple-50/50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl p-4 sm:p-5 lg:p-6 border-2 border-blue-100 dark:border-blue-800/50 shadow-sm hover:shadow-md transition-all duration-200">
+                        <div className="flex items-center gap-2 mb-3">
+                          <span className="text-xl">🌐</span>
+                          <label className="block text-sm sm:text-base font-semibold text-gray-700 dark:text-gray-300">
+                            QR Code Type
+                          </label>
                         </div>
-                        {inputValue.trim() && (
-                          <div className="text-xs text-gray-500 dark:text-gray-400">
-                            {customLogo ? '🎨 Custom Logo' : `${selectedTemplate.emoji} ${selectedTemplate.name}`}
-                          </div>
+                        <QRCodeTypeSelector
+                          selectedType={selectedQRType}
+                          onTypeChange={setSelectedQRType}
+                          onInputGenerate={handleInputGenerate}
+                        />
+                      </div>
+
+                      {/* Input Section */}
+                      <div className="bg-gradient-to-br from-green-50/50 to-emerald-50/50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-4 sm:p-5 lg:p-6 border-2 border-green-100 dark:border-green-800/50 shadow-sm hover:shadow-md transition-all duration-200">
+                        <div className="flex items-center gap-2 mb-3">
+                          <span className="text-xl">📝</span>
+                          <label className="block text-sm sm:text-base font-semibold text-gray-700 dark:text-gray-300">
+                            {selectedQRType.id === 'whatsapp' || selectedQRType.id === 'location' || selectedQRType.id === 'business-card' || selectedQRType.id === 'social-media'
+                              ? 'Generated QR Code Content'
+                              : `Enter ${selectedQRType.name}`}
+                          </label>
+                        </div>
+                        <InputField 
+                          value={inputValue} 
+                          onChange={handleInputChange} 
+                          error={error} 
+                          onValidate={validateInput}
+                          placeholder={selectedQRType.placeholder}
+                        />
+                        {selectedQRType.id !== 'whatsapp' && selectedQRType.id !== 'location' && selectedQRType.id !== 'business-card' && selectedQRType.id !== 'social-media' && (
+                          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-3 leading-relaxed">
+                            {selectedQRType.description}
+                          </p>
                         )}
                       </div>
                       
-                      {/* Preview */}
-                      <PreviewSection
-                        inputValue={inputValue}
-                        selectedTemplate={selectedTemplate}
-                        customLogo={customLogo}
-                        foregroundColor={foregroundColor}
-                        backgroundColor={backgroundColor}
-                        backgroundPattern={backgroundPattern}
-                        qrRef={qrRef}
-                      />
-                      
-                      {/* Download Buttons - Always Visible */}
-                      {inputValue.trim() && (
-                        <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-                          <DownloadShareButtons
-                            qrRef={qrRef}
-                            inputValue={inputValue}
-                            selectedTemplate={selectedTemplate}
-                            backgroundPattern={backgroundPattern}
-                            backgroundColor={backgroundColor}
-                          />
+                      {/* Template & Logo */}
+                      <div className="bg-gradient-to-br from-purple-50/50 to-pink-50/50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl p-4 sm:p-5 lg:p-6 border-2 border-purple-100 dark:border-purple-800/50 shadow-sm hover:shadow-md transition-all duration-200">
+                        <div className="flex items-center gap-2 mb-3">
+                          <span className="text-xl">🦖</span>
+                          <label className="block text-sm sm:text-base font-semibold text-gray-700 dark:text-gray-300">
+                            Choose Style or Upload Logo
+                          </label>
                         </div>
-                      )}
+                        <DinoTemplateSelector
+                          templates={DINOSAUR_TEMPLATES}
+                          selectedTemplate={selectedTemplate}
+                          customLogo={customLogo}
+                          onLogoUpload={handleLogoUpload}
+                          onRemoveLogo={handleRemoveLogo}
+                          onSelectTemplate={(template) => {
+                            setSelectedTemplate(template)
+                            if (customLogo) {
+                              setCustomLogo(null)
+                            }
+                          }}
+                        />
+                      </div>
+                      
+                      {/* Colors */}
+                      <div className="bg-gradient-to-br from-orange-50/50 to-amber-50/50 dark:from-orange-900/20 dark:to-amber-900/20 rounded-xl p-4 sm:p-5 lg:p-6 border-2 border-orange-100 dark:border-orange-800/50 shadow-sm hover:shadow-md transition-all duration-200">
+                        <div className="flex items-center gap-2 mb-3">
+                          <span className="text-xl">🎨</span>
+                          <label className="block text-sm sm:text-base font-semibold text-gray-700 dark:text-gray-300">
+                            Customize Colors
+                          </label>
+                        </div>
+                        <ColorCustomizer
+                          foregroundColor={foregroundColor}
+                          backgroundColor={backgroundColor}
+                          onForegroundChange={setForegroundColor}
+                          onBackgroundChange={setBackgroundColor}
+                        />
+                      </div>
+                      
+                      {/* Scan Text Customization */}
+                      <div className="bg-gradient-to-br from-indigo-50/50 to-violet-50/50 dark:from-indigo-900/20 dark:to-violet-900/20 rounded-xl p-4 sm:p-5 lg:p-6 border-2 border-indigo-100 dark:border-indigo-800/50 shadow-sm hover:shadow-md transition-all duration-200">
+                        <div className="flex items-center gap-2 mb-3">
+                          <span className="text-xl">✏️</span>
+                          <label className="block text-sm sm:text-base font-semibold text-gray-700 dark:text-gray-300">
+                            Customize Scan Text
+                          </label>
+                        </div>
+                        <div className="space-y-4">
+                          {/* Text Input */}
+                          <div>
+                            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                              Text Content
+                            </label>
+                            <input
+                              type="text"
+                              value={scanText}
+                              onChange={(e) => setScanText(e.target.value.toUpperCase())}
+                              placeholder="SCAN ME!"
+                              maxLength={30}
+                              className="w-full px-4 py-3 text-base bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all font-bold uppercase"
+                            />
+                            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1.5">
+                              Maximum 30 characters
+                            </p>
+                          </div>
+                          
+                          {/* Color Picker */}
+                          <div>
+                            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                              Text Color
+                            </label>
+                            <div className="flex items-center gap-3">
+                              <div className="relative">
+                                <input
+                                  type="color"
+                                  value={scanTextColor}
+                                  onChange={(e) => setScanTextColor(e.target.value)}
+                                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl cursor-pointer border-2 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-shadow"
+                                />
+                              </div>
+                              <input
+                                type="text"
+                                value={scanTextColor}
+                                onChange={(e) => setScanTextColor(e.target.value)}
+                                className="flex-1 px-4 py-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all font-mono text-sm text-gray-900 dark:text-white"
+                                placeholder="#9333EA"
+                              />
+                              <button
+                                onClick={() => setScanTextColor('#9333EA')}
+                                className="px-3 py-3 text-xs font-medium rounded-lg border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200"
+                                title="Reset to default purple"
+                              >
+                                ↺ Reset
+                              </button>
+                            </div>
+                            
+                            {/* Preset Colors */}
+                            <div className="mt-3">
+                              <p className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-2">Quick Colors:</p>
+                              <div className="flex flex-wrap gap-2">
+                                {[
+                                  { name: 'Purple', value: '#9333EA' },
+                                  { name: 'Blue', value: '#2563EB' },
+                                  { name: 'Pink', value: '#EC4899' },
+                                  { name: 'Green', value: '#10B981' },
+                                  { name: 'Orange', value: '#F97316' },
+                                  { name: 'Red', value: '#EF4444' },
+                                  { name: 'Indigo', value: '#6366F1' },
+                                  { name: 'Teal', value: '#14B8A6' },
+                                ].map((color) => (
+                                  <button
+                                    key={color.value}
+                                    onClick={() => setScanTextColor(color.value)}
+                                    className={`w-10 h-10 rounded-lg border-2 transition-all duration-300 hover:scale-110 ${
+                                      scanTextColor.toLowerCase() === color.value.toLowerCase()
+                                        ? 'border-indigo-500 ring-4 ring-indigo-200 dark:ring-indigo-900/30 scale-110 shadow-lg'
+                                        : 'border-gray-300 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-600'
+                                    }`}
+                                    style={{ backgroundColor: color.value }}
+                                    title={color.name}
+                                  />
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Right: Preview with Download */}
+                    <div className="xl:sticky xl:top-6 h-fit">
+                      <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-xl p-5 sm:p-6 lg:p-7 border-2 border-gray-200 dark:border-gray-700 shadow-lg">
+                        {/* Preview Header */}
+                        <div className="flex items-center justify-between mb-4">
+                          <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 rounded-full border border-blue-200 dark:border-blue-800">
+                            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                            <span className="text-xs font-semibold text-blue-700 dark:text-blue-300 uppercase tracking-wide">Live Preview</span>
+                          </div>
+                          {inputValue.trim() && (
+                            <div className="text-sm text-gray-600 dark:text-gray-400 font-medium">
+                              {customLogo ? '🎨 Custom Logo' : `${selectedTemplate.emoji} ${selectedTemplate.name}`}
+                            </div>
+                          )}
+                        </div>
+                        
+                        {/* Preview */}
+                        <PreviewSection
+                          inputValue={inputValue}
+                          selectedTemplate={selectedTemplate}
+                          customLogo={customLogo}
+                          foregroundColor={foregroundColor}
+                          backgroundColor={backgroundColor}
+                          backgroundPattern={backgroundPattern}
+                          scanText={scanText}
+                          scanTextColor={scanTextColor}
+                          qrRef={qrRef}
+                        />
+                        
+                        {/* Download Buttons */}
+                        {inputValue.trim() && (
+                          <div className="mt-5 pt-5 border-t-2 border-gray-200 dark:border-gray-700">
+                            <DownloadShareButtons
+                              qrRef={qrRef}
+                              inputValue={inputValue}
+                              selectedTemplate={selectedTemplate}
+                              backgroundPattern={backgroundPattern}
+                              backgroundColor={backgroundColor}
+                            />
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -548,13 +660,38 @@ function App() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
               {[
-                { title: 'Businesses & Marketers', desc: 'Create professional QR codes with logo for marketing campaigns, business cards, product packaging, stickers, signs, and plaques. Learn how to make QR code with logo free for all your branding needs.', icon: '🏢', color: 'from-blue-500 to-cyan-500' },
-                { title: 'Event Planners', desc: 'Use fun QR code with dinosaur shapes for events, tickets, and promotions. Or create branded QR codes with your event logo for a professional touch. Perfect QR code dino for themed events!', icon: '🎪', color: 'from-purple-500 to-pink-500' },
-                { title: 'Educators & Parents', desc: 'Create engaging QR code with dinosaur shapes for worksheets, treasure hunts, classroom activities, and educational materials. Kids love QR code dino themes!', icon: '📚', color: 'from-orange-500 to-amber-500' },
-                { title: 'Designers & Creators', desc: 'Create stunning custom QR code design with unique custom QR code shapes for client projects, creative portfolios, stickers, signs, and stands.', icon: '🎨', color: 'from-green-500 to-emerald-500' },
-                { title: 'Social Media Influencers', desc: 'Share unique QR code with dinosaur shapes to engage followers and drive traffic. Or use branded QR codes with your logo for professional content marketing. Stand out with QR code dino!', icon: '📱', color: 'from-indigo-500 to-purple-500' },
-                { title: 'E-commerce & Stores', desc: 'Add branded QR codes to product packaging, shipping labels, and promotional materials. Direct customers to your online store instantly.', icon: '🛍️', color: 'from-rose-500 to-red-500' },
-              ].map((useCase, idx) => (
+                { title: 'Businesses & Marketers', desc: 'Elevate your marketing campaigns with professional QR codes featuring your logo. Our free QR code generator requires no signup and works instantly. Perfect for business cards, product packaging, promotional materials, and brand awareness campaigns. Create QR codes with logo that reflect your brand identity.', icon: '🏢', color: 'from-blue-500 to-cyan-500' },
+                { title: 'Restaurants & Cafes', desc: 'Streamline your restaurant operations with QR codes for digital menus, online ordering, and reservations. Our QR code generator for restaurants helps you create branded codes that enhance customer experience. Share WiFi passwords, special offers, and feedback forms effortlessly.', icon: '🍽️', color: 'from-orange-500 to-red-500' },
+                { title: 'Event Planners', desc: 'Make your events memorable with custom QR codes. Whether you need fun dinosaur-themed codes for themed parties or professional branded codes for corporate events, our QR code generator delivers. Perfect for ticket distribution, event information, and attendee engagement.', icon: '🎪', color: 'from-purple-500 to-pink-500' },
+                { title: 'WiFi QR Code Generator', desc: 'Share your WiFi network instantly with QR codes that automatically connect guests. Our free WiFi QR code generator creates codes that work with any smartphone. No more spelling out passwords—just scan and connect. Ideal for homes, cafes, hotels, and offices.', icon: '📶', color: 'from-teal-500 to-cyan-500' },
+                { title: 'Educators & Parents', desc: 'Transform learning experiences with engaging QR codes. Create interactive worksheets, treasure hunts, and educational materials that students love. Our QR code generator for education makes learning fun while keeping kids engaged with dinosaur-themed designs.', icon: '📚', color: 'from-orange-500 to-amber-500' },
+                { title: 'QR Code Generator for PDF', desc: 'Share PDF documents effortlessly with QR codes. Whether it\'s manuals, e-books, reports, or guides, our PDF QR code generator creates instant access links. No file hosting required—generate codes that link directly to your PDF files for easy distribution.', icon: '📄', color: 'from-gray-500 to-slate-500' },
+                { title: 'Designers & Creators', desc: 'Showcase your creativity with custom QR code designs that match your aesthetic. Our custom QR code generator free offers unique shapes, colors, and logo integration. Perfect for portfolios, client projects, creative marketing materials, and artistic presentations.', icon: '🎨', color: 'from-green-500 to-emerald-500' },
+                { title: 'Real Estate Agents', desc: 'Simplify property marketing with location-based QR codes. Generate codes for open houses, property tours, and virtual showings that help clients find properties instantly. Our QR code generator for location integrates with Google Maps for seamless navigation.', icon: '🏠', color: 'from-amber-500 to-yellow-500' },
+                { title: 'Social Media Influencers', desc: 'Boost your online presence with branded QR codes that drive traffic and engagement. Create eye-catching codes with your logo that link to your content, products, or social profiles. Stand out from the crowd with unique dinosaur-themed designs or professional branded codes.', icon: '📱', color: 'from-indigo-500 to-purple-500' },
+                { title: 'Healthcare & Medical', desc: 'Enhance patient services with secure QR codes for portals, appointments, and health information. Our healthcare QR code generator prioritizes privacy and security. Streamline patient access to medical records, appointment booking, and health resources.', icon: '🏥', color: 'from-red-500 to-rose-500' },
+                { title: 'E-commerce & Stores', desc: 'Drive online sales with QR codes on product packaging and promotional materials. Our free QR code generator helps e-commerce businesses connect customers to product pages, special offers, and online stores instantly. Enhance customer experience with branded codes featuring your logo.', icon: '🛍️', color: 'from-rose-500 to-red-500' },
+                { title: 'Hospitality & Hotels', desc: 'Improve guest experience with QR codes for check-in, WiFi access, room service, and local information. Our hotel QR code generator creates professional codes that enhance convenience and reduce contact. Perfect for modern hospitality services.', icon: '🏨', color: 'from-blue-500 to-indigo-500' },
+                { title: 'QR Code Generator for Video', desc: 'Share video content instantly with QR codes linking to YouTube, tutorials, and promotional videos. Our video QR code generator makes it easy to distribute video content through print materials, presentations, and marketing campaigns.', icon: '🎥', color: 'from-red-500 to-pink-500' },
+                { title: 'Fitness & Gyms', desc: 'Engage members with QR codes for class schedules, workout videos, and membership services. Our fitness QR code generator helps gyms and trainers share resources, track attendance, and provide value to members through easy-to-scan codes.', icon: '💪', color: 'from-orange-500 to-red-500' },
+                { title: 'Non-Profit Organizations', desc: 'Amplify your cause with QR codes for donations, event registration, and volunteer sign-ups. Our free QR code generator for nonprofits helps you raise awareness and funds efficiently. Create codes that link to donation pages, campaigns, and important information.', icon: '❤️', color: 'from-pink-500 to-rose-500' },
+                { title: 'QR Code Generator for Contact', desc: 'Simplify networking with digital business cards in QR code format. Generate vCard codes containing your contact information, social media links, and professional details. Perfect for events, meetings, and professional networking—just scan and save.', icon: '📇', color: 'from-indigo-500 to-blue-500' },
+                { title: 'Automotive & Dealerships', desc: 'Enhance vehicle sales and service with QR codes for listings, schedules, and financing. Our automotive QR code generator helps dealerships share vehicle information, service appointments, and special offers with potential customers instantly.', icon: '🚗', color: 'from-gray-500 to-blue-500' },
+                { title: 'QR Code Generator for Payment', desc: 'Facilitate transactions with secure QR codes for payment links and digital wallets. Our payment QR code generator supports PayPal, Venmo, and other payment platforms. Create codes for donations, invoices, and secure financial transactions.', icon: '💳', color: 'from-green-500 to-teal-500' },
+                { title: 'Food & Beverage Industry', desc: 'Modernize your food service with QR codes for menus, ordering, and customer engagement. Enhance dining experiences with codes that link to digital menus, online ordering systems, and special promotions. Our restaurant QR code generator works seamlessly for any food service business.', icon: '🍕', color: 'from-orange-500 to-red-500' },
+                { title: 'Retail & Shopping Centers', desc: 'Connect customers to products and deals with QR codes on tags, displays, and receipts. Our retail QR code generator helps shopping centers and stores drive online engagement, share product information, and promote loyalty programs through easy-to-scan codes.', icon: '🛒', color: 'from-blue-500 to-indigo-500' },
+                { title: 'Tourism & Travel', desc: 'Enhance visitor experiences with QR codes for travel information, maps, and local guides. Our tourism QR code generator helps hotels, attractions, and travel agencies provide valuable resources to visitors. Share destination guides, maps, and travel tips instantly.', icon: '✈️', color: 'from-cyan-500 to-blue-500' },
+                { title: 'Education & Training', desc: 'Create interactive learning experiences with QR codes linking to course materials, videos, and resources. Our education QR code generator makes it easy for teachers and trainers to share content, assignments, and learning resources with students.', icon: '🎓', color: 'from-purple-500 to-indigo-500' },
+                { title: 'Entertainment & Venues', desc: 'Enhance audience engagement with QR codes for event information, tickets, and exclusive content. Our entertainment QR code generator helps venues, theaters, and event organizers connect with audiences through seamless digital experiences.', icon: '🎭', color: 'from-pink-500 to-rose-500' },
+                { title: 'Professional Services', desc: 'Showcase your expertise with QR codes linking to portfolios, service catalogs, and contact information. Our professional services QR code generator helps lawyers, consultants, and freelancers share their work and make it easy for clients to connect and learn more.', icon: '💼', color: 'from-slate-500 to-gray-500' },
+                { title: 'Government & Public Services', desc: 'Improve citizen access to services with QR codes for forms, information, and resources. Our public services QR code generator helps municipalities and agencies provide quick access to voting information, citizen services, and public resources.', icon: '🏛️', color: 'from-blue-600 to-indigo-600' },
+                { title: 'Technology & IT Services', desc: 'Streamline technical support with QR codes linking to documentation, downloads, and knowledge bases. Our IT services QR code generator helps tech companies share resources, support tickets, and technical information with clients and users efficiently.', icon: '💻', color: 'from-emerald-500 to-green-500' },
+                { title: 'Beauty & Wellness', desc: 'Enhance customer experience with QR codes for appointments, product catalogs, and beauty tips. Our beauty QR code generator helps salons, spas, and wellness centers share information, booking links, and resources with clients seamlessly.', icon: '✨', color: 'from-pink-500 to-purple-500' },
+                { title: 'Pet Services & Veterinary', desc: 'Improve pet care communication with QR codes for vaccination records, appointments, and care resources. Our veterinary QR code generator helps clinics and pet services share important information with pet owners efficiently and conveniently.', icon: '🐾', color: 'from-amber-500 to-orange-500' },
+                { title: 'Home Services & Contractors', desc: 'Showcase your work and simplify client communication with QR codes linking to portfolios and contact information. Our contractor QR code generator helps plumbers, electricians, and home service providers share work examples and make it easy for clients to request quotes.', icon: '🔧', color: 'from-yellow-500 to-amber-500' },
+              ]
+              .slice(0, useCasesExpanded ? 29 : 6)
+              .map((useCase, idx) => (
                 <div 
                   key={idx} 
                   className={`group relative bg-gradient-to-br ${useCase.color} rounded-xl p-6 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden`}
@@ -565,6 +702,24 @@ function App() {
                   <p className="text-white/95 text-sm leading-relaxed relative z-10">{useCase.desc}</p>
                 </div>
               ))}
+            </div>
+            
+            {/* Expand/Collapse Button */}
+            <div className="flex justify-center mt-8">
+              <button
+                onClick={() => setUseCasesExpanded(!useCasesExpanded)}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              >
+                <span>{useCasesExpanded ? 'Show Less' : 'Show All Use Cases'}</span>
+                <svg 
+                  className={`w-5 h-5 transition-transform duration-300 ${useCasesExpanded ? 'rotate-180' : ''}`}
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
             </div>
           </section>
 
@@ -665,7 +820,149 @@ function App() {
                     q: 'Can I create QR code generator for website or link?',
                     a: 'Yes! Our QR code generator for website and link is simple - just select Website/URL type, paste any URL or link, and generate instantly. Works for any website, social media profile, product page, or online resource. Create QR codes for links in seconds!',
                   },
-                ].map((faq, idx) => {
+                  {
+                    q: 'What file formats can I download my QR code in?',
+                    a: 'You can download your QR code as a high-quality PNG image. PNG format is perfect for both digital use (websites, social media, presentations) and print materials (business cards, flyers, posters). The downloaded QR code maintains excellent quality and remains fully scannable at any size.',
+                  },
+                  {
+                    q: 'What size should my QR code be for printing?',
+                    a: 'For best results, print your QR code at least 2cm x 2cm (0.8 inches x 0.8 inches) or larger. Larger sizes ensure better scannability, especially from a distance. For posters or signs, use larger sizes like 10cm x 10cm or more. Our generator creates high-resolution QR codes suitable for any print size.',
+                  },
+                  {
+                    q: 'Can I use QR codes for business or commercial purposes?',
+                    a: 'Absolutely! Our QR code generator is perfect for business and commercial use. Create professional QR codes with your company logo for marketing materials, product packaging, business cards, restaurant menus, event tickets, and more. All features are free for commercial use with no restrictions.',
+                  },
+                  {
+                    q: 'Do QR codes expire or stop working?',
+                    a: 'No, QR codes themselves never expire. As long as the destination URL or content remains accessible, your QR code will continue working indefinitely. If you change your website URL, simply generate a new QR code with the updated link. The QR code image file you download will work forever.',
+                  },
+                  {
+                    q: 'Can I edit or change my QR code after downloading?',
+                    a: 'QR codes are generated based on the content you provide. If you need to change the destination URL, text, or any content, simply generate a new QR code with the updated information. You can always come back to our free generator and create a new QR code instantly - no account needed.',
+                  },
+                  {
+                    q: 'What is the maximum amount of data I can put in a QR code?',
+                    a: 'QR codes can store up to 2,953 bytes of data. For URLs, this typically means around 2,000-3,000 characters depending on the URL structure. For plain text, you can include several paragraphs. Our generator automatically handles data optimization to ensure your QR code remains scannable even with longer content.',
+                  },
+                  {
+                    q: 'Will my QR code work on all smartphones and devices?',
+                    a: 'Yes! QR codes are universally compatible. Your QR code will work with any smartphone camera (iPhone, Android), tablet, or dedicated QR code scanner app. Modern smartphones have built-in QR code scanning in their camera apps, so no special app is required. Works on iOS, Android, and all major platforms.',
+                  },
+                  {
+                    q: 'Is my data private and secure when using this QR code generator?',
+                    a: 'Yes, your privacy is our priority. All QR code generation happens entirely in your browser - your data never leaves your device. We don\'t store, track, or collect any of your URLs, text, or personal information. No server processing means complete privacy and security for your content.',
+                  },
+                  {
+                    q: 'Can I create multiple QR codes at once?',
+                    a: 'While our generator creates one QR code at a time, you can generate unlimited QR codes quickly and easily. Simply enter new content, customize as needed, and download. Since there\'s no signup required, you can create as many QR codes as you need without any limitations or restrictions.',
+                  },
+                  {
+                    q: 'What makes dino QR codes different from regular QR codes?',
+                    a: 'Dino QR codes feature fun dinosaur shapes (T-Rex, Stegosaurus, Triceratops) integrated into the QR code pattern while maintaining full functionality. They\'re visually unique and memorable while being just as scannable as regular QR codes. Perfect for adding personality to your QR codes without sacrificing functionality.',
+                  },
+                  {
+                    q: 'How do I ensure my QR code with logo is scannable?',
+                    a: 'Our generator automatically optimizes logo placement and size to ensure scannability. We use high error correction levels and carefully position logos in the center. For best results, use a simple, high-contrast logo. The QR code updates in real-time, so you can test it immediately before downloading.',
+                  },
+                  {
+                    q: 'Can I create QR codes for WiFi passwords?',
+                    a: 'Yes! You can create QR codes for WiFi passwords using our Plain Text option. Format your WiFi information as: WIFI:T:WPA;S:YourNetworkName;P:YourPassword;; Then generate the QR code. When scanned, it will automatically connect devices to your WiFi network. Perfect for home, office, or events.',
+                  },
+                  {
+                    q: 'What colors work best for QR codes?',
+                    a: 'High contrast works best for QR codes. Dark colors (black, navy, dark blue) on light backgrounds (white, light gray) or light colors on dark backgrounds ensure optimal scannability. Our color customizer lets you choose any colors while maintaining sufficient contrast for reliable scanning.',
+                  },
+                  {
+                    q: 'Can I use QR codes for social media profiles?',
+                    a: 'Absolutely! Create QR codes for any social media profile by selecting Website/URL and pasting your profile link. Works for Instagram, Facebook, Twitter, LinkedIn, TikTok, and all social platforms. When scanned, it opens your profile directly. Great for business cards and marketing materials.',
+                  },
+                  {
+                    q: 'How do I test if my QR code works before printing?',
+                    a: 'Simply scan the preview QR code on our generator page using your smartphone camera. All modern phones have built-in QR code scanning - just point your camera at the screen. You can test it immediately before downloading to ensure it works perfectly. No need to download first!',
+                  },
+                  {
+                    q: 'Can I create QR codes for email addresses?',
+                    a: 'Yes! Use our Plain Text option and format it as: mailto:your.email@example.com?subject=Subject&body=Message. When scanned, it opens the email app with your address pre-filled. You can also create QR codes for contact information using our Business Card option for vCard format.',
+                  },
+                  {
+                    q: 'What is the difference between QR code types (URL, WhatsApp, Location, etc.)?',
+                    a: 'Different QR code types format data in specific ways for different purposes. URL type creates standard web links. WhatsApp type creates deep links that open WhatsApp chats. Location type opens Google Maps. Business Card creates vCard format for saving contacts. Each type is optimized for its specific use case.',
+                  },
+                  {
+                    q: 'Can I create QR codes for PDF files?',
+                    a: 'To create QR codes for PDF files, you need to upload your PDF to a cloud storage service (Google Drive, Dropbox, etc.) and make it publicly accessible. Then use our Website/URL option with the PDF\'s shareable link. When scanned, it opens the PDF directly in the browser.',
+                  },
+                  {
+                    q: 'Do I need an internet connection to scan QR codes?',
+                    a: 'It depends on the QR code content. For URLs, websites, and online resources, yes - an internet connection is needed. For plain text QR codes (like WiFi passwords, contact info, or messages), no internet is required. The QR code itself is just an image and doesn\'t need internet to be scanned.',
+                  },
+                  {
+                    q: 'Can I create QR codes for phone numbers?',
+                    a: 'Yes! Use our Plain Text option and format it as: tel:+1234567890 (include country code). When scanned, it opens the phone dialer with the number ready to call. You can also use our Business Card option to include phone numbers along with other contact information.',
+                  },
+                  {
+                    q: 'What happens if I lose my downloaded QR code?',
+                    a: 'No problem! Since our generator is free and requires no signup, simply return to our tool and regenerate the same QR code by entering the same content. Your QR code will be identical to the original. You can recreate it anytime without any restrictions.',
+                  },
+                  {
+                    q: 'Can I create QR codes for YouTube videos or playlists?',
+                    a: 'Yes! Select Website/URL and paste your YouTube video or playlist URL. When scanned, it opens the video or playlist directly in the YouTube app or browser. Perfect for sharing videos on business cards, flyers, or marketing materials. Works with any YouTube link.',
+                  },
+                  {
+                    q: 'Are there any limitations on how many times a QR code can be scanned?',
+                    a: 'No! There are no scanning limits. Your QR code can be scanned unlimited times by unlimited users. The QR code itself doesn\'t track scans - it simply redirects to your content. If you need scan analytics, you would need to use a URL shortener with tracking features.',
+                  },
+                  {
+                    q: 'Can I create QR codes for restaurant menus?',
+                    a: 'Absolutely! Create QR codes for digital restaurant menus by uploading your menu to a website or cloud storage, then generate a QR code with the menu URL. Place QR codes on tables for contactless menu access. Perfect for modern restaurants and cafes looking for hygienic solutions.',
+                  },
+                  {
+                    q: 'What is error correction in QR codes and why does it matter?',
+                    a: 'Error correction allows QR codes to remain scannable even if part of the code is damaged, obscured, or covered (like with a logo). We use high error correction (Level H) which allows up to 30% of the code to be covered while remaining scannable. This is why logos in the center work perfectly.',
+                  },
+                  {
+                    q: 'Can I create QR codes for event tickets or registration?',
+                    a: 'Yes! Create QR codes for event registration by using our Google Forms option with your registration form link. For tickets, generate QR codes with unique ticket URLs. When scanned, they can verify registration or open ticket information. Perfect for conferences, concerts, and events.',
+                  },
+                  {
+                    q: 'How do I create a QR code for my business contact information?',
+                    a: 'Use our Business Card option! Enter your name, phone, email, company, and job title. The generator creates a vCard QR code that, when scanned, saves all your contact information directly to the phone\'s contacts. Much faster than manual entry and perfect for networking.',
+                  },
+                  {
+                    q: 'Can I create QR codes for app downloads (App Store, Google Play)?',
+                    a: 'Yes! Use our Website/URL option with your app\'s App Store or Google Play Store link. When scanned on iOS, it opens the App Store. On Android, it opens Google Play. Smartphones automatically detect the platform and open the correct store. Perfect for marketing campaigns.',
+                  },
+                  {
+                    q: 'What is the best way to display QR codes for maximum scanning success?',
+                    a: 'Display QR codes at eye level, ensure good lighting, maintain high contrast, and use appropriate size (minimum 2cm x 2cm). Avoid reflective surfaces, ensure the code is flat (not curved), and provide clear instructions nearby. Test the QR code from the intended viewing distance before finalizing.',
+                  },
+                  {
+                    q: 'Can I create QR codes for cryptocurrency wallet addresses?',
+                    a: 'Yes! Use our Plain Text or Website/URL option with your cryptocurrency wallet address. For Bitcoin, format as: bitcoin:walletaddress. When scanned, it opens the wallet app with the address ready for transactions. Always double-check addresses before sharing.',
+                  },
+                  {
+                    q: 'How do I create a QR code that works offline?',
+                    a: 'Create QR codes with plain text content (like messages, WiFi passwords, or contact info) using our Plain Text option. These QR codes work offline because they don\'t require internet to display the content. The scanner reads the data directly from the QR code image itself.',
+                  },
+                  {
+                    q: 'Can I customize the size of my downloaded QR code?',
+                    a: 'The downloaded QR code is high-resolution and can be scaled to any size without quality loss. Use image editing software to resize for your specific needs. For print, ensure the final size is at least 2cm x 2cm. For digital use, any size works as long as it remains scannable.',
+                  },
+                  {
+                    q: 'What should I do if my QR code is not scanning?',
+                    a: 'Check these: ensure good lighting, verify the QR code isn\'t damaged or distorted, confirm sufficient contrast between colors, check that the code is flat (not curved), ensure minimum size (2cm x 2cm), clean your camera lens, and try a different scanning app. Our generator uses high error correction for maximum compatibility.',
+                  },
+                  {
+                    q: 'Can I create QR codes for discount codes or coupons?',
+                    a: 'Yes! Use our Plain Text option and enter your discount code. When scanned, it displays the code for easy copying. You can also use Website/URL to link to a landing page with the discount code. Perfect for marketing campaigns, promotions, and customer engagement.',
+                  },
+                  {
+                    q: 'Is this QR code generator better than paid alternatives?',
+                    a: 'Our free QR code generator offers all the features of paid alternatives - logo upload, custom colors, multiple QR code types, high-quality downloads, and unlimited generation - completely free. No watermarks, no redirects, no registration required. You get professional results without the cost.',
+                  },
+                ]
+                .slice(0, faqsExpanded ? 50 : 6)
+                .map((faq, idx) => {
                   const isExpanded = expandedFaq === idx
                   return (
                     <div 
@@ -708,6 +1005,24 @@ function App() {
                     </div>
                   )
                 })}
+              </div>
+              
+              {/* Expand/Collapse Button */}
+              <div className="flex justify-center mt-8">
+                <button
+                  onClick={() => setFaqsExpanded(!faqsExpanded)}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                >
+                  <span>{faqsExpanded ? 'Show Less FAQs' : 'Show All FAQs'}</span>
+                  <svg 
+                    className={`w-5 h-5 transition-transform duration-300 ${faqsExpanded ? 'rotate-180' : ''}`}
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
               </div>
             </div>
           </section>
