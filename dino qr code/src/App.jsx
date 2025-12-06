@@ -96,21 +96,22 @@ function App() {
             </h1>
             
             <p className="text-xl sm:text-2xl md:text-3xl text-gray-700 dark:text-gray-300 font-medium mb-4">
-              Free QR Code Generator - Better Than JustFreeQR
+              Free QR Code Generator No Sign Up - Instant & Fast
             </p>
             
             <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed mb-10">
-              The best <strong className="text-blue-600 dark:text-blue-400">justfreeqr alternative</strong>! Create <strong className="text-blue-600 dark:text-blue-400">QR code with dinosaur</strong> shapes using our free <strong className="text-purple-600 dark:text-purple-400">QR code dino</strong> generator. Make unique <strong className="text-pink-600 dark:text-pink-400">QR codes with logo</strong> instantly for links, websites, and locations. Better than justfreeqr with dinosaur themes, logo uploads, and custom colors - all completely free, no signup required.
+              The best <strong className="text-blue-600 dark:text-blue-400">free QR code generator no sign up</strong> - generate QR codes instantly without registration! Create <strong className="text-blue-600 dark:text-blue-400">QR code with dinosaur</strong> shapes using our fast <strong className="text-purple-600 dark:text-purple-400">QR code dino</strong> generator. Make unique <strong className="text-pink-600 dark:text-pink-400">QR codes with logo</strong> in seconds for links, websites, and locations. No signup, no waiting - just instant QR code generation with dinosaur themes, logo uploads, and custom colors.
             </p>
 
             {/* Quick Stats - Minimalist */}
             <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-12">
               {[
+                { icon: '⚡', label: 'Instant Generation', color: 'yellow' },
+                { icon: '🚫', label: 'No Sign Up', color: 'green' },
                 { icon: '✅', label: 'Fully Scannable', color: 'green' },
                 { icon: '🦖', label: 'Dino Themes', color: 'purple' },
                 { icon: '🏢', label: 'Logo Upload', color: 'blue' },
                 { icon: '🆓', label: '100% Free', color: 'pink' },
-                { icon: '🎨', label: 'No Redirects', color: 'orange' },
               ].map((stat, idx) => (
                 <div 
                   key={idx}
@@ -352,9 +353,16 @@ function App() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 { 
+                  icon: '⚡', 
+                  title: 'Free QR Code Generator No Sign Up - Instant', 
+                  desc: 'Our free QR code generator requires no sign up - generate QR codes instantly without registration, email, or account creation. Create QR codes as fast as you can type, with real-time preview and instant downloads. No signup, no waiting, just instant QR code generation!',
+                  gradient: 'from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20',
+                  border: 'border-green-200 dark:border-green-800'
+                },
+                { 
                   icon: '⭐', 
                   title: 'Best JustFreeQR Alternative - Free QR Generator', 
-                  desc: 'Looking for a justfreeqr alternative? Our free QR code generator offers everything justfreeqr does plus unique dinosaur themes, better logo placement, custom colors, and no redirects. The best justfreeqr alternative with more features!',
+                  desc: 'Looking for a justfreeqr alternative? Our free QR code generator no sign up offers everything justfreeqr does plus unique dinosaur themes, better logo placement, custom colors, and no redirects. The best justfreeqr alternative with more features!',
                   gradient: 'from-yellow-50 to-amber-50 dark:from-yellow-900/20 dark:to-amber-900/20',
                   border: 'border-yellow-200 dark:border-yellow-800'
                 },
@@ -450,7 +458,7 @@ function App() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
               {[
-                { step: 1, title: 'Enter Your URL or Text', desc: 'Type your URL, text, or content to make QR code for link, website, or location. Works for websites, social media links, WiFi passwords, and more.', icon: '📝' },
+                { step: 1, title: 'Enter Your URL or Text (No Sign Up!)', desc: 'Start instantly - no sign up required! Type your URL, text, or content to make QR code for link, website, or location. Works for websites, social media links, WiFi passwords, and more. Your QR code appears instantly as you type.', icon: '📝' },
                 { step: 2, title: 'Upload Logo or Choose Dino Theme', desc: 'To create QR code with logo, upload your company logo. Or choose fun QR code with dinosaur themes (T-Rex, Stegosaurus) for a unique QR code dino. Logo appears in the middle automatically.', icon: '🦖' },
                 { step: 3, title: 'Customize Colors & Design', desc: 'Design your QR code with logo by customizing colors to match your brand. Our QR code with logo generator offers full color control for professional results.', icon: '🎨' },
                 { step: 4, title: 'Preview QR Code with Logo', desc: 'See your QR code with logo in the middle update in real-time. Preview ensures your QR code with logo looks perfect before downloading.', icon: '👀' },
@@ -577,6 +585,14 @@ function App() {
                     q: 'What is the best justfreeqr alternative?',
                     a: 'Our dino QR code generator is the best justfreeqr alternative. We offer everything justfreeqr does plus unique dinosaur-themed QR codes, better logo placement, custom colors, and a more user-friendly interface - all completely free with no redirects or hidden fees. Better than justfreeqr in every way!',
                   },
+                  {
+                    q: 'Is this a free QR code generator no sign up?',
+                    a: 'Yes! Our free QR code generator requires no sign up. Generate QR codes instantly without registration, email, or account creation. Simply enter your URL or text, customize your design, and download - it\'s that fast and easy! No signup, no hassle, just instant QR code generation. Perfect for anyone who wants quick results without creating accounts.',
+                  },
+                  {
+                    q: 'How fast can I generate QR codes?',
+                    a: 'Our free QR code generator no sign up creates QR codes instantly in real-time. As you type, your QR code updates automatically - there\'s no waiting, no processing delay, just instant results. Generate unlimited QR codes as fast as you can type, with no signup required. Get your QR code ready in seconds, not minutes!',
+                  },
                 ].map((faq, idx) => {
                   const isExpanded = expandedFaq === idx
                   return (
@@ -637,7 +653,7 @@ function App() {
                   Start Creating QR Codes with Logo Today
                 </h2>
                 <p className="text-lg sm:text-xl text-white/90 max-w-3xl mx-auto mb-8 leading-relaxed">
-                  Create QR code with dinosaur shapes using our free QR code dino generator. Make unique QR codes with logo instantly for links, websites, and locations. Upload your logo in the middle, customize colors, and download - all completely free, no signup required.
+                  Free QR code generator no sign up - generate QR codes instantly! Create QR code with dinosaur shapes using our fast QR code dino generator. Make unique QR codes with logo in seconds for links, websites, and locations. Upload your logo in the middle, customize colors, and download - all completely free, no signup, no waiting!
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
                   <a 
