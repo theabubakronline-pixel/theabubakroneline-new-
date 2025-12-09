@@ -28,7 +28,7 @@ function getPostIdFromURL() {
 function findPostByIdOrSlug(identifier) {
     if (!identifier) return null;
     
-    // Get all posts (from CMS and hardcoded)
+    // Get all posts (from CMS and hardcoded) - this already filters unpublished posts
     const allPosts = getAllBlogPosts();
     
     // Try to find by ID first

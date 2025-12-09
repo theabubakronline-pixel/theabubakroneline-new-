@@ -609,6 +609,7 @@ const blogPosts = [
         imageAlt: 'How to Design a Scan-Friendly Orange QR Code for Your Business - Custom QR code design guide',
         slug: 'how-to-design-scan-friendly-orange-qr-code',
         featured: true,
+        published: false, // Draft - not published
         metaDescription: 'Learn how to create a scan-friendly orange QR code for your business. Discover color psychology, design principles, and best practices for branded QR codes that actually work.',
         content: `<div class="post-intro">
             <p class="post-lead">QR codes have become essential in modern marketing, but here's the thing—they don't have to be boring black and white squares. Today, businesses are using <strong>colored QR codes</strong> like <strong>orange QR codes</strong>, pink QR codes, and white QR codes to stand out while maintaining functionality. In this guide, I'll walk you through exactly how to create a <strong>scan-friendly QR code</strong> in orange that's both visually appealing and perfectly scannable.</p>
@@ -1012,8 +1013,13 @@ function getAllBlogPosts() {
     
     hardcodedPosts.forEach(hardcodedPost => {
         // Only add hardcoded post if no CMS post with same ID exists
+        // Also filter out unpublished posts (drafts) - default to published: true if not specified
         if (!mergedPosts.find(p => p.id === hardcodedPost.id)) {
-            mergedPosts.push(hardcodedPost);
+            // If published field is not set, default to true (published)
+            // If published is explicitly false, skip it (draft)
+            if (hardcodedPost.published !== false) {
+                mergedPosts.push(hardcodedPost);
+            }
         }
     });
     
