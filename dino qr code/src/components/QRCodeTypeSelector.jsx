@@ -281,8 +281,8 @@ const QRCodeTypeSelector = ({ selectedType, onTypeChange, onInputGenerate }) => 
       )}
 
       {selectedType.id === 'location' && (
-        <div className="space-y-4 p-4 sm:p-5 bg-green-50 rounded-xl border-2 border-green-200">
-          <label className="block text-sm font-semibold text-gray-700 mb-3">
+        <div className="space-y-3 sm:space-y-4 p-3 sm:p-4 md:p-5 bg-green-50 rounded-lg sm:rounded-xl border-2 border-green-200">
+          <label className="block text-sm sm:text-base font-semibold text-gray-700 mb-2 sm:mb-3">
             Select Location on Map
           </label>
           <LocationPicker
@@ -306,11 +306,11 @@ const QRCodeTypeSelector = ({ selectedType, onTypeChange, onInputGenerate }) => 
             initialLat={customInputs.location.lat || null}
             initialLng={customInputs.location.lng || null}
           />
-          <div className="pt-4 border-t-2 border-green-200">
-            <p className="text-sm text-gray-600 mb-3">
+          <div className="pt-3 sm:pt-4 border-t-2 border-green-200">
+            <p className="text-xs sm:text-sm text-gray-600 mb-2 sm:mb-3 font-medium">
               Or manually enter coordinates:
             </p>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Latitude

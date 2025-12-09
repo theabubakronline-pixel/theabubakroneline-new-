@@ -104,13 +104,23 @@ const LocationPicker = ({ onLocationSelect, initialLat = null, initialLng = null
     const defaultLat = initialLat || 40.7128
     const defaultLng = initialLng || -74.0060
 
-    // Initialize map
+    // Initialize map with mobile-optimized settings
     const map = new window.google.maps.Map(mapRef.current, {
       center: { lat: parseFloat(defaultLat) || 40.7128, lng: parseFloat(defaultLng) || -74.0060 },
       zoom: 13,
       mapTypeControl: true,
       streetViewControl: true,
       fullscreenControl: true,
+      gestureHandling: 'greedy', // Better touch handling on mobile
+      disableDefaultUI: false,
+      zoomControl: true,
+      zoomControlOptions: {
+        position: window.google.maps.ControlPosition.RIGHT_CENTER
+      },
+      mapTypeControlOptions: {
+        position: window.google.maps.ControlPosition.TOP_RIGHT,
+        style: window.google.maps.MapTypeControlStyle.HORIZONTAL_BAR
+      }
     })
 
     mapInstanceRef.current = map
@@ -146,11 +156,13 @@ const LocationPicker = ({ onLocationSelect, initialLat = null, initialLng = null
       geocodeLocation(lat, lng)
     })
 
-    // Add search box
+    // Add search box - Mobile Optimized
     const input = document.createElement('input')
     input.type = 'text'
     input.placeholder = 'Search for a location...'
-    input.className = 'w-full px-3 py-2 text-sm border border-gray-300 rounded-lg bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500'
+    input.className = 'w-full max-w-xs sm:max-w-sm md:max-w-md px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm border-2 border-gray-300 rounded-lg sm:rounded-xl bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 shadow-md placeholder:text-gray-400'
+    input.style.fontSize = '14px'
+    input.style.margin = '8px'
     
     const searchBox = new window.google.maps.places.SearchBox(input)
     
@@ -238,39 +250,56 @@ const LocationPicker = ({ onLocationSelect, initialLat = null, initialLng = null
   }
 
   return (
-    <div className="space-y-2">
-      <div className="relative w-full h-64 rounded-lg overflow-hidden border-2 border-gray-300">
+    <div className="space-y-2 sm:space-y-3">
+      {/* Mobile-Optimized Map Container */}
+      <div className="relative w-full h-[280px] sm:h-64 md:h-80 lg:h-96 rounded-lg sm:rounded-xl overflow-hidden border-2 border-gray-300 shadow-md map-container">
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center bg-gray-100 z-10">
-            <div className="text-center">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto mb-2"></div>
-              <p className="text-xs text-gray-600">Loading Google Maps...</p>
+            <div className="text-center px-4">
+              <div className="animate-spin rounded-full h-8 w-8 sm:h-10 sm:w-10 border-b-2 border-green-600 mx-auto mb-2"></div>
+              <p className="text-xs sm:text-sm text-gray-600 font-medium">Loading Google Maps...</p>
             </div>
           </div>
         )}
         {error && (
-          <div className="absolute inset-0 flex items-center justify-center bg-red-50 z-10">
-            <p className="text-xs text-red-600 text-center px-4">{error}</p>
+          <div className="absolute inset-0 flex items-center justify-center bg-red-50 z-10 p-4">
+            <div className="text-center max-w-sm">
+              <p className="text-xs sm:text-sm text-red-600 font-medium">{error}</p>
+            </div>
           </div>
         )}
-        <div ref={mapRef} className="w-full h-full"></div>
+        <div ref={mapRef} className="w-full h-full touch-pan-x touch-pan-y"></div>
       </div>
+      
+      {/* Selected Location Info - Mobile Responsive */}
       {selectedLocation && (
-        <div className="p-2 bg-green-50 rounded-lg border border-green-200">
-          <p className="text-xs font-semibold text-gray-700 mb-1">Selected Location:</p>
-          <p className="text-xs text-gray-600">
-            <strong>Coordinates:</strong> {selectedLocation.lat}, {selectedLocation.lng}
-          </p>
-          {selectedLocation.address && (
-            <p className="text-xs text-gray-600 mt-1">
-              <strong>Address:</strong> {selectedLocation.address}
-            </p>
-          )}
+        <div className="p-3 sm:p-4 bg-green-50 rounded-lg sm:rounded-xl border border-green-200 shadow-sm">
+          <div className="flex items-start gap-2 mb-2">
+            <span className="text-base sm:text-lg flex-shrink-0">📍</span>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm font-semibold text-gray-700 mb-2">Selected Location:</p>
+              <div className="space-y-1.5">
+                <p className="text-xs sm:text-sm text-gray-600 break-all">
+                  <strong className="text-gray-700">Coordinates:</strong> {selectedLocation.lat}, {selectedLocation.lng}
+                </p>
+                {selectedLocation.address && (
+                  <p className="text-xs sm:text-sm text-gray-600 break-words">
+                    <strong className="text-gray-700">Address:</strong> {selectedLocation.address}
+                  </p>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
       )}
-      <p className="text-[10px] text-gray-500">
-        💡 Click on the map or search to select a location. Drag the marker to adjust.
-      </p>
+      
+      {/* Helpful Tip - Mobile Optimized */}
+      <div className="flex items-start gap-2 p-2 sm:p-3 bg-blue-50 rounded-lg border border-blue-100">
+        <span className="text-sm sm:text-base flex-shrink-0 mt-0.5">💡</span>
+        <p className="text-[10px] sm:text-xs text-gray-600 leading-relaxed">
+          <strong className="text-gray-700">Mobile:</strong> Tap the map to select a location. <strong className="text-gray-700">Desktop:</strong> Click or search to select. Drag the marker to adjust position.
+        </p>
+      </div>
     </div>
   )
 }

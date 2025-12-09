@@ -135,127 +135,203 @@ function App() {
             </div>
           </section>
 
-          {/* Main Workspace - Spacious Clean Layout */}
+          {/* Main Workspace - Premium Modern Layout */}
           <section id="workspace" className="mb-12 sm:mb-16">
-            <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+            <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl border border-gray-100 overflow-hidden backdrop-blur-sm">
               
-              {/* Header */}
-              <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 px-6 sm:px-8 py-4">
-                <div className="flex items-center justify-between">
-                  <h2 className="text-lg sm:text-xl font-bold text-white">Create Your QR Code</h2>
-                  <div className="flex items-center gap-2">
-                    {[1, 2, 3].map((step, idx) => (
-                      <div key={step} className="flex items-center">
-                        <div className={`w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold transition-all ${
-                          step === 1 && inputValue.trim()
-                            ? 'bg-white text-blue-600' 
-                            : 'bg-white/30 text-white'
+              {/* Premium Header with Enhanced Step Indicator - Mobile Responsive */}
+              <div className="relative bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 px-4 sm:px-6 md:px-8 lg:px-10 py-4 sm:py-5 md:py-6 overflow-hidden">
+                {/* Animated Background Pattern */}
+                <div className="absolute inset-0 opacity-10">
+                  <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAzNGMwIDQuNDE4LTMuNTgyIDgtOCA4cy04LTMuNTgyLTgtOCAzLjU4Mi04IDgtOCA4IDMuNTgyIDggOHoiIGZpbGw9IndoaXRlIiBmaWxsLW9wYWNpdHk9IjAuMSIvPjwvZz48L3N2Zz4=')]"></div>
+                </div>
+                
+                <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
+                  <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
+                    <div className="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg sm:rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center shadow-lg border border-white/30 flex-shrink-0">
+                      <span className="text-lg sm:text-xl md:text-2xl">🦖</span>
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white leading-tight truncate sm:whitespace-normal">Create Your QR Code</h2>
+                      <p className="text-xs sm:text-sm text-white/80 mt-0.5 hidden sm:block">Design & Generate in Seconds</p>
+                    </div>
+                  </div>
+                  
+                  {/* Enhanced Step Indicator - Mobile Optimized */}
+                  <div className="flex items-center gap-1.5 sm:gap-2 md:gap-3 bg-white/10 backdrop-blur-md rounded-full px-2 sm:px-3 md:px-4 py-1.5 sm:py-2 border border-white/20 w-full sm:w-auto justify-center sm:justify-end">
+                    {[
+                      { num: 1, label: 'Content', icon: '📝', active: inputValue.trim() },
+                      { num: 2, label: 'Design', icon: '🎨', active: inputValue.trim() && (selectedTemplate.id !== 'simple' || customLogo) },
+                      { num: 3, label: 'Download', icon: '📥', active: inputValue.trim() }
+                    ].map((step, idx) => (
+                      <div key={step.num} className="flex items-center">
+                        <div className={`group relative flex items-center gap-1 sm:gap-2 transition-all duration-300 ${
+                          step.active ? 'scale-105' : 'opacity-70'
                         }`}>
-                          {step === 1 && inputValue.trim() ? '✓' : step}
+                          <div className={`w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 shadow-lg ${
+                            step.active
+                              ? 'bg-white text-blue-600 scale-110 shadow-xl' 
+                              : 'bg-white/30 text-white/80'
+                          }`}>
+                            {step.active ? (
+                              <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                              </svg>
+                            ) : (
+                              <span className="text-[10px] sm:text-xs">{step.num}</span>
+                            )}
+                          </div>
+                          <span className={`hidden md:block text-[10px] sm:text-xs font-semibold transition-all whitespace-nowrap ${
+                            step.active ? 'text-white' : 'text-white/70'
+                          }`}>
+                            {step.label}
+                          </span>
                         </div>
-                        {idx < 2 && <div className={`w-4 h-0.5 mx-1.5 ${
-                          step === 1 && inputValue.trim() ? 'bg-white' : 'bg-white/30'
-                        }`}></div>}
+                        {idx < 2 && (
+                          <div className={`w-2 sm:w-3 md:w-4 h-0.5 mx-1 sm:mx-1.5 md:mx-2 lg:mx-3 rounded-full transition-all duration-300 ${
+                            step.active ? 'bg-white' : 'bg-white/30'
+                          }`}></div>
+                        )}
                       </div>
                     ))}
                   </div>
                 </div>
               </div>
 
-              {/* Workspace - Horizontal Layout with Better Spacing */}
-              <div className="p-6 sm:p-8 lg:p-10">
+              {/* Workspace - Optimized Fast Layout - Mobile Responsive */}
+              <div className="p-3 sm:p-4 md:p-6 lg:p-8 xl:p-10 bg-gradient-to-br from-gray-50/50 via-white to-blue-50/30">
                 <div className="max-w-7xl mx-auto">
-                  <div className="grid grid-cols-1 xl:grid-cols-[1fr_0.85fr] gap-6 sm:gap-8">
+                  <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-4 sm:gap-5 md:gap-6 lg:gap-8">
                     
-                    {/* Left: All Controls in Single Column */}
-                    <div className="space-y-5 sm:space-y-6">
+                    {/* Left: All Controls - Modern Card Design */}
+                    <div className="space-y-4 sm:space-y-5">
                       
-                      {/* QR Code Type Selector */}
-                      <div className="bg-gradient-to-br from-blue-50/50 to-purple-50/50 rounded-xl p-4 sm:p-5 lg:p-6 border-2 border-blue-100 shadow-sm hover:shadow-md transition-all duration-200">
-                        <div className="flex items-center gap-2 mb-3">
-                          <span className="text-xl">🌐</span>
-                          <label className="block text-sm sm:text-base font-semibold text-gray-700">
-                            QR Code Type
-                          </label>
+                      {/* QR Code Type Selector - Premium Card */}
+                      <div className="group relative bg-white rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 border border-blue-100/50 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-purple-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div className="relative">
+                          <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center shadow-lg flex-shrink-0">
+                              <span className="text-lg sm:text-xl">🌐</span>
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <label className="block text-sm sm:text-base md:text-lg font-bold text-gray-800">
+                                QR Code Type
+                              </label>
+                              <p className="text-xs text-gray-500 hidden sm:block">Choose your content type</p>
+                            </div>
+                          </div>
+                          <QRCodeTypeSelector
+                            selectedType={selectedQRType}
+                            onTypeChange={setSelectedQRType}
+                            onInputGenerate={handleInputGenerate}
+                          />
                         </div>
-                        <QRCodeTypeSelector
-                          selectedType={selectedQRType}
-                          onTypeChange={setSelectedQRType}
-                          onInputGenerate={handleInputGenerate}
-                        />
                       </div>
 
-                      {/* Input Section */}
-                      <div className="bg-gradient-to-br from-green-50/50 to-emerald-50/50 rounded-xl p-4 sm:p-5 lg:p-6 border-2 border-green-100 shadow-sm hover:shadow-md transition-all duration-200">
-                        <div className="flex items-center gap-2 mb-3">
-                          <span className="text-xl">📝</span>
-                          <label className="block text-sm sm:text-base font-semibold text-gray-700">
-                            {selectedQRType.id === 'whatsapp' || selectedQRType.id === 'location' || selectedQRType.id === 'business-card' || selectedQRType.id === 'social-media'
-                              ? 'Generated QR Code Content'
-                              : `Enter ${selectedQRType.name}`}
-                          </label>
+                      {/* Input Section - Premium Card */}
+                      <div className="group relative bg-white rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 border border-green-100/50 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-br from-green-50/30 to-emerald-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div className="relative">
+                          <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center shadow-lg flex-shrink-0">
+                              <span className="text-lg sm:text-xl">📝</span>
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <label className="block text-sm sm:text-base md:text-lg font-bold text-gray-800 truncate">
+                                {selectedQRType.id === 'whatsapp' || selectedQRType.id === 'location' || selectedQRType.id === 'business-card' || selectedQRType.id === 'social-media'
+                                  ? 'Generated QR Code Content'
+                                  : `Enter ${selectedQRType.name}`}
+                              </label>
+                              <p className="text-xs text-gray-500 hidden sm:block">Add your content or link</p>
+                            </div>
+                          </div>
+                          <InputField 
+                            value={inputValue} 
+                            onChange={handleInputChange} 
+                            error={error} 
+                            onValidate={validateInput}
+                            placeholder={selectedQRType.placeholder}
+                          />
+                          {selectedQRType.id !== 'whatsapp' && selectedQRType.id !== 'location' && selectedQRType.id !== 'business-card' && selectedQRType.id !== 'social-media' && (
+                            <p className="text-xs sm:text-sm text-gray-500 mt-3 leading-relaxed flex items-start gap-2">
+                              <span className="text-blue-500 mt-0.5">💡</span>
+                              <span>{selectedQRType.description}</span>
+                            </p>
+                          )}
                         </div>
-                        <InputField 
-                          value={inputValue} 
-                          onChange={handleInputChange} 
-                          error={error} 
-                          onValidate={validateInput}
-                          placeholder={selectedQRType.placeholder}
-                        />
-                        {selectedQRType.id !== 'whatsapp' && selectedQRType.id !== 'location' && selectedQRType.id !== 'business-card' && selectedQRType.id !== 'social-media' && (
-                          <p className="text-xs sm:text-sm text-gray-600 mt-3 leading-relaxed">
-                            {selectedQRType.description}
-                          </p>
-                        )}
                       </div>
                       
-                      {/* Template & Logo */}
-                      <div className="bg-gradient-to-br from-purple-50/50 to-pink-50/50 rounded-xl p-4 sm:p-5 lg:p-6 border-2 border-purple-100 shadow-sm hover:shadow-md transition-all duration-200">
-                        <div className="flex items-center gap-2 mb-3">
-                          <span className="text-xl">🦖</span>
-                          <label className="block text-sm sm:text-base font-semibold text-gray-700">
-                            Choose Style or Upload Logo
-                          </label>
+                      {/* Template & Logo - Premium Card */}
+                      <div className="group relative bg-white rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 border border-purple-100/50 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-br from-purple-50/30 to-pink-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div className="relative">
+                          <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-lg flex-shrink-0">
+                              <span className="text-lg sm:text-xl">🦖</span>
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <label className="block text-sm sm:text-base md:text-lg font-bold text-gray-800">
+                                Choose Style or Upload Logo
+                              </label>
+                              <p className="text-xs text-gray-500 hidden sm:block">Customize your QR code design</p>
+                            </div>
+                          </div>
+                          <DinoTemplateSelector
+                            templates={DINOSAUR_TEMPLATES}
+                            selectedTemplate={selectedTemplate}
+                            customLogo={customLogo}
+                            onLogoUpload={handleLogoUpload}
+                            onRemoveLogo={handleRemoveLogo}
+                            onSelectTemplate={(template) => {
+                              setSelectedTemplate(template)
+                              if (customLogo) {
+                                setCustomLogo(null)
+                              }
+                            }}
+                          />
                         </div>
-                        <DinoTemplateSelector
-                          templates={DINOSAUR_TEMPLATES}
-                          selectedTemplate={selectedTemplate}
-                          customLogo={customLogo}
-                          onLogoUpload={handleLogoUpload}
-                          onRemoveLogo={handleRemoveLogo}
-                          onSelectTemplate={(template) => {
-                            setSelectedTemplate(template)
-                            if (customLogo) {
-                              setCustomLogo(null)
-                            }
-                          }}
-                        />
                       </div>
                       
-                      {/* Colors */}
-                      <div className="bg-gradient-to-br from-orange-50/50 to-amber-50/50 rounded-xl p-4 sm:p-5 lg:p-6 border-2 border-orange-100 shadow-sm hover:shadow-md transition-all duration-200">
-                        <div className="flex items-center gap-2 mb-3">
-                          <span className="text-xl">🎨</span>
-                          <label className="block text-sm sm:text-base font-semibold text-gray-700">
-                            Customize Colors
-                          </label>
+                      {/* Colors - Premium Card */}
+                      <div className="group relative bg-white rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 border border-orange-100/50 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-br from-orange-50/30 to-amber-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div className="relative">
+                          <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center shadow-lg flex-shrink-0">
+                              <span className="text-lg sm:text-xl">🎨</span>
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <label className="block text-sm sm:text-base md:text-lg font-bold text-gray-800">
+                                Customize Colors
+                              </label>
+                              <p className="text-xs text-gray-500 hidden sm:block">Match your brand colors</p>
+                            </div>
+                          </div>
+                          <ColorCustomizer
+                            foregroundColor={foregroundColor}
+                            backgroundColor={backgroundColor}
+                            onForegroundChange={setForegroundColor}
+                            onBackgroundChange={setBackgroundColor}
+                          />
                         </div>
-                        <ColorCustomizer
-                          foregroundColor={foregroundColor}
-                          backgroundColor={backgroundColor}
-                          onForegroundChange={setForegroundColor}
-                          onBackgroundChange={setBackgroundColor}
-                        />
                       </div>
                       
-                      {/* Scan Text Customization */}
-                      <div className="bg-gradient-to-br from-indigo-50/50 to-violet-50/50 rounded-xl p-4 sm:p-5 lg:p-6 border-2 border-indigo-100 shadow-sm hover:shadow-md transition-all duration-200">
-                        <div className="flex items-center gap-2 mb-3">
-                          <span className="text-xl">✏️</span>
-                          <label className="block text-sm sm:text-base font-semibold text-gray-700">
-                            Customize Scan Text
-                          </label>
-                        </div>
+                      {/* Scan Text Customization - Premium Card */}
+                      <div className="group relative bg-white rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 border border-indigo-100/50 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/30 to-violet-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div className="relative">
+                          <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center shadow-lg flex-shrink-0">
+                              <span className="text-lg sm:text-xl">✏️</span>
+                            </div>
+                            <div className="min-w-0 flex-1">
+                              <label className="block text-sm sm:text-base md:text-lg font-bold text-gray-800">
+                                Customize Scan Text
+                              </label>
+                              <p className="text-xs text-gray-500 hidden sm:block">Add a call-to-action message</p>
+                            </div>
+                          </div>
                         <div className="space-y-4">
                           {/* Text Input */}
                           <div>
@@ -335,24 +411,38 @@ function App() {
                             </div>
                           </div>
                         </div>
+                        </div>
                       </div>
                     </div>
                     
-                    {/* Right: Preview with Download */}
-                    <div className="xl:sticky xl:top-6 h-fit">
-                      <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-5 sm:p-6 lg:p-7 border-2 border-gray-200 shadow-lg">
-                        {/* Preview Header */}
-                        <div className="flex items-center justify-between mb-4">
-                          <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-blue-50 to-purple-50 rounded-full border border-blue-200">
-                            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                            <span className="text-xs font-semibold text-blue-700 uppercase tracking-wide">Live Preview</span>
-                          </div>
-                          {inputValue.trim() && (
-                            <div className="text-sm text-gray-600 font-medium">
-                              {customLogo ? '🎨 Custom Logo' : `${selectedTemplate.emoji} ${selectedTemplate.name}`}
+                    {/* Right: Premium Preview Panel - Mobile Responsive */}
+                    <div className="lg:sticky lg:top-6 h-fit order-first lg:order-last">
+                      <div className="relative bg-white rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 lg:p-7 border border-gray-200/50 shadow-xl overflow-hidden">
+                        {/* Animated Background Gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/20 via-purple-50/10 to-pink-50/20 opacity-50"></div>
+                        
+                        <div className="relative z-10">
+                          {/* Premium Preview Header - Mobile Responsive */}
+                          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 mb-4 sm:mb-5 md:mb-6 pb-3 sm:pb-4 border-b border-gray-200/50">
+                            <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
+                              <div className="relative flex-shrink-0">
+                                <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50"></div>
+                                <div className="absolute inset-0 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-green-500 rounded-full animate-ping opacity-75"></div>
+                              </div>
+                              <div className="min-w-0">
+                                <span className="text-xs sm:text-sm font-bold text-gray-800 block">Live Preview</span>
+                                <span className="text-[10px] sm:text-xs text-gray-500 hidden sm:block">Real-time updates</span>
+                              </div>
                             </div>
-                          )}
-                        </div>
+                            {inputValue.trim() && (
+                              <div className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full border border-purple-200/50 flex-shrink-0">
+                                <span className="text-base sm:text-lg">{customLogo ? '🎨' : selectedTemplate.emoji}</span>
+                                <span className="text-[10px] sm:text-xs font-semibold text-gray-700 whitespace-nowrap">
+                                  {customLogo ? 'Custom Logo' : selectedTemplate.name}
+                                </span>
+                              </div>
+                            )}
+                          </div>
                         
                         {/* Preview */}
                         <PreviewSection
@@ -367,18 +457,26 @@ function App() {
                           qrRef={qrRef}
                         />
                         
-                        {/* Download Buttons */}
-                        {inputValue.trim() && (
-                          <div className="mt-5 pt-5 border-t-2 border-gray-200">
-                            <DownloadShareButtons
-                              qrRef={qrRef}
-                              inputValue={inputValue}
-                              selectedTemplate={selectedTemplate}
-                              backgroundPattern={backgroundPattern}
-                              backgroundColor={backgroundColor}
-                            />
-                          </div>
-                        )}
+                          {/* Premium Download Section */}
+                          {inputValue.trim() && (
+                            <div className="mt-6 pt-6 border-t border-gray-200/50">
+                              <div className="space-y-3">
+                                <div className="flex items-center gap-2 mb-2">
+                                  <span className="text-sm font-semibold text-gray-700">Ready to Download</span>
+                                  <span className="text-xs text-gray-400">•</span>
+                                  <span className="text-xs text-green-600 font-medium">✓ Fully Scannable</span>
+                                </div>
+                                <DownloadShareButtons
+                                  qrRef={qrRef}
+                                  inputValue={inputValue}
+                                  selectedTemplate={selectedTemplate}
+                                  backgroundPattern={backgroundPattern}
+                                  backgroundColor={backgroundColor}
+                                />
+                              </div>
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
