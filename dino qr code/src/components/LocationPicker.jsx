@@ -150,7 +150,7 @@ const LocationPicker = ({ onLocationSelect, initialLat = null, initialLng = null
     const input = document.createElement('input')
     input.type = 'text'
     input.placeholder = 'Search for a location...'
-    input.className = 'w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-500'
+    input.className = 'w-full px-3 py-2 text-sm border border-gray-300 rounded-lg bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500'
     
     const searchBox = new window.google.maps.places.SearchBox(input)
     
@@ -239,36 +239,36 @@ const LocationPicker = ({ onLocationSelect, initialLat = null, initialLng = null
 
   return (
     <div className="space-y-2">
-      <div className="relative w-full h-64 rounded-lg overflow-hidden border-2 border-gray-300 dark:border-gray-600">
+      <div className="relative w-full h-64 rounded-lg overflow-hidden border-2 border-gray-300">
         {isLoading && (
-          <div className="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-800 z-10">
+          <div className="absolute inset-0 flex items-center justify-center bg-gray-100 z-10">
             <div className="text-center">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-600 mx-auto mb-2"></div>
-              <p className="text-xs text-gray-600 dark:text-gray-400">Loading Google Maps...</p>
+              <p className="text-xs text-gray-600">Loading Google Maps...</p>
             </div>
           </div>
         )}
         {error && (
-          <div className="absolute inset-0 flex items-center justify-center bg-red-50 dark:bg-red-900/20 z-10">
-            <p className="text-xs text-red-600 dark:text-red-400 text-center px-4">{error}</p>
+          <div className="absolute inset-0 flex items-center justify-center bg-red-50 z-10">
+            <p className="text-xs text-red-600 text-center px-4">{error}</p>
           </div>
         )}
         <div ref={mapRef} className="w-full h-full"></div>
       </div>
       {selectedLocation && (
-        <div className="p-2 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-200 dark:border-green-800">
-          <p className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1">Selected Location:</p>
-          <p className="text-xs text-gray-600 dark:text-gray-400">
+        <div className="p-2 bg-green-50 rounded-lg border border-green-200">
+          <p className="text-xs font-semibold text-gray-700 mb-1">Selected Location:</p>
+          <p className="text-xs text-gray-600">
             <strong>Coordinates:</strong> {selectedLocation.lat}, {selectedLocation.lng}
           </p>
           {selectedLocation.address && (
-            <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+            <p className="text-xs text-gray-600 mt-1">
               <strong>Address:</strong> {selectedLocation.address}
             </p>
           )}
         </div>
       )}
-      <p className="text-[10px] text-gray-500 dark:text-gray-400">
+      <p className="text-[10px] text-gray-500">
         💡 Click on the map or search to select a location. Drag the marker to adjust.
       </p>
     </div>

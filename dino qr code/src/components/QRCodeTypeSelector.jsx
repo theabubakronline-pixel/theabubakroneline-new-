@@ -223,13 +223,13 @@ const QRCodeTypeSelector = ({ selectedType, onTypeChange, onInputGenerate }) => 
               onClick={() => handleTypeSelect(type)}
               className={`p-3 sm:p-4 rounded-xl border-2 transition-all duration-300 text-center hover:scale-105 active:scale-95 min-h-[75px] sm:min-h-[85px] touch-manipulation ${
                 selectedType.id === type.id
-                  ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30 shadow-lg ring-2 ring-blue-200 dark:ring-blue-800 scale-105'
-                  : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-md'
+                  ? 'border-blue-500 bg-blue-50 shadow-lg ring-2 ring-blue-200 scale-105'
+                  : 'border-gray-200 bg-white hover:border-blue-300 hover:shadow-md'
               }`}
               title={type.description}
             >
               <div className="text-2xl sm:text-3xl mb-2">{type.icon}</div>
-              <div className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 leading-tight">
+              <div className="text-xs sm:text-sm font-medium text-gray-700 leading-tight">
                 {type.name}
               </div>
             </button>
@@ -239,9 +239,9 @@ const QRCodeTypeSelector = ({ selectedType, onTypeChange, onInputGenerate }) => 
 
       {/* Custom Input Forms */}
       {selectedType.id === 'whatsapp' && (
-        <div className="space-y-4 p-4 sm:p-5 bg-blue-50 dark:bg-blue-900/20 rounded-xl border-2 border-blue-200 dark:border-blue-800">
+        <div className="space-y-4 p-4 sm:p-5 bg-blue-50 rounded-xl border-2 border-blue-200">
           <div>
-            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
               Phone Number
             </label>
             <input
@@ -252,11 +252,11 @@ const QRCodeTypeSelector = ({ selectedType, onTypeChange, onInputGenerate }) => 
                 whatsapp: { ...prev.whatsapp, phone: e.target.value }
               }))}
               placeholder="+1234567890"
-              className="w-full px-4 py-3 text-sm bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+              className="w-full px-4 py-3 text-sm bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
             />
           </div>
           <div>
-            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
               Message (Optional)
             </label>
             <input
@@ -267,7 +267,7 @@ const QRCodeTypeSelector = ({ selectedType, onTypeChange, onInputGenerate }) => 
                 whatsapp: { ...prev.whatsapp, message: e.target.value }
               }))}
               placeholder="Hello!"
-              className="w-full px-4 py-3 text-sm bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+              className="w-full px-4 py-3 text-sm bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
             />
           </div>
           <button
@@ -281,8 +281,8 @@ const QRCodeTypeSelector = ({ selectedType, onTypeChange, onInputGenerate }) => 
       )}
 
       {selectedType.id === 'location' && (
-        <div className="space-y-4 p-4 sm:p-5 bg-green-50 dark:bg-green-900/20 rounded-xl border-2 border-green-200 dark:border-green-800">
-          <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">
+        <div className="space-y-4 p-4 sm:p-5 bg-green-50 rounded-xl border-2 border-green-200">
+          <label className="block text-sm font-semibold text-gray-700 mb-3">
             Select Location on Map
           </label>
           <LocationPicker
@@ -306,13 +306,13 @@ const QRCodeTypeSelector = ({ selectedType, onTypeChange, onInputGenerate }) => 
             initialLat={customInputs.location.lat || null}
             initialLng={customInputs.location.lng || null}
           />
-          <div className="pt-4 border-t-2 border-green-200 dark:border-green-700">
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+          <div className="pt-4 border-t-2 border-green-200">
+            <p className="text-sm text-gray-600 mb-3">
               Or manually enter coordinates:
             </p>
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Latitude
                 </label>
                 <input
@@ -329,11 +329,11 @@ const QRCodeTypeSelector = ({ selectedType, onTypeChange, onInputGenerate }) => 
                     }
                   }}
                   placeholder="40.7128"
-                  className="w-full px-4 py-3 text-sm bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all"
+                  className="w-full px-4 py-3 text-sm bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all"
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
                   Longitude
                 </label>
                 <input
@@ -350,7 +350,7 @@ const QRCodeTypeSelector = ({ selectedType, onTypeChange, onInputGenerate }) => 
                     }
                   }}
                   placeholder="-74.0060"
-                  className="w-full px-4 py-3 text-sm bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all"
+                  className="w-full px-4 py-3 text-sm bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all"
                 />
               </div>
             </div>
@@ -359,9 +359,9 @@ const QRCodeTypeSelector = ({ selectedType, onTypeChange, onInputGenerate }) => 
       )}
 
       {selectedType.id === 'social-media' && (
-        <div className="space-y-5 p-5 sm:p-6 bg-gradient-to-br from-pink-50/80 via-rose-50/80 to-purple-50/80 dark:from-pink-900/30 dark:via-rose-900/30 dark:to-purple-900/30 rounded-xl border-2 border-pink-200 dark:border-pink-800 shadow-sm">
+        <div className="space-y-5 p-5 sm:p-6 bg-gradient-to-br from-pink-50/80 via-rose-50/80 to-purple-50/80 rounded-xl border-2 border-pink-200 shadow-sm">
           <div>
-            <label className="block text-base sm:text-lg font-bold text-gray-800 dark:text-gray-100 mb-5 flex items-center gap-2">
+            <label className="block text-base sm:text-lg font-bold text-gray-800 mb-5 flex items-center gap-2">
               <span className="text-xl">📱</span>
               <span>Select Social Media Platform</span>
             </label>
@@ -390,8 +390,8 @@ const QRCodeTypeSelector = ({ selectedType, onTypeChange, onInputGenerate }) => 
                     }}
                     className={`group relative p-4 sm:p-5 rounded-xl border-2 transition-all duration-300 hover:scale-105 active:scale-95 flex flex-col items-center justify-center min-h-[95px] sm:min-h-[110px] overflow-hidden ${
                       isSelected
-                        ? 'border-pink-500 bg-gradient-to-br from-white to-pink-50 dark:from-gray-800 dark:to-pink-900/40 shadow-xl ring-2 ring-pink-400 dark:ring-pink-600 scale-105'
-                        : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-pink-300 dark:hover:border-pink-600 hover:shadow-lg hover:bg-gradient-to-br hover:from-gray-50 hover:to-pink-50/30 dark:hover:from-gray-750 dark:hover:to-pink-900/20'
+                        ? 'border-pink-500 bg-gradient-to-br from-white to-pink-50 shadow-xl ring-2 ring-pink-400 scale-105'
+                        : 'border-gray-200 bg-white hover:border-pink-300 hover:shadow-lg hover:bg-gradient-to-br hover:from-gray-50 hover:to-pink-50/30'
                     }`}
                     title={platform.name}
                   >
@@ -406,7 +406,7 @@ const QRCodeTypeSelector = ({ selectedType, onTypeChange, onInputGenerate }) => 
                     
                     {/* Background glow effect for selected */}
                     {isSelected && (
-                      <div className="absolute inset-0 bg-gradient-to-br from-pink-100/50 to-rose-100/50 dark:from-pink-900/30 dark:to-rose-900/30 rounded-xl blur-sm -z-0"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-pink-100/50 to-rose-100/50 rounded-xl blur-sm -z-0"></div>
                     )}
                     
                     {/* Icon with better styling and hover effect */}
@@ -425,8 +425,8 @@ const QRCodeTypeSelector = ({ selectedType, onTypeChange, onInputGenerate }) => 
                     {/* Platform name with better styling */}
                     <div className={`relative text-[11px] sm:text-xs font-bold leading-tight text-center z-10 ${
                       isSelected 
-                        ? 'text-pink-700 dark:text-pink-200' 
-                        : 'text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-100'
+                        ? 'text-pink-700' 
+                        : 'text-gray-700 group-hover:text-gray-900'
                     }`}>
                       {platform.name}
                     </div>
@@ -437,7 +437,7 @@ const QRCodeTypeSelector = ({ selectedType, onTypeChange, onInputGenerate }) => 
           </div>
 
           <div>
-            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
               {SOCIAL_MEDIA_PLATFORMS.find(p => p.id === customInputs['social-media'].platform)?.name} URL or Username
             </label>
             <input
@@ -465,9 +465,9 @@ const QRCodeTypeSelector = ({ selectedType, onTypeChange, onInputGenerate }) => 
                 }
               }}
               placeholder={SOCIAL_MEDIA_PLATFORMS.find(p => p.id === customInputs['social-media'].platform)?.placeholder}
-              className="w-full px-4 py-3 text-sm bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-all"
+              className="w-full px-4 py-3 text-sm bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 transition-all"
             />
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1.5">
+            <p className="text-xs text-gray-500 mt-1.5">
               {customInputs['social-media'].platform === 'youtube'
                 ? 'Enter username (e.g., @username) for channel, or full URL for channel/video'
                 : customInputs['social-media'].platform === 'facebook'
@@ -488,9 +488,9 @@ const QRCodeTypeSelector = ({ selectedType, onTypeChange, onInputGenerate }) => 
       )}
 
       {selectedType.id === 'business-card' && (
-        <div className="space-y-4 p-4 sm:p-5 bg-purple-50 dark:bg-purple-900/20 rounded-xl border-2 border-purple-200 dark:border-purple-800">
+        <div className="space-y-4 p-4 sm:p-5 bg-purple-50 rounded-xl border-2 border-purple-200">
           <div>
-            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
               Full Name
             </label>
             <input
@@ -501,12 +501,12 @@ const QRCodeTypeSelector = ({ selectedType, onTypeChange, onInputGenerate }) => 
                 'business-card': { ...prev['business-card'], name: e.target.value }
               }))}
               placeholder="John Doe"
-              className="w-full px-4 py-3 text-sm bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all"
+              className="w-full px-4 py-3 text-sm bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all"
             />
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Phone
               </label>
               <input
@@ -517,11 +517,11 @@ const QRCodeTypeSelector = ({ selectedType, onTypeChange, onInputGenerate }) => 
                   'business-card': { ...prev['business-card'], phone: e.target.value }
                 }))}
                 placeholder="+1234567890"
-                className="w-full px-4 py-3 text-sm bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all"
+                className="w-full px-4 py-3 text-sm bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Email
               </label>
               <input
@@ -532,13 +532,13 @@ const QRCodeTypeSelector = ({ selectedType, onTypeChange, onInputGenerate }) => 
                   'business-card': { ...prev['business-card'], email: e.target.value }
                 }))}
                 placeholder="email@example.com"
-                className="w-full px-4 py-3 text-sm bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all"
+                className="w-full px-4 py-3 text-sm bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all"
               />
             </div>
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Company
               </label>
               <input
@@ -549,11 +549,11 @@ const QRCodeTypeSelector = ({ selectedType, onTypeChange, onInputGenerate }) => 
                   'business-card': { ...prev['business-card'], company: e.target.value }
                 }))}
                 placeholder="Company Name"
-                className="w-full px-4 py-3 text-sm bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all"
+                className="w-full px-4 py-3 text-sm bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Title
               </label>
               <input
@@ -564,7 +564,7 @@ const QRCodeTypeSelector = ({ selectedType, onTypeChange, onInputGenerate }) => 
                   'business-card': { ...prev['business-card'], title: e.target.value }
                 }))}
                 placeholder="Job Title"
-                className="w-full px-4 py-3 text-sm bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all"
+                className="w-full px-4 py-3 text-sm bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all"
               />
             </div>
           </div>

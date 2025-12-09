@@ -25,14 +25,14 @@ const PreviewSection = ({
     <div className="w-full">
       <div className={`flex flex-col items-center justify-center min-h-[240px] sm:min-h-[280px] rounded-lg p-4 sm:p-6 transition-all duration-300 ${
         hasInput 
-          ? 'bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 border-2 border-gray-200 dark:border-gray-700' 
-          : 'bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 border-2 border-dashed border-gray-300 dark:border-gray-700'
+          ? 'bg-gradient-to-br from-gray-50 to-gray-100 border-2 border-gray-200' 
+          : 'bg-gradient-to-br from-gray-50 to-gray-100 border-2 border-dashed border-gray-300'
       }`}>
         
         {hasInput ? (
           <div 
             ref={containerRef} 
-            className="bg-white dark:bg-gray-900 p-4 sm:p-5 rounded-xl shadow-xl border-2 border-gray-200 dark:border-gray-800 relative z-10 transition-all duration-300"
+            className="bg-white p-4 sm:p-5 rounded-xl shadow-xl border-2 border-gray-200 relative z-10 transition-all duration-300"
             style={{ backgroundColor: backgroundColor }}
           >
             <div className="flex flex-col items-center gap-4">
@@ -51,7 +51,7 @@ const PreviewSection = ({
                 {(customLogo || !selectedTemplate.isSimple) && (
                   <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none z-10">
                     {customLogo ? (
-                      <div className="bg-white rounded-full p-2 shadow-xl border-2 border-purple-200 dark:border-purple-800 flex items-center justify-center" style={{ width: '44px', height: '44px', minWidth: '44px', minHeight: '44px' }}>
+                      <div className="bg-white rounded-full p-2 shadow-xl border-2 border-purple-200 flex items-center justify-center" style={{ width: '44px', height: '44px', minWidth: '44px', minHeight: '44px' }}>
                         <img
                           src={customLogo}
                           alt="Custom logo"
@@ -68,7 +68,7 @@ const PreviewSection = ({
                       </div>
                     ) : (
                       !selectedTemplate.isSimple && (
-                        <div className="bg-white dark:bg-gray-900 rounded-full p-2 shadow-xl border border-purple-200 dark:border-purple-800">
+                        <div className="bg-white rounded-full p-2 shadow-xl border border-purple-200">
                           <span className="text-2xl select-none">
                             {selectedTemplate.emoji}
                           </span>
@@ -81,7 +81,7 @@ const PreviewSection = ({
               
               {/* Creative "Scan Me!" Text */}
               {scanText && scanText.trim() && (
-                <div className="flex items-center justify-center gap-3 mt-2 pt-3 border-t-2 border-gray-200 dark:border-gray-700 w-full">
+                <div className="flex items-center justify-center gap-3 mt-2 pt-3 border-t-2 border-gray-200 w-full">
                   {/* Left Arrow Icon */}
                   <div className="flex items-center" style={{ color: scanTextColor }}>
                     <svg className="w-5 h-5 sm:w-6 sm:h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ animationDelay: '0s' }}>
@@ -117,14 +117,14 @@ const PreviewSection = ({
             </div>
           </div>
         ) : (
-          <div className="text-center text-gray-400 dark:text-gray-500">
-            <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 flex items-center justify-center">
+          <div className="text-center text-gray-400">
+            <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
               <span className="text-5xl animate-float">🦖</span>
             </div>
-            <p className="text-base sm:text-lg font-semibold text-gray-500 dark:text-gray-400 mb-2">
+            <p className="text-base sm:text-lg font-semibold text-gray-500 mb-2">
               Enter text or URL to see preview
             </p>
-            <p className="text-sm text-gray-400 dark:text-gray-500">
+            <p className="text-sm text-gray-400">
               Your custom QR code will appear here
             </p>
           </div>
@@ -133,9 +133,9 @@ const PreviewSection = ({
 
       {/* Status Info - Compact */}
       {hasInput && (
-        <div className="mt-4 flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-lg border border-green-200 dark:border-green-800">
+        <div className="mt-4 flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200">
           <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
-          <span className="text-xs font-semibold text-green-700 dark:text-green-400">
+          <span className="text-xs font-semibold text-green-700">
             Fully scannable
           </span>
         </div>

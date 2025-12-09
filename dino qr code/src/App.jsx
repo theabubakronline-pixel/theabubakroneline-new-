@@ -73,13 +73,13 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 dark:from-gray-900 dark:via-slate-900 dark:to-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50">
       {isLoading && <LoadingAnimation onComplete={() => setIsLoading(false)} />}
       <Header />
       
       {/* Subtle background pattern */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none -z-0">
-        <div className="absolute top-0 left-0 w-full h-full opacity-[0.02] dark:opacity-[0.03]">
+        <div className="absolute top-0 left-0 w-full h-full opacity-[0.02]">
           <div className="absolute top-20 left-10 text-9xl animate-float">🦖</div>
           <div className="absolute top-40 right-20 text-8xl animate-float" style={{ animationDelay: '1s' }}>🦕</div>
           <div className="absolute bottom-20 left-1/4 text-7xl animate-float" style={{ animationDelay: '2s' }}>🦏</div>
@@ -94,7 +94,7 @@ function App() {
             <div className="inline-flex items-center justify-center mb-8">
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 rounded-full blur-3xl opacity-40 animate-pulse"></div>
-                <div className="relative bg-white dark:bg-gray-800 rounded-3xl p-6 shadow-2xl border border-gray-200/50 dark:border-gray-700/50">
+                <div className="relative bg-white rounded-3xl p-6 shadow-2xl border border-gray-200/50">
                   <span className="text-8xl sm:text-9xl">🦖</span>
                 </div>
               </div>
@@ -106,12 +106,12 @@ function App() {
               </span>
             </h1>
             
-            <p className="text-xl sm:text-2xl md:text-3xl text-gray-700 dark:text-gray-300 font-medium mb-4">
+            <p className="text-xl sm:text-2xl md:text-3xl text-gray-700 font-medium mb-4">
               Free QR Code Generator No Sign Up - Instant & Fast
             </p>
             
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed mb-10">
-              The best <strong className="text-blue-600 dark:text-blue-400">free QR code generator no sign up</strong> - generate QR codes instantly without registration! Create QR codes for <strong className="text-blue-600 dark:text-blue-400">location, WhatsApp, website, link, business card, and Google Forms</strong>. Make <strong className="text-purple-600 dark:text-purple-400">QR codes with dinosaur</strong> shapes and <strong className="text-pink-600 dark:text-pink-400">QR codes with logo</strong> in seconds. No signup, no waiting - just instant QR code generation with dinosaur themes, logo uploads, and custom colors.
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-10">
+              The best <strong className="text-blue-600">free QR code generator no sign up</strong> - generate QR codes instantly without registration! Create QR codes for <strong className="text-blue-600">location, WhatsApp, website, link, business card, and Google Forms</strong>. Make <strong className="text-purple-600">QR codes with dinosaur</strong> shapes and <strong className="text-pink-600">QR codes with logo</strong> in seconds. No signup, no waiting - just instant QR code generation with dinosaur themes, logo uploads, and custom colors.
             </p>
 
             {/* Quick Stats - Minimalist */}
@@ -126,10 +126,10 @@ function App() {
               ].map((stat, idx) => (
                 <div 
                   key={idx}
-                  className="flex items-center gap-2 px-4 py-2.5 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-full shadow-md border border-gray-200/60 dark:border-gray-700/60 hover:shadow-lg transition-all duration-200 hover:scale-105"
+                  className="flex items-center gap-2 px-4 py-2.5 bg-white/80 backdrop-blur-md rounded-full shadow-md border border-gray-200/60 hover:shadow-lg transition-all duration-200 hover:scale-105"
                 >
                   <span className="text-lg">{stat.icon}</span>
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{stat.label}</span>
+                  <span className="text-sm font-medium text-gray-700">{stat.label}</span>
                 </div>
               ))}
             </div>
@@ -137,7 +137,7 @@ function App() {
 
           {/* Main Workspace - Spacious Clean Layout */}
           <section id="workspace" className="mb-12 sm:mb-16">
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+            <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
               
               {/* Header */}
               <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 px-6 sm:px-8 py-4">
@@ -171,10 +171,10 @@ function App() {
                     <div className="space-y-5 sm:space-y-6">
                       
                       {/* QR Code Type Selector */}
-                      <div className="bg-gradient-to-br from-blue-50/50 to-purple-50/50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-xl p-4 sm:p-5 lg:p-6 border-2 border-blue-100 dark:border-blue-800/50 shadow-sm hover:shadow-md transition-all duration-200">
+                      <div className="bg-gradient-to-br from-blue-50/50 to-purple-50/50 rounded-xl p-4 sm:p-5 lg:p-6 border-2 border-blue-100 shadow-sm hover:shadow-md transition-all duration-200">
                         <div className="flex items-center gap-2 mb-3">
                           <span className="text-xl">🌐</span>
-                          <label className="block text-sm sm:text-base font-semibold text-gray-700 dark:text-gray-300">
+                          <label className="block text-sm sm:text-base font-semibold text-gray-700">
                             QR Code Type
                           </label>
                         </div>
@@ -186,10 +186,10 @@ function App() {
                       </div>
 
                       {/* Input Section */}
-                      <div className="bg-gradient-to-br from-green-50/50 to-emerald-50/50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl p-4 sm:p-5 lg:p-6 border-2 border-green-100 dark:border-green-800/50 shadow-sm hover:shadow-md transition-all duration-200">
+                      <div className="bg-gradient-to-br from-green-50/50 to-emerald-50/50 rounded-xl p-4 sm:p-5 lg:p-6 border-2 border-green-100 shadow-sm hover:shadow-md transition-all duration-200">
                         <div className="flex items-center gap-2 mb-3">
                           <span className="text-xl">📝</span>
-                          <label className="block text-sm sm:text-base font-semibold text-gray-700 dark:text-gray-300">
+                          <label className="block text-sm sm:text-base font-semibold text-gray-700">
                             {selectedQRType.id === 'whatsapp' || selectedQRType.id === 'location' || selectedQRType.id === 'business-card' || selectedQRType.id === 'social-media'
                               ? 'Generated QR Code Content'
                               : `Enter ${selectedQRType.name}`}
@@ -203,17 +203,17 @@ function App() {
                           placeholder={selectedQRType.placeholder}
                         />
                         {selectedQRType.id !== 'whatsapp' && selectedQRType.id !== 'location' && selectedQRType.id !== 'business-card' && selectedQRType.id !== 'social-media' && (
-                          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-3 leading-relaxed">
+                          <p className="text-xs sm:text-sm text-gray-600 mt-3 leading-relaxed">
                             {selectedQRType.description}
                           </p>
                         )}
                       </div>
                       
                       {/* Template & Logo */}
-                      <div className="bg-gradient-to-br from-purple-50/50 to-pink-50/50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-xl p-4 sm:p-5 lg:p-6 border-2 border-purple-100 dark:border-purple-800/50 shadow-sm hover:shadow-md transition-all duration-200">
+                      <div className="bg-gradient-to-br from-purple-50/50 to-pink-50/50 rounded-xl p-4 sm:p-5 lg:p-6 border-2 border-purple-100 shadow-sm hover:shadow-md transition-all duration-200">
                         <div className="flex items-center gap-2 mb-3">
                           <span className="text-xl">🦖</span>
-                          <label className="block text-sm sm:text-base font-semibold text-gray-700 dark:text-gray-300">
+                          <label className="block text-sm sm:text-base font-semibold text-gray-700">
                             Choose Style or Upload Logo
                           </label>
                         </div>
@@ -233,10 +233,10 @@ function App() {
                       </div>
                       
                       {/* Colors */}
-                      <div className="bg-gradient-to-br from-orange-50/50 to-amber-50/50 dark:from-orange-900/20 dark:to-amber-900/20 rounded-xl p-4 sm:p-5 lg:p-6 border-2 border-orange-100 dark:border-orange-800/50 shadow-sm hover:shadow-md transition-all duration-200">
+                      <div className="bg-gradient-to-br from-orange-50/50 to-amber-50/50 rounded-xl p-4 sm:p-5 lg:p-6 border-2 border-orange-100 shadow-sm hover:shadow-md transition-all duration-200">
                         <div className="flex items-center gap-2 mb-3">
                           <span className="text-xl">🎨</span>
-                          <label className="block text-sm sm:text-base font-semibold text-gray-700 dark:text-gray-300">
+                          <label className="block text-sm sm:text-base font-semibold text-gray-700">
                             Customize Colors
                           </label>
                         </div>
@@ -249,17 +249,17 @@ function App() {
                       </div>
                       
                       {/* Scan Text Customization */}
-                      <div className="bg-gradient-to-br from-indigo-50/50 to-violet-50/50 dark:from-indigo-900/20 dark:to-violet-900/20 rounded-xl p-4 sm:p-5 lg:p-6 border-2 border-indigo-100 dark:border-indigo-800/50 shadow-sm hover:shadow-md transition-all duration-200">
+                      <div className="bg-gradient-to-br from-indigo-50/50 to-violet-50/50 rounded-xl p-4 sm:p-5 lg:p-6 border-2 border-indigo-100 shadow-sm hover:shadow-md transition-all duration-200">
                         <div className="flex items-center gap-2 mb-3">
                           <span className="text-xl">✏️</span>
-                          <label className="block text-sm sm:text-base font-semibold text-gray-700 dark:text-gray-300">
+                          <label className="block text-sm sm:text-base font-semibold text-gray-700">
                             Customize Scan Text
                           </label>
                         </div>
                         <div className="space-y-4">
                           {/* Text Input */}
                           <div>
-                            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                            <label className="block text-sm font-semibold text-gray-700 mb-2">
                               Text Content
                             </label>
                             <input
@@ -268,16 +268,16 @@ function App() {
                               onChange={(e) => setScanText(e.target.value.toUpperCase())}
                               placeholder="SCAN ME!"
                               maxLength={30}
-                              className="w-full px-4 py-3 text-base bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all font-bold uppercase"
+                              className="w-full px-4 py-3 text-base bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all font-bold uppercase"
                             />
-                            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1.5">
+                            <p className="text-xs text-gray-500 mt-1.5">
                               Maximum 30 characters
                             </p>
                           </div>
                           
                           {/* Color Picker */}
                           <div>
-                            <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                            <label className="block text-sm font-semibold text-gray-700 mb-2">
                               Text Color
                             </label>
                             <div className="flex items-center gap-3">
@@ -286,19 +286,19 @@ function App() {
                                   type="color"
                                   value={scanTextColor}
                                   onChange={(e) => setScanTextColor(e.target.value)}
-                                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl cursor-pointer border-2 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-shadow"
+                                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl cursor-pointer border-2 border-gray-300 bg-white shadow-sm hover:shadow-md transition-shadow"
                                 />
                               </div>
                               <input
                                 type="text"
                                 value={scanTextColor}
                                 onChange={(e) => setScanTextColor(e.target.value)}
-                                className="flex-1 px-4 py-3 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all font-mono text-sm text-gray-900 dark:text-white"
+                                className="flex-1 px-4 py-3 bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all font-mono text-sm text-gray-900"
                                 placeholder="#9333EA"
                               />
                               <button
                                 onClick={() => setScanTextColor('#9333EA')}
-                                className="px-3 py-3 text-xs font-medium rounded-lg border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200"
+                                className="px-3 py-3 text-xs font-medium rounded-lg border-2 border-gray-300 text-gray-700 bg-white hover:bg-gray-50 transition-all duration-200"
                                 title="Reset to default purple"
                               >
                                 ↺ Reset
@@ -307,7 +307,7 @@ function App() {
                             
                             {/* Preset Colors */}
                             <div className="mt-3">
-                              <p className="text-xs font-medium text-gray-600 dark:text-gray-400 mb-2">Quick Colors:</p>
+                              <p className="text-xs font-medium text-gray-600 mb-2">Quick Colors:</p>
                               <div className="flex flex-wrap gap-2">
                                 {[
                                   { name: 'Purple', value: '#9333EA' },
@@ -324,8 +324,8 @@ function App() {
                                     onClick={() => setScanTextColor(color.value)}
                                     className={`w-10 h-10 rounded-lg border-2 transition-all duration-300 hover:scale-110 ${
                                       scanTextColor.toLowerCase() === color.value.toLowerCase()
-                                        ? 'border-indigo-500 ring-4 ring-indigo-200 dark:ring-indigo-900/30 scale-110 shadow-lg'
-                                        : 'border-gray-300 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-600'
+                                        ? 'border-indigo-500 ring-4 ring-indigo-200 scale-110 shadow-lg'
+                                        : 'border-gray-300 hover:border-indigo-300'
                                     }`}
                                     style={{ backgroundColor: color.value }}
                                     title={color.name}
@@ -340,15 +340,15 @@ function App() {
                     
                     {/* Right: Preview with Download */}
                     <div className="xl:sticky xl:top-6 h-fit">
-                      <div className="bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 rounded-xl p-5 sm:p-6 lg:p-7 border-2 border-gray-200 dark:border-gray-700 shadow-lg">
+                      <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-5 sm:p-6 lg:p-7 border-2 border-gray-200 shadow-lg">
                         {/* Preview Header */}
                         <div className="flex items-center justify-between mb-4">
-                          <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 rounded-full border border-blue-200 dark:border-blue-800">
+                          <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-blue-50 to-purple-50 rounded-full border border-blue-200">
                             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                            <span className="text-xs font-semibold text-blue-700 dark:text-blue-300 uppercase tracking-wide">Live Preview</span>
+                            <span className="text-xs font-semibold text-blue-700 uppercase tracking-wide">Live Preview</span>
                           </div>
                           {inputValue.trim() && (
-                            <div className="text-sm text-gray-600 dark:text-gray-400 font-medium">
+                            <div className="text-sm text-gray-600 font-medium">
                               {customLogo ? '🎨 Custom Logo' : `${selectedTemplate.emoji} ${selectedTemplate.name}`}
                             </div>
                           )}
@@ -369,7 +369,7 @@ function App() {
                         
                         {/* Download Buttons */}
                         {inputValue.trim() && (
-                          <div className="mt-5 pt-5 border-t-2 border-gray-200 dark:border-gray-700">
+                          <div className="mt-5 pt-5 border-t-2 border-gray-200">
                             <DownloadShareButtons
                               qrRef={qrRef}
                               inputValue={inputValue}
@@ -475,9 +475,9 @@ function App() {
           {/* Features Section - Clean Grid */}
           <section className="mb-16 sm:mb-20 lg:mb-24">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 rounded-full mb-4">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full mb-4">
                 <span className="text-base">⭐</span>
-                <span className="text-xs font-semibold uppercase tracking-wider text-blue-700 dark:text-blue-300">Why Choose Us</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-blue-700">Why Choose Us</span>
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
                 <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
@@ -492,106 +492,106 @@ function App() {
                   icon: '⚡', 
                   title: 'Free QR Code Generator No Sign Up - Instant', 
                   desc: 'Our free QR code generator requires no sign up - generate QR codes instantly without registration, email, or account creation. Create QR codes as fast as you can type, with real-time preview and instant downloads. No signup, no waiting, just instant QR code generation!',
-                  gradient: 'from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20',
-                  border: 'border-green-200 dark:border-green-800'
+                  gradient: 'from-green-50 to-emerald-50',
+                  border: 'border-green-200'
                 },
                 { 
                   icon: '⭐', 
                   title: 'Best JustFreeQR Alternative - Free QR Generator', 
                   desc: 'Looking for a justfreeqr alternative? Our free QR code generator no sign up offers everything justfreeqr does plus unique dinosaur themes, better logo placement, custom colors, and no redirects. The best justfreeqr alternative with more features!',
-                  gradient: 'from-yellow-50 to-amber-50 dark:from-yellow-900/20 dark:to-amber-900/20',
-                  border: 'border-yellow-200 dark:border-yellow-800'
+                  gradient: 'from-yellow-50 to-amber-50',
+                  border: 'border-yellow-200'
                 },
                 { 
                   icon: '🦖', 
                   title: 'QR Code with Dinosaur Shapes', 
                   desc: 'Create unique QR code with dinosaur shapes integrated into the QR pattern. Our QR code dino generator makes fun, memorable QR codes perfect for themed projects!',
-                  gradient: 'from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20',
-                  border: 'border-red-200 dark:border-red-800'
+                  gradient: 'from-red-50 to-orange-50',
+                  border: 'border-red-200'
                 },
                 { 
                   icon: '💬', 
                   title: 'QR Code Generator for WhatsApp', 
                   desc: 'Create QR code generator for WhatsApp easily! Generate WhatsApp QR codes that open direct chats or messages. Perfect for customer support, sales teams, or personal contacts. Free QR code generator for WhatsApp - no signup required!',
-                  gradient: 'from-green-50 to-teal-50 dark:from-green-900/20 dark:to-teal-900/20',
-                  border: 'border-green-200 dark:border-green-800'
+                  gradient: 'from-green-50 to-teal-50',
+                  border: 'border-green-200'
                 },
                 { 
                   icon: '📍', 
                   title: 'QR Code Generator for Location', 
                   desc: 'Create QR code generator for location and GPS coordinates. Generate location QR codes that open Google Maps with exact coordinates or addresses. Perfect for event venues, businesses, or sharing locations instantly. Free location QR code generator!',
-                  gradient: 'from-red-50 to-pink-50 dark:from-red-900/20 dark:to-pink-900/20',
-                  border: 'border-red-200 dark:border-red-800'
+                  gradient: 'from-red-50 to-pink-50',
+                  border: 'border-red-200'
                 },
                 { 
                   icon: '👤', 
                   title: 'QR Code Generator for Business Card', 
                   desc: 'Create QR code generator for business card with vCard format. Generate professional business card QR codes with contact details, phone, email, company, and title. Perfect for networking, events, and professional branding.',
-                  gradient: 'from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20',
-                  border: 'border-purple-200 dark:border-purple-800'
+                  gradient: 'from-purple-50 to-indigo-50',
+                  border: 'border-purple-200'
                 },
                 { 
                   icon: '📝', 
                   title: 'QR Code Generator for Google Forms', 
                   desc: 'Create QR code generator for Google Forms instantly! Generate QR codes that link directly to your Google Forms. Perfect for surveys, registrations, feedback collection, and event management. Free and instant!',
-                  gradient: 'from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20',
-                  border: 'border-blue-200 dark:border-blue-800'
+                  gradient: 'from-blue-50 to-cyan-50',
+                  border: 'border-blue-200'
                 },
                 { 
                   icon: '🏢', 
                   title: 'QR Code with Logo - Free Generator', 
                   desc: 'Learn how to make QR code with logo free using our generator. Create QR code with logo in the middle for business cards, marketing materials, product packaging, and corporate branding. All features completely free.',
-                  gradient: 'from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20',
-                  border: 'border-blue-200 dark:border-blue-800'
+                  gradient: 'from-blue-50 to-cyan-50',
+                  border: 'border-blue-200'
                 },
                 { 
                   icon: '🎨', 
                   title: 'Custom QR Code Design & Shapes', 
                   desc: 'Create stunning custom QR code design with unique custom QR code shapes including dinosaur themes. Design beautiful QR codes with custom colors, logos, and creative shapes.',
-                  gradient: 'from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20',
-                  border: 'border-green-200 dark:border-green-800'
+                  gradient: 'from-green-50 to-emerald-50',
+                  border: 'border-green-200'
                 },
                 { 
                   icon: '📥', 
                   title: 'Easy Download', 
                   desc: 'Download your dino QR codes or branded QR codes instantly as high-quality PNG or SVG files. Perfect for digital use, print materials, and large-scale printing.',
-                  gradient: 'from-orange-50 to-amber-50 dark:from-orange-900/20 dark:to-amber-900/20',
-                  border: 'border-orange-200 dark:border-orange-800'
+                  gradient: 'from-orange-50 to-amber-50',
+                  border: 'border-orange-200'
                 },
                 { 
                   icon: '✅', 
                   title: 'Fully Scannable QR Code Dino', 
                   desc: 'All QR code with dinosaur shapes and branded QR codes are fully scannable with any smartphone camera or standard QR code reader. Every QR code dino works perfectly!',
-                  gradient: 'from-pink-50 to-rose-50 dark:from-pink-900/20 dark:to-rose-900/20',
-                  border: 'border-pink-200 dark:border-pink-800'
+                  gradient: 'from-pink-50 to-rose-50',
+                  border: 'border-pink-200'
                 },
                 { 
                   icon: '🆓', 
                   title: 'Custom QR Code Generator Free', 
                   desc: 'Our custom QR code generator free works without redirects - your links go directly to the destination. Create unlimited custom QR codes, custom QR codes with logo, and custom designs completely free.',
-                  gradient: 'from-teal-50 to-cyan-50 dark:from-teal-900/20 dark:to-cyan-900/20',
-                  border: 'border-teal-200 dark:border-teal-800'
+                  gradient: 'from-teal-50 to-cyan-50',
+                  border: 'border-teal-200'
                 },
                 { 
                   icon: '🚀', 
                   title: 'Instant QR Code Dino Generation', 
                   desc: 'Generate QR code with dinosaur shapes instantly with real-time preview. See your QR code dino update as you type - no waiting, no delays, instant results.',
-                  gradient: 'from-violet-50 to-purple-50 dark:from-violet-900/20 dark:to-purple-900/20',
-                  border: 'border-violet-200 dark:border-violet-800'
+                  gradient: 'from-violet-50 to-purple-50',
+                  border: 'border-violet-200'
                 },
                 { 
                   icon: '🔒', 
                   title: 'Privacy & Security', 
                   desc: 'All processing happens in your browser - your data never leaves your device. No servers, no tracking, no watermarks. Generate QR codes with complete privacy.',
-                  gradient: 'from-indigo-50 to-blue-50 dark:from-indigo-900/20 dark:to-blue-900/20',
-                  border: 'border-indigo-200 dark:border-indigo-800'
+                  gradient: 'from-indigo-50 to-blue-50',
+                  border: 'border-indigo-200'
                 },
                 { 
                   icon: '🎯', 
                   title: 'Fun & Professional QR Code Dino', 
                   desc: 'The only QR code generator that combines fun QR code with dinosaur shapes for creative projects with professional branded QR codes for business. Perfect QR code dino for any use case.',
-                  gradient: 'from-yellow-50 to-amber-50 dark:from-yellow-900/20 dark:to-amber-900/20',
-                  border: 'border-yellow-200 dark:border-yellow-800'
+                  gradient: 'from-yellow-50 to-amber-50',
+                  border: 'border-yellow-200'
                 },
               ].map((feature, idx) => (
                 <div 
@@ -599,8 +599,8 @@ function App() {
                   className={`group bg-gradient-to-br ${feature.gradient} rounded-xl p-6 border ${feature.border} hover:shadow-lg transition-all duration-300 hover:-translate-y-1`}
                 >
                   <div className="text-4xl mb-4">{feature.icon}</div>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">{feature.title}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{feature.desc}</p>
+                  <h3 className="text-lg font-bold text-gray-900 mb-3">{feature.title}</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">{feature.desc}</p>
                 </div>
               ))}
             </div>
@@ -609,9 +609,9 @@ function App() {
           {/* Step-by-Step Section - Timeline Design */}
           <section className="mb-16 sm:mb-20 lg:mb-24">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 rounded-full mb-4">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full mb-4">
                 <span className="text-base">📋</span>
-                <span className="text-xs font-semibold uppercase tracking-wider text-blue-700 dark:text-blue-300">How It Works</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-blue-700">How It Works</span>
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
                 <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
@@ -631,14 +631,14 @@ function App() {
               ].map((item) => (
                 <div 
                   key={item.step} 
-                  className="relative bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                  className="relative bg-white rounded-xl p-6 border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="absolute -top-3 -left-3 w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-lg">
                     {item.step}
                   </div>
                   <div className="text-4xl mb-4 mt-2">{item.icon}</div>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">{item.title}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{item.desc}</p>
+                  <h3 className="text-lg font-bold text-gray-900 mb-3">{item.title}</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -647,9 +647,9 @@ function App() {
           {/* Use Cases Section */}
           <section className="mb-16 sm:mb-20 lg:mb-24">
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 rounded-full mb-4">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full mb-4">
                 <span className="text-base">🎯</span>
-                <span className="text-xs font-semibold uppercase tracking-wider text-blue-700 dark:text-blue-300">Use Cases</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-blue-700">Use Cases</span>
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
                 <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
@@ -727,9 +727,9 @@ function App() {
           <section className="mb-16 sm:mb-20 lg:mb-24">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 dark:from-blue-900/30 dark:to-purple-900/30 rounded-full mb-4">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full mb-4">
                   <span className="text-base">❓</span>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-blue-700 dark:text-blue-300">FAQs</span>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-blue-700">FAQs</span>
                 </div>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
                   <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
@@ -967,21 +967,21 @@ function App() {
                   return (
                     <div 
                       key={idx} 
-                      className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 transition-all duration-200 overflow-hidden"
+                      className="bg-white rounded-xl border border-gray-200 hover:border-blue-300 transition-all duration-200 overflow-hidden"
                     >
                       <button
                         onClick={() => setExpandedFaq(isExpanded ? null : idx)}
-                        className="w-full p-6 text-left flex items-start justify-between gap-4 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
+                        className="w-full p-6 text-left flex items-start justify-between gap-4 hover:bg-gray-50 transition-colors"
                       >
                         <div className="flex items-start gap-3 flex-1">
-                          <span className="text-blue-600 dark:text-blue-400 text-lg font-bold flex-shrink-0 mt-0.5">Q:</span>
-                          <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white flex-1">
+                          <span className="text-blue-600 text-lg font-bold flex-shrink-0 mt-0.5">Q:</span>
+                          <h3 className="text-base sm:text-lg font-semibold text-gray-900 flex-1">
                             {faq.q}
                           </h3>
                         </div>
                         <div className={`flex-shrink-0 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}>
                           <svg 
-                            className="w-5 h-5 text-blue-600 dark:text-blue-400" 
+                            className="w-5 h-5 text-blue-600" 
                             fill="none" 
                             stroke="currentColor" 
                             viewBox="0 0 24 24"
@@ -996,8 +996,8 @@ function App() {
                         }`}
                       >
                         <div className="px-6 pb-6 pt-0">
-                          <p className="text-gray-600 dark:text-gray-300 leading-relaxed flex items-start gap-3">
-                            <span className="text-green-600 dark:text-green-400 font-bold text-lg flex-shrink-0">A:</span>
+                          <p className="text-gray-600 leading-relaxed flex items-start gap-3">
+                            <span className="text-green-600 font-bold text-lg flex-shrink-0">A:</span>
                             <span className="flex-1">{faq.a}</span>
                           </p>
                         </div>
@@ -1056,12 +1056,12 @@ function App() {
 
           {/* Footer - Clean */}
           <footer className="text-center py-8">
-            <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md rounded-full shadow-md border border-gray-200/60 dark:border-gray-700/60">
-              <span className="text-sm text-gray-600 dark:text-gray-400">Made with</span>
+            <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/80 backdrop-blur-md rounded-full shadow-md border border-gray-200/60">
+              <span className="text-sm text-gray-600">Made with</span>
               <span className="text-red-500 animate-pulse text-lg">❤️</span>
-              <span className="text-sm text-gray-600 dark:text-gray-400">and</span>
+              <span className="text-sm text-gray-600">and</span>
               <span className="text-xl">🦖</span>
-              <span className="text-sm text-gray-600 dark:text-gray-400">| Create amazing QR codes!</span>
+              <span className="text-sm text-gray-600">| Create amazing QR codes!</span>
             </div>
           </footer>
         </div>
