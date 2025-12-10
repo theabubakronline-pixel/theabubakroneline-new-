@@ -1,14 +1,75 @@
 import { useState } from 'react'
 import LocationPicker from './LocationPicker'
 
+// SVG Icon Components for QR Code Types
+const WhatsAppIcon = ({ className = "w-6 h-6" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+)
+
+const SocialMediaIcon = ({ className = "w-6 h-6" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+  </svg>
+)
+
+const LocationIcon = ({ className = "w-6 h-6" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+    <circle cx="12" cy="10" r="3"/>
+  </svg>
+)
+
+const GoogleFormsIcon = ({ className = "w-6 h-6" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="3" width="18" height="18" rx="2"/>
+    <line x1="3" y1="9" x2="21" y2="9"/>
+    <line x1="9" y1="3" x2="9" y2="21"/>
+    <circle cx="6" cy="6" r="1" fill="currentColor"/>
+    <circle cx="12" cy="6" r="1" fill="currentColor"/>
+    <circle cx="18" cy="6" r="1" fill="currentColor"/>
+    <line x1="6" y1="12" x2="18" y2="12"/>
+    <line x1="6" y1="15" x2="18" y2="15"/>
+    <line x1="6" y1="18" x2="18" y2="18"/>
+  </svg>
+)
+
+const WebsiteIcon = ({ className = "w-6 h-6" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10"/>
+    <line x1="2" y1="12" x2="22" y2="12"/>
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+  </svg>
+)
+
+const BusinessCardIcon = ({ className = "w-6 h-6" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="4" width="18" height="16" rx="2"/>
+    <line x1="3" y1="10" x2="21" y2="10"/>
+    <line x1="7" y1="15" x2="7.01" y2="15"/>
+    <line x1="11" y1="15" x2="13" y2="15"/>
+  </svg>
+)
+
+const TextIcon = ({ className = "w-6 h-6" }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="4 7 4 4 20 4 20 7"/>
+    <line x1="9" y1="20" x2="15" y2="20"/>
+    <line x1="12" y1="4" x2="12" y2="20"/>
+  </svg>
+)
+
 const QR_CODE_TYPES = [
-  { id: 'url', name: 'Website/URL', icon: '🌐', placeholder: 'https://example.com', description: 'Create QR code for website or any URL' },
-  { id: 'whatsapp', name: 'WhatsApp', icon: '💬', placeholder: '+1234567890', description: 'Create QR code for WhatsApp chat or message' },
-  { id: 'social-media', name: 'Social Media', icon: '📱', placeholder: 'Select platform and enter URL', description: 'Create QR code for social media profiles' },
-  { id: 'location', name: 'Location', icon: '📍', placeholder: 'Latitude, Longitude (e.g., 40.7128, -74.0060)', description: 'Create QR code for GPS location or address' },
-  { id: 'google-forms', name: 'Google Forms', icon: '📝', placeholder: 'https://forms.gle/...', description: 'Create QR code for Google Forms' },
-  { id: 'business-card', name: 'Business Card', icon: '👤', placeholder: 'Enter contact details', description: 'Create QR code for business card (vCard)' },
-  { id: 'text', name: 'Plain Text', icon: '📄', placeholder: 'Enter any text...', description: 'Create QR code for plain text or message' },
+  { id: 'url', name: 'Website/URL', icon: WebsiteIcon, placeholder: 'https://example.com', description: 'Create QR code for website or any URL' },
+  { id: 'whatsapp', name: 'WhatsApp', icon: WhatsAppIcon, placeholder: '+1234567890', description: 'Create QR code for WhatsApp chat or message' },
+  { id: 'social-media', name: 'Social Media', icon: SocialMediaIcon, placeholder: 'Select platform and enter URL', description: 'Create QR code for social media profiles' },
+  { id: 'location', name: 'Location', icon: LocationIcon, placeholder: 'Latitude, Longitude (e.g., 40.7128, -74.0060)', description: 'Create QR code for GPS location or address' },
+  { id: 'google-forms', name: 'Google Forms', icon: GoogleFormsIcon, placeholder: 'https://forms.gle/...', description: 'Create QR code for Google Forms' },
+  { id: 'business-card', name: 'Business Card', icon: BusinessCardIcon, placeholder: 'Enter contact details', description: 'Create QR code for business card (vCard)' },
+  { id: 'text', name: 'Plain Text', icon: TextIcon, placeholder: 'Enter any text...', description: 'Create QR code for plain text or message' },
 ]
 
 // Social Media Icons as SVG Components
@@ -55,9 +116,12 @@ const PinterestIcon = ({ className = "w-6 h-6" }) => (
 )
 
 const SnapchatIcon = ({ className = "w-6 h-6" }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-    <path d="M12.206.793c.99 0 4.347.276 5.93 3.821.529 1.193.403 3.219.299 4.847l-.003.15.031.33c.014.149.037.297.058.445.099.697.209 1.463.206 2.014 0 .746-.166 1.269-.388 1.662a2.976 2.976 0 01-1.433 1.144c-.338.138-.818.23-1.459.36-.095.019-.195.04-.297.065-.622.146-1.306.31-1.826.61-.432.248-.676.509-.676.747 0 .434.412.829.971.947.462.098 1.012.144 1.634.144.746 0 1.455-.09 1.922-.134.138-.013.27-.02.393-.02.746 0 1.18.186 1.695.561.391.287.771.673 1.412.673.777 0 1.287-.41 1.287-1.072 0-.684-.564-1.398-1.287-1.398-.169 0-.348.02-.537.046-.271.039-.558.085-.855.12-.33.04-.68.077-1.036.077-.884 0-1.484-.12-1.884-.243a.687.687 0 01-.454-.672c0-.384.279-.734.582-.981.541-.44 1.347-.633 2.096-.761l.109-.02.106-.016c.57-.09 1.088-.175 1.532-.346.28-.107.495-.233.615-.391.143-.187.167-.376.167-.554 0-.468-.167-1.219-.348-1.899-.058-.216-.115-.427-.166-.628l-.02-.08c-.046-.19-.09-.369-.126-.529-.173-.766-.358-1.57-.766-2.155C17.755 2.14 15.678 2.14 12.206 2.14 8.734 2.14 6.657 2.14 5.544 3.685c-.408.585-.593 1.389-.766 2.155-.036.16-.08.339-.126.529l-.02.08c-.051.2-.108.412-.166.628-.181.68-.348 1.43-.348 1.899 0 .178.024.367.167.554.12.158.335.284.615.391.444.171.962.256 1.532.346l.106.016.109.02c.749.128 1.555.322 2.096.761.303.247.582.597.582.981 0 .312-.184.585-.454.672-.4.123-1 .243-1.884.243-.356 0-.706-.037-1.036-.077-.297-.035-.584-.081-.855-.12-.189-.026-.368-.046-.537-.046-.723 0-1.287.714-1.287 1.398 0 .662.51 1.072 1.287 1.072.641 0 1.021-.386 1.412-.673.515-.375.949-.561 1.695-.561.123 0 .255.007.393.02.467.044 1.176.134 1.922.134.622 0 1.172-.046 1.634-.144.559-.118.971-.513.971-.947 0-.238-.244-.499-.676-.747-.52-.3-1.204-.464-1.826-.61-.102-.025-.202-.046-.297-.065-.641-.13-1.121-.222-1.459-.36a2.976 2.976 0 01-1.433-1.144c-.222-.393-.388-.916-.388-1.662 0-.551.107-1.317.206-2.014.021-.148.044-.296.058-.445l.031-.33-.003-.15c-.104-1.628-.23-3.654.299-4.847C7.859 1.069 11.216.793 12.206.793"/>
-  </svg>
+  <img 
+    src="/tool/dino-qr-code-generator/snapchat-logo.png" 
+    alt="Snapchat" 
+    className={className}
+    style={{ objectFit: 'contain' }}
+  />
 )
 
 const SOCIAL_MEDIA_PLATFORMS = [
@@ -217,23 +281,36 @@ const QRCodeTypeSelector = ({ selectedType, onTypeChange, onInputGenerate }) => 
       {/* Type Selector */}
       <div>
         <div className="grid grid-cols-3 gap-3 sm:gap-4">
-          {QR_CODE_TYPES.map((type) => (
+          {QR_CODE_TYPES.map((type) => {
+            const IconComponent = type.icon
+            return (
             <button
               key={type.id}
               onClick={() => handleTypeSelect(type)}
-              className={`p-3 sm:p-4 rounded-xl border-2 transition-all duration-300 text-center hover:scale-105 active:scale-95 min-h-[75px] sm:min-h-[85px] touch-manipulation ${
+                className={`p-3 sm:p-4 rounded-xl border-2 transition-all duration-300 text-center hover:scale-105 active:scale-95 min-h-[75px] sm:min-h-[85px] touch-manipulation flex flex-col items-center justify-center ${
                 selectedType.id === type.id
-                  ? 'border-blue-500 bg-blue-50 shadow-lg ring-2 ring-blue-200 scale-105'
-                  : 'border-gray-200 bg-white hover:border-blue-300 hover:shadow-md'
+                    ? 'border-blue-500 bg-blue-50 shadow-lg ring-2 ring-blue-200 scale-105'
+                    : 'border-gray-200 bg-white hover:border-blue-300 hover:shadow-md'
               }`}
               title={type.description}
             >
-              <div className="text-2xl sm:text-3xl mb-2">{type.icon}</div>
-              <div className="text-xs sm:text-sm font-medium text-gray-700 leading-tight">
+                <div className={`mb-2 transition-colors duration-300 ${
+                  selectedType.id === type.id 
+                    ? 'text-blue-600' 
+                    : 'text-gray-600'
+                }`}>
+                  <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 transition-transform duration-300" />
+                </div>
+                <div className={`text-xs sm:text-sm font-medium leading-tight ${
+                  selectedType.id === type.id
+                    ? 'text-blue-700'
+                    : 'text-gray-700'
+                }`}>
                 {type.name}
               </div>
             </button>
-          ))}
+            )
+          })}
         </div>
       </div>
 

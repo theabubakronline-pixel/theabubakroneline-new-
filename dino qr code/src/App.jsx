@@ -30,7 +30,21 @@ function App() {
   const [expandedFaq, setExpandedFaq] = useState(null)
   const [useCasesExpanded, setUseCasesExpanded] = useState(false)
   const [faqsExpanded, setFaqsExpanded] = useState(false)
+  const [expandedSections, setExpandedSections] = useState({
+    qrType: true,
+    input: true,
+    style: true,
+    colors: true,
+    scanText: true
+  })
   const qrRef = useRef(null)
+
+  const toggleSection = (section) => {
+    setExpandedSections(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }))
+  }
 
   const handleLogoUpload = (logoUrl, file) => {
     setCustomLogo(logoUrl)
@@ -229,188 +243,84 @@ function App() {
                         </div>
                       </div>
 
-                      {/* Input Section - Premium Card */}
-                      <div className="group relative bg-white rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 border border-green-100/50 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-green-50/30 to-emerald-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div className="relative">
-                          <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center shadow-lg flex-shrink-0">
-                              <span className="text-lg sm:text-xl">📝</span>
+                      {/* Input Section - Premium Card - Only shows when type is selected */}
+                      {selectedQRType && (
+                        <div className="group relative bg-white rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 border border-green-100/50 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 overflow-hidden animate-fadeIn">
+                          <div className="absolute inset-0 bg-gradient-to-br from-green-50/30 to-emerald-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                          <div className="relative">
+                            <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center shadow-lg flex-shrink-0">
+                                <span className="text-lg sm:text-xl">📝</span>
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <label className="block text-sm sm:text-base md:text-lg font-bold text-gray-800 truncate">
+                                  {selectedQRType.id === 'whatsapp' || selectedQRType.id === 'location' || selectedQRType.id === 'business-card' || selectedQRType.id === 'social-media'
+                                    ? 'Generated QR Code Content'
+                                    : `Enter ${selectedQRType.name}`}
+                                </label>
+                                <p className="text-xs text-gray-500 hidden sm:block">Add your content or link</p>
+                              </div>
                             </div>
-                            <div className="flex-1 min-w-0">
-                              <label className="block text-sm sm:text-base md:text-lg font-bold text-gray-800 truncate">
-                                {selectedQRType.id === 'whatsapp' || selectedQRType.id === 'location' || selectedQRType.id === 'business-card' || selectedQRType.id === 'social-media'
-                                  ? 'Generated QR Code Content'
-                                  : `Enter ${selectedQRType.name}`}
-                              </label>
-                              <p className="text-xs text-gray-500 hidden sm:block">Add your content or link</p>
-                            </div>
+                            <InputField 
+                              value={inputValue} 
+                              onChange={handleInputChange} 
+                              error={error} 
+                              onValidate={validateInput}
+                              placeholder={selectedQRType.placeholder}
+                            />
+                            {selectedQRType.id !== 'whatsapp' && selectedQRType.id !== 'location' && selectedQRType.id !== 'business-card' && selectedQRType.id !== 'social-media' && (
+                              <p className="text-xs sm:text-sm text-gray-500 mt-3 leading-relaxed flex items-start gap-2">
+                                <span className="text-blue-500 mt-0.5">💡</span>
+                                <span>{selectedQRType.description}</span>
+                              </p>
+                            )}
                           </div>
-                          <InputField 
-                            value={inputValue} 
-                            onChange={handleInputChange} 
-                            error={error} 
-                            onValidate={validateInput}
-                            placeholder={selectedQRType.placeholder}
-                          />
-                          {selectedQRType.id !== 'whatsapp' && selectedQRType.id !== 'location' && selectedQRType.id !== 'business-card' && selectedQRType.id !== 'social-media' && (
-                            <p className="text-xs sm:text-sm text-gray-500 mt-3 leading-relaxed flex items-start gap-2">
-                              <span className="text-blue-500 mt-0.5">💡</span>
-                              <span>{selectedQRType.description}</span>
-                            </p>
-                          )}
                         </div>
-                      </div>
+                      )}
                       
                       {/* Template & Logo - Premium Card */}
                       <div className="group relative bg-white rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 border border-purple-100/50 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 overflow-hidden">
                         <div className="absolute inset-0 bg-gradient-to-br from-purple-50/30 to-pink-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         <div className="relative">
-                          <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                          <button
+                            onClick={() => toggleSection('style')}
+                            className="w-full flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4 hover:opacity-80 transition-opacity"
+                          >
                             <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center shadow-lg flex-shrink-0">
                               <span className="text-lg sm:text-xl">🦖</span>
                             </div>
-                            <div className="min-w-0 flex-1">
+                            <div className="min-w-0 flex-1 text-left">
                               <label className="block text-sm sm:text-base md:text-lg font-bold text-gray-800">
                                 Choose Style or Upload Logo
                               </label>
                               <p className="text-xs text-gray-500 hidden sm:block">Customize your QR code design</p>
                             </div>
-                          </div>
-                          <DinoTemplateSelector
-                            templates={DINOSAUR_TEMPLATES}
-                            selectedTemplate={selectedTemplate}
-                            customLogo={customLogo}
-                            onLogoUpload={handleLogoUpload}
-                            onRemoveLogo={handleRemoveLogo}
-                            onSelectTemplate={(template) => {
-                              setSelectedTemplate(template)
-                              if (customLogo) {
-                                setCustomLogo(null)
-                              }
-                            }}
-                          />
-                        </div>
-                      </div>
-                      
-                      {/* Colors - Premium Card */}
-                      <div className="group relative bg-white rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 border border-orange-100/50 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-orange-50/30 to-amber-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div className="relative">
-                          <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center shadow-lg flex-shrink-0">
-                              <span className="text-lg sm:text-xl">🎨</span>
-                            </div>
-                            <div className="min-w-0 flex-1">
-                              <label className="block text-sm sm:text-base md:text-lg font-bold text-gray-800">
-                                Customize Colors
-                              </label>
-                              <p className="text-xs text-gray-500 hidden sm:block">Match your brand colors</p>
-                            </div>
-                          </div>
-                          <ColorCustomizer
-                            foregroundColor={foregroundColor}
-                            backgroundColor={backgroundColor}
-                            onForegroundChange={setForegroundColor}
-                            onBackgroundChange={setBackgroundColor}
-                          />
-                        </div>
-                      </div>
-                      
-                      {/* Scan Text Customization - Premium Card */}
-                      <div className="group relative bg-white rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 border border-indigo-100/50 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/30 to-violet-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div className="relative">
-                          <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center shadow-lg flex-shrink-0">
-                              <span className="text-lg sm:text-xl">✏️</span>
-                            </div>
-                            <div className="min-w-0 flex-1">
-                              <label className="block text-sm sm:text-base md:text-lg font-bold text-gray-800">
-                                Customize Scan Text
-                              </label>
-                              <p className="text-xs text-gray-500 hidden sm:block">Add a call-to-action message</p>
-                            </div>
-                          </div>
-                        <div className="space-y-4">
-                          {/* Text Input */}
-                          <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">
-                              Text Content
-                            </label>
-                            <input
-                              type="text"
-                              value={scanText}
-                              onChange={(e) => setScanText(e.target.value.toUpperCase())}
-                              placeholder="SCAN ME!"
-                              maxLength={30}
-                              className="w-full px-4 py-3 text-base bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all font-bold uppercase"
-                            />
-                            <p className="text-xs text-gray-500 mt-1.5">
-                              Maximum 30 characters
-                            </p>
-                          </div>
-                          
-                          {/* Color Picker */}
-                          <div>
-                            <label className="block text-sm font-semibold text-gray-700 mb-2">
-                              Text Color
-                            </label>
-                            <div className="flex items-center gap-3">
-                              <div className="relative">
-                                <input
-                                  type="color"
-                                  value={scanTextColor}
-                                  onChange={(e) => setScanTextColor(e.target.value)}
-                                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl cursor-pointer border-2 border-gray-300 bg-white shadow-sm hover:shadow-md transition-shadow"
-                                />
-                              </div>
-                              <input
-                                type="text"
-                                value={scanTextColor}
-                                onChange={(e) => setScanTextColor(e.target.value)}
-                                className="flex-1 px-4 py-3 bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all font-mono text-sm text-gray-900"
-                                placeholder="#9333EA"
-                              />
-                              <button
-                                onClick={() => setScanTextColor('#9333EA')}
-                                className="px-3 py-3 text-xs font-medium rounded-lg border-2 border-gray-300 text-gray-700 bg-white hover:bg-gray-50 transition-all duration-200"
-                                title="Reset to default purple"
+                            <div className="flex-shrink-0">
+                              <svg 
+                                className={`w-5 h-5 text-gray-600 transition-transform duration-300 ${expandedSections.style ? 'rotate-180' : ''}`}
+                                fill="none" 
+                                stroke="currentColor" 
+                                viewBox="0 0 24 24"
                               >
-                                ↺ Reset
-                              </button>
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                              </svg>
                             </div>
-                            
-                            {/* Preset Colors */}
-                            <div className="mt-3">
-                              <p className="text-xs font-medium text-gray-600 mb-2">Quick Colors:</p>
-                              <div className="flex flex-wrap gap-2">
-                                {[
-                                  { name: 'Purple', value: '#9333EA' },
-                                  { name: 'Blue', value: '#2563EB' },
-                                  { name: 'Pink', value: '#EC4899' },
-                                  { name: 'Green', value: '#10B981' },
-                                  { name: 'Orange', value: '#F97316' },
-                                  { name: 'Red', value: '#EF4444' },
-                                  { name: 'Indigo', value: '#6366F1' },
-                                  { name: 'Teal', value: '#14B8A6' },
-                                ].map((color) => (
-                                  <button
-                                    key={color.value}
-                                    onClick={() => setScanTextColor(color.value)}
-                                    className={`w-10 h-10 rounded-lg border-2 transition-all duration-300 hover:scale-110 ${
-                                      scanTextColor.toLowerCase() === color.value.toLowerCase()
-                                        ? 'border-indigo-500 ring-4 ring-indigo-200 scale-110 shadow-lg'
-                                        : 'border-gray-300 hover:border-indigo-300'
-                                    }`}
-                                    style={{ backgroundColor: color.value }}
-                                    title={color.name}
-                                  />
-                                ))}
-                              </div>
-                            </div>
+                          </button>
+                          <div className={`overflow-hidden transition-all duration-300 ${expandedSections.style ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                            <DinoTemplateSelector
+                              templates={DINOSAUR_TEMPLATES}
+                              selectedTemplate={selectedTemplate}
+                              customLogo={customLogo}
+                              onLogoUpload={handleLogoUpload}
+                              onRemoveLogo={handleRemoveLogo}
+                              onSelectTemplate={(template) => {
+                                setSelectedTemplate(template)
+                                if (customLogo) {
+                                  setCustomLogo(null)
+                                }
+                              }}
+                            />
                           </div>
-                        </div>
                         </div>
                       </div>
                     </div>
@@ -476,6 +386,161 @@ function App() {
                               </div>
                             </div>
                           )}
+
+                          {/* Colors - Premium Card - Moved to Right Column */}
+                          <div className="mt-6 pt-6 border-t border-gray-200/50">
+                            <div className="group relative bg-white rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 border border-orange-100/50 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 overflow-hidden">
+                              <div className="absolute inset-0 bg-gradient-to-br from-orange-50/30 to-amber-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                              <div className="relative">
+                                <button
+                                  onClick={() => toggleSection('colors')}
+                                  className="w-full flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4 hover:opacity-80 transition-opacity"
+                                >
+                                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center shadow-lg flex-shrink-0">
+                                    <span className="text-lg sm:text-xl">🎨</span>
+                                  </div>
+                                  <div className="min-w-0 flex-1 text-left">
+                                    <label className="block text-sm sm:text-base md:text-lg font-bold text-gray-800">
+                                      Customize Colors
+                                    </label>
+                                    <p className="text-xs text-gray-500 hidden sm:block">Match your brand colors</p>
+                                  </div>
+                                  <div className="flex-shrink-0">
+                                    <svg 
+                                      className={`w-5 h-5 text-gray-600 transition-transform duration-300 ${expandedSections.colors ? 'rotate-180' : ''}`}
+                                      fill="none" 
+                                      stroke="currentColor" 
+                                      viewBox="0 0 24 24"
+                                    >
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                  </div>
+                                </button>
+                                <div className={`overflow-hidden transition-all duration-300 ${expandedSections.colors ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                                  <ColorCustomizer
+                                    foregroundColor={foregroundColor}
+                                    backgroundColor={backgroundColor}
+                                    onForegroundChange={setForegroundColor}
+                                    onBackgroundChange={setBackgroundColor}
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          {/* Scan Text Customization - Premium Card - Moved to Right Column */}
+                          <div className="mt-6 pt-6 border-t border-gray-200/50">
+                            <div className="group relative bg-white rounded-lg sm:rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 border border-indigo-100/50 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 overflow-hidden">
+                              <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/30 to-violet-50/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                              <div className="relative">
+                                <button
+                                  onClick={() => toggleSection('scanText')}
+                                  className="w-full flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4 hover:opacity-80 transition-opacity"
+                                >
+                                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center shadow-lg flex-shrink-0">
+                                    <span className="text-lg sm:text-xl">✏️</span>
+                                  </div>
+                                  <div className="min-w-0 flex-1 text-left">
+                                    <label className="block text-sm sm:text-base md:text-lg font-bold text-gray-800">
+                                      Customize Scan Text
+                                    </label>
+                                    <p className="text-xs text-gray-500 hidden sm:block">Add a call-to-action message</p>
+                                  </div>
+                                  <div className="flex-shrink-0">
+                                    <svg 
+                                      className={`w-5 h-5 text-gray-600 transition-transform duration-300 ${expandedSections.scanText ? 'rotate-180' : ''}`}
+                                      fill="none" 
+                                      stroke="currentColor" 
+                                      viewBox="0 0 24 24"
+                                    >
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                  </div>
+                                </button>
+                                <div className={`overflow-hidden transition-all duration-300 ${expandedSections.scanText ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                                  <div className="space-y-4">
+                                  {/* Text Input */}
+                                  <div>
+                                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                      Text Content
+                                    </label>
+                                    <input
+                                      type="text"
+                                      value={scanText}
+                                      onChange={(e) => setScanText(e.target.value.toUpperCase())}
+                                      placeholder="SCAN ME!"
+                                      maxLength={30}
+                                      className="w-full px-4 py-3 text-base bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all font-bold uppercase"
+                                    />
+                                    <p className="text-xs text-gray-500 mt-1.5">
+                                      Maximum 30 characters
+                                    </p>
+                                  </div>
+                                  
+                                  {/* Color Picker */}
+                                  <div>
+                                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                                      Text Color
+                                    </label>
+                                    <div className="flex items-center gap-3">
+                                      <div className="relative">
+                                        <input
+                                          type="color"
+                                          value={scanTextColor}
+                                          onChange={(e) => setScanTextColor(e.target.value)}
+                                          className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl cursor-pointer border-2 border-gray-300 bg-white shadow-sm hover:shadow-md transition-shadow"
+                                        />
+                                      </div>
+                                      <input
+                                        type="text"
+                                        value={scanTextColor}
+                                        onChange={(e) => setScanTextColor(e.target.value)}
+                                        className="flex-1 px-4 py-3 bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all font-mono text-sm text-gray-900"
+                                        placeholder="#9333EA"
+                                      />
+                                      <button
+                                        onClick={() => setScanTextColor('#9333EA')}
+                                        className="px-3 py-3 text-xs font-medium rounded-lg border-2 border-gray-300 text-gray-700 bg-white hover:bg-gray-50 transition-all duration-200"
+                                        title="Reset to default purple"
+                                      >
+                                        ↺ Reset
+                                      </button>
+                                    </div>
+                                    
+                                    {/* Preset Colors */}
+                                    <div className="mt-3">
+                                      <p className="text-xs font-medium text-gray-600 mb-2">Quick Colors:</p>
+                                      <div className="flex flex-wrap gap-2">
+                                        {[
+                                          { name: 'Purple', value: '#9333EA' },
+                                          { name: 'Blue', value: '#2563EB' },
+                                          { name: 'Pink', value: '#EC4899' },
+                                          { name: 'Green', value: '#10B981' },
+                                          { name: 'Orange', value: '#F97316' },
+                                          { name: 'Red', value: '#EF4444' },
+                                          { name: 'Indigo', value: '#6366F1' },
+                                          { name: 'Teal', value: '#14B8A6' },
+                                        ].map((color) => (
+                                          <button
+                                            key={color.value}
+                                            onClick={() => setScanTextColor(color.value)}
+                                            className={`w-10 h-10 rounded-lg border-2 transition-all duration-300 hover:scale-110 ${
+                                              scanTextColor.toLowerCase() === color.value.toLowerCase()
+                                                ? 'border-indigo-500 ring-4 ring-indigo-200 scale-110 shadow-lg'
+                                                : 'border-gray-300 hover:border-indigo-300'
+                                            }`}
+                                            style={{ backgroundColor: color.value }}
+                                            title={color.name}
+                                          />
+                                        ))}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>

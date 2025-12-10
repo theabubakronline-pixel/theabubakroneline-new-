@@ -5,9 +5,12 @@ const LocationPicker = ({ onLocationSelect, initialLat = null, initialLng = null
   const mapInstanceRef = useRef(null)
   const markerRef = useRef(null)
   const geocoderRef = useRef(null)
+  const searchInputRef = useRef(null)
+  const autocompleteRef = useRef(null)
   const [selectedLocation, setSelectedLocation] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(() => {
     // Check if Google Maps is already loaded
@@ -156,17 +159,18 @@ const LocationPicker = ({ onLocationSelect, initialLat = null, initialLng = null
       geocodeLocation(lat, lng)
     })
 
-    // Add search box - Mobile Optimized
+    // Also add search box to map for desktop users
     const input = document.createElement('input')
     input.type = 'text'
     input.placeholder = 'Search for a location...'
-    input.className = 'w-full max-w-xs sm:max-w-sm md:max-w-md px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm border-2 border-gray-300 rounded-lg sm:rounded-xl bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 shadow-md placeholder:text-gray-400'
+    input.className = 'hidden sm:block w-full max-w-xs sm:max-w-sm md:max-w-md px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm border-2 border-gray-300 rounded-lg sm:rounded-xl bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 shadow-md placeholder:text-gray-400'
     input.style.fontSize = '14px'
-    input.style.margin = '8px'
+    input.style.margin = '10px'
+    input.style.zIndex = '1000'
     
     const searchBox = new window.google.maps.places.SearchBox(input)
     
-    // Add search box to map
+    // Add search box to map (hidden on mobile, visible on desktop)
     map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(input)
 
     // Bias search results to current map viewport
@@ -203,7 +207,54 @@ const LocationPicker = ({ onLocationSelect, initialLat = null, initialLng = null
 
       // Update location
       geocodeLocation(location.lat, location.lng)
+      setSearchQuery(place.formatted_address || place.name || '')
     })
+    
+    // Initialize Autocomplete for the external search input (after map is ready)
+    setTimeout(() => {
+      if (searchInputRef.current && window.google.maps.places) {
+        autocompleteRef.current = new window.google.maps.places.Autocomplete(searchInputRef.current, {
+          types: ['geocode', 'establishment'],
+          fields: ['geometry', 'formatted_address', 'name']
+        })
+
+        // Bias autocomplete results to current map viewport
+        map.addListener('bounds_changed', () => {
+          if (autocompleteRef.current) {
+            autocompleteRef.current.setBounds(map.getBounds())
+          }
+        })
+
+        // Listen for place selection
+        autocompleteRef.current.addListener('place_changed', () => {
+          const place = autocompleteRef.current.getPlace()
+          if (!place.geometry || !place.geometry.location) return
+
+          const location = {
+            lat: place.geometry.location.lat(),
+            lng: place.geometry.location.lng()
+          }
+
+          // Set marker at selected place
+          if (markerRef.current) {
+            markerRef.current.setPosition(location)
+          } else {
+            markerRef.current = new window.google.maps.Marker({
+              position: location,
+              map: map,
+              draggable: true,
+            })
+          }
+
+          map.setCenter(location)
+          map.setZoom(15)
+
+          // Update location
+          geocodeLocation(location.lat, location.lng)
+          setSearchQuery(place.formatted_address || place.name || '')
+        })
+      }
+    }, 100)
 
     // Set initial location if provided
     if (initialLat && initialLng) {
@@ -251,6 +302,19 @@ const LocationPicker = ({ onLocationSelect, initialLat = null, initialLng = null
 
   return (
     <div className="space-y-2 sm:space-y-3">
+      {/* Search Box - Always Visible Above Map for Mobile */}
+      <div className="w-full">
+        <input
+          ref={searchInputRef}
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="🔍 Search for a location..."
+          className="w-full px-4 py-3 text-base sm:text-sm border-2 border-green-500 rounded-lg sm:rounded-xl bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 shadow-md placeholder:text-gray-400 font-medium"
+          style={{ fontSize: '16px' }} // Prevent zoom on iOS
+        />
+      </div>
+      
       {/* Mobile-Optimized Map Container */}
       <div className="relative w-full h-[280px] sm:h-64 md:h-80 lg:h-96 rounded-lg sm:rounded-xl overflow-hidden border-2 border-gray-300 shadow-md map-container">
         {isLoading && (
