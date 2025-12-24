@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4979300563027397"
+     crossorigin="anonymous"></script>
+    
+    <title>Blog CMS | Muhammad Abubakr</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/cms.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- TinyMCE Rich Text Editor (Community Edition - No API Key Required) -->
+    <script src="https://cdn.jsdelivr.net/npm/tinymce@6/tinymce.min.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/the-abubakr-online-logo-muhammad-abubakr-ai-tech-marketing.png">
+    <link rel="shortcut icon" href="/assets/images/the-abubakr-online-logo-muhammad-abubakr-ai-tech-marketing.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="cms-login-screen">
+        <div class="cms-login-container">
+            <div class="cms-login-card">
+                <div class="cms-login-header">
+                    <h1 class="cms-login-title">Blog CMS</h1>
+                    <p class="cms-login-subtitle">Enter your password to access the admin panel</p>
+                </div>
+                <form id="loginForm" class="cms-login-form">
+                    <div class="cms-form-group">
+                        <label for="loginPassword" class="cms-form-label">Password</label>
+                        <input 
+                            type="password" 
+                            id="loginPassword" 
+                            class="cms-form-input" 
+                            placeholder="Enter your password"
+                            required
+                            autocomplete="current-password"
+                        >
+                    </div>
+                    <button type="submit" class="cms-login-btn">
+                        <span>Login</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19"/>
+                        </svg>
+                    </button>
+                    <div id="loginError" class="cms-error-message" style="display: none;"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- CMS Dashboard -->
+    <div id="cmsDashboard" class="cms-dashboard" style="display: none;">
+        <!-- Header -->
+        <header class="cms-header">
+            <div class="cms-header-container">
+                <div class="cms-header-left">
+                    <h1 class="cms-header-title">Blog CMS</h1>
+                    <span class="cms-header-subtitle">Content Management System</span>
+                </div>
+                <div class="cms-header-right">
+                    <a href="index.html" class="cms-header-link" target="_blank">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                            <polyline points="15 3 21 3 21 9"/>
+                            <line x1="10" y1="14" x2="21" y2="3"/>
+                        </svg>
+                        View Site
+                    </a>
+                    <button id="logoutBtn" class="cms-logout-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                            <polyline points="16 17 21 12 16 7"/>
+                            <line x1="21" y1="12" x2="9" y2="12"/>
+                        </svg>
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="cms-main">
+            <!-- Posts List View -->
+            <div id="postsListView" class="cms-view">
+                <div class="cms-view-header">
+                    <div class="cms-view-header-left">
+                        <h2 class="cms-view-title">All Posts</h2>
+                        <p class="cms-view-subtitle" id="postsCount">0 posts</p>
+                    </div>
+                    <button id="newPostBtn" class="cms-primary-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"/>
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                        </svg>
+                        New Post
+                    </button>
+                </div>
+
+                <!-- Posts Table -->
+                <div class="cms-posts-table-wrapper">
+                    <table class="cms-posts-table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="postsTableBody">
+                            <!-- Posts will be inserted here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Post Editor View -->
+            <div id="postEditorView" class="cms-view" style="display: none;">
+                <div class="cms-editor-header">
+                    <button id="backToListBtn" class="cms-back-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M5 12l7-7M5 12l7 7"/>
+                        </svg>
+                        Back to Posts
+                    </button>
+                    <div class="cms-editor-header-actions">
+                        <button id="previewBtn" class="cms-secondary-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                            Preview
+                        </button>
+                        <button id="saveDraftBtn" class="cms-secondary-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                                <polyline points="17 21 17 13 7 13 7 21"/>
+                                <polyline points="7 3 7 8 15 8"/>
+                            </svg>
+                            Save Draft
+                        </button>
+                        <button id="publishBtn" class="cms-primary-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 2L11 13"/>
+                                <path d="M22 2l-7 20-4-9-9-4 20-7z"/>
+                            </svg>
+                            <span id="publishBtnText">Publish</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="cms-editor-content">
+                    <!-- Post Metadata Form -->
+                    <div class="cms-editor-sidebar">
+                        <div class="cms-editor-section">
+                            <h3 class="cms-editor-section-title">Post Settings</h3>
+                            
+                            <div class="cms-form-group">
+                                <label for="postTitle" class="cms-form-label">Title *</label>
+                                <input type="text" id="postTitle" class="cms-form-input" placeholder="Enter post title" required>
+                            </div>
+
+                            <div class="cms-form-group">
+                                <label for="postExcerpt" class="cms-form-label">Excerpt *</label>
+                                <textarea id="postExcerpt" class="cms-form-textarea" rows="3" placeholder="Short description for blog cards"></textarea>
+                                <button type="button" id="generateExcerptBtn" class="cms-link-btn">Auto-generate from content</button>
+                            </div>
+
+                            <div class="cms-form-row">
+                                <div class="cms-form-group">
+                                    <label for="postCategory" class="cms-form-label">Category *</label>
+                                    <select id="postCategory" class="cms-form-select" required>
+                                        <option value="">Select category</option>
+                                        <option value="ai">AI</option>
+                                        <option value="tech">Tech</option>
+                                        <option value="marketing">Marketing</option>
+                                        <option value="business">Business</option>
+                                    </select>
+                                </div>
+
+                                <div class="cms-form-group">
+                                    <label for="postDate" class="cms-form-label">Date *</label>
+                                    <input type="date" id="postDate" class="cms-form-input" required>
+                                </div>
+                            </div>
+
+                            <div class="cms-form-row">
+                                <div class="cms-form-group">
+                                    <label for="postReadTime" class="cms-form-label">Read Time</label>
+                                    <input type="text" id="postReadTime" class="cms-form-input" placeholder="5 min read">
+                                </div>
+
+                                <div class="cms-form-group">
+                                    <label for="postSlug" class="cms-form-label">Slug</label>
+                                    <input type="text" id="postSlug" class="cms-form-input" placeholder="blog-post.html">
+                                </div>
+                            </div>
+
+                            <div class="cms-form-group">
+                                <label for="postFeatured" class="cms-form-checkbox-label">
+                                    <input type="checkbox" id="postFeatured" class="cms-form-checkbox">
+                                    <span>Show on homepage</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="cms-editor-section">
+                            <h3 class="cms-editor-section-title">Images</h3>
+                            
+                            <div class="cms-form-group">
+                                <label for="postThumbnail" class="cms-form-label">Thumbnail Image</label>
+                                <div class="cms-image-upload">
+                                    <input type="file" id="postThumbnail" class="cms-file-input" accept="image/*">
+                                    <label for="postThumbnail" class="cms-image-upload-label">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                            <polyline points="17 8 12 3 7 8"/>
+                                            <line x1="12" y1="3" x2="12" y2="15"/>
+                                        </svg>
+                                        <span>Upload Thumbnail</span>
+                                    </label>
+                                    <div id="thumbnailPreview" class="cms-image-preview"></div>
+                                    <input type="text" id="thumbnailUrl" class="cms-form-input" placeholder="Or enter image URL" style="margin-top: 10px;">
+                                </div>
+                            </div>
+
+                            <div class="cms-form-group">
+                                <label for="postFeaturedImage" class="cms-form-label">Featured Image</label>
+                                <div class="cms-image-upload">
+                                    <input type="file" id="postFeaturedImage" class="cms-file-input" accept="image/*">
+                                    <label for="postFeaturedImage" class="cms-image-upload-label">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                            <polyline points="17 8 12 3 7 8"/>
+                                            <line x1="12" y1="3" x2="12" y2="15"/>
+                                        </svg>
+                                        <span>Upload Featured Image</span>
+                                    </label>
+                                    <div id="featuredImagePreview" class="cms-image-preview"></div>
+                                    <input type="text" id="featuredImageUrl" class="cms-form-input" placeholder="Or enter image URL" style="margin-top: 10px;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cms-editor-section">
+                            <h3 class="cms-editor-section-title">SEO</h3>
+                            
+                            <div class="cms-form-group">
+                                <label for="postMetaDescription" class="cms-form-label">Meta Description</label>
+                                <textarea id="postMetaDescription" class="cms-form-textarea" rows="3" placeholder="SEO meta description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rich Text Editor -->
+                    <div class="cms-editor-main">
+                        <div class="cms-editor-wrapper">
+                            <textarea id="postContent" class="cms-editor-textarea"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Preview Modal -->
+    <div id="previewModal" class="cms-modal" style="display: none;">
+        <div class="cms-modal-overlay"></div>
+        <div class="cms-modal-content cms-preview-modal">
+            <div class="cms-modal-header">
+                <h2 class="cms-modal-title">Post Preview</h2>
+                <button id="closePreviewBtn" class="cms-modal-close">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="cms-modal-body">
+                <div id="previewContent" class="cms-preview-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/cms.js"></script>
+</body>
+</html>
+

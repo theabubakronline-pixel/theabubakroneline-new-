@@ -1,0 +1,56 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://theabubakronline.com/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow admin areas (if any)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.git/
+Disallow: /.htaccess
+
+# Allow all other content
+Allow: /css/
+Allow: /js/
+Allow: /assets/
+Allow: /assets/images/
+Allow: /*.jpg
+Allow: /*.png
+Allow: /*.ico
+Allow: /*.svg
+
+# Search Engine Bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Sogou
+Allow: /
+
+User-agent: Exabot
+Allow: /
+
+User-agent: facebot
+Allow: /
+
+User-agent: ia_archiver
+Allow: /
+

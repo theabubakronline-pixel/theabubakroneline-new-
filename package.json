@@ -1,0 +1,27 @@
+{
+  "name": "the-abubakr-online",
+  "version": "1.0.0",
+  "description": "The Abubakr Online - Personal brand website by Muhammad Abubakr",
+  "private": true,
+  "scripts": {
+    "build:dino": "cd \"dino qr code\" && npm install && npm run build",
+    "build": "npm run build:dino",
+    "dev:dino": "cd \"dino qr code\" && npm run dev",
+    "preview": "cd \"dino qr code\" && npm run preview",
+    "start": "python -m http.server 8000 || python3 -m http.server 8000 || npx serve ."
+  },
+  "keywords": [
+    "portfolio",
+    "personal-brand",
+    "ai",
+    "marketing",
+    "technology"
+  ],
+  "author": "Muhammad Abubakr",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}
+

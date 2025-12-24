@@ -1,0 +1,25 @@
+{
+  "name": "Dino QR Code Generator - Free Custom QR Code Maker",
+  "short_name": "Dino QR Generator",
+  "description": "Generate dinosaur-themed or custom QR codes online. Free QR code generator with animated previews, high-quality PNG/SVG downloads.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#6366f1",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/dino-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["utilities", "productivity", "business"],
+  "screenshots": [],
+  "related_applications": [],
+  "prefer_related_applications": false
+}
+
+
+
