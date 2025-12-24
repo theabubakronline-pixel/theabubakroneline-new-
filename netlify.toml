@@ -1,5 +1,12 @@
+# Build settings
+[build]
+  publish = "."
+
+# Redirect rules - only redirect HTML pages, not static assets
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  force = false
+  conditions = {Role = ["admin"]}
 

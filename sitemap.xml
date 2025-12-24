@@ -5,11 +5,7 @@
     <!-- Homepage -->
     <url>
         <loc>https://theabubakronline.com/</loc>
-<<<<<<< HEAD
         <lastmod>2025-01-19</lastmod>
-=======
-        <lastmod>2025-11-19</lastmod>
->>>>>>> 40168ee3714c17fc261bc7a0404480c1c53bddd9
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <image:image>
@@ -21,40 +17,24 @@
 
     <!-- Core Pages -->
     <url>
-<<<<<<< HEAD
         <loc>https://theabubakronline.com/about.html</loc>
         <lastmod>2025-01-19</lastmod>
-=======
-        <loc>https://theabubakronline.com/about</loc>
-        <lastmod>2025-11-19</lastmod>
->>>>>>> 40168ee3714c17fc261bc7a0404480c1c53bddd9
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-<<<<<<< HEAD
         <loc>https://theabubakronline.com/projects.html</loc>
         <lastmod>2025-01-19</lastmod>
-=======
-        <loc>https://theabubakronline.com/projects</loc>
-        <lastmod>2025-11-19</lastmod>
->>>>>>> 40168ee3714c17fc261bc7a0404480c1c53bddd9
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-<<<<<<< HEAD
         <loc>https://theabubakronline.com/blog.html</loc>
         <lastmod>2025-01-19</lastmod>
-=======
-        <loc>https://theabubakronline.com/blog</loc>
-        <lastmod>2025-11-19</lastmod>
->>>>>>> 40168ee3714c17fc261bc7a0404480c1c53bddd9
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-<<<<<<< HEAD
         <loc>https://theabubakronline.com/services.html</loc>
         <lastmod>2025-01-19</lastmod>
         <changefreq>monthly</changefreq>
@@ -63,27 +43,12 @@
     <url>
         <loc>https://theabubakronline.com/tools.html</loc>
         <lastmod>2025-01-19</lastmod>
-=======
-        <loc>https://theabubakronline.com/blog/ai-automation-strategies</loc>
-        <lastmod>2025-11-19</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://theabubakronline.com/tools</loc>
-        <lastmod>2025-11-19</lastmod>
->>>>>>> 40168ee3714c17fc261bc7a0404480c1c53bddd9
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-<<<<<<< HEAD
         <loc>https://theabubakronline.com/contact.html</loc>
         <lastmod>2025-01-19</lastmod>
-=======
-        <loc>https://theabubakronline.com/contact</loc>
-        <lastmod>2025-11-19</lastmod>
->>>>>>> 40168ee3714c17fc261bc7a0404480c1c53bddd9
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -91,16 +56,8 @@
     <!-- Tools -->
     <url>
         <loc>https://theabubakronline.com/tool/dino-qr-code-generator/</loc>
-<<<<<<< HEAD
         <lastmod>2025-01-19</lastmod>
-=======
-        <lastmod>2025-11-19</lastmod>
->>>>>>> 40168ee3714c17fc261bc7a0404480c1c53bddd9
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
     </url>
 </urlset>
-<<<<<<< HEAD
-
-=======
->>>>>>> 40168ee3714c17fc261bc7a0404480c1c53bddd9
