@@ -1,8 +1,11 @@
-# Build settings
+# Netlify Configuration for The Abubakr Online
+
 [build]
   publish = "."
+  command = "npm run build"
 
-# Redirect rules - only redirect HTML pages, not static assets
+# Redirect rules - only redirect non-file requests
+# Static files (CSS, JS, images) should NOT be redirected
 [[redirects]]
   from = "/*"
   to = "/index.html"
@@ -10,3 +13,32 @@
   force = false
   conditions = {Role = ["admin"]}
 
+# Ensure static assets are served correctly
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "text/css"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "application/javascript"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "text/css"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "application/javascript"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
