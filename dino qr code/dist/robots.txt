@@ -1,0 +1,29 @@
+# robots.txt for Free QR Code Generator - The Abubakr Online
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://theabubakronline.com/tool/dino-qr-code-generator/sitemap.xml
+
+# Allow all search engines to crawl
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# Crawl-delay (optional, be respectful)
+Crawl-delay: 1
+

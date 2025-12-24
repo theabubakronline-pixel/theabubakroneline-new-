@@ -930,7 +930,11 @@ const blogPosts = [
         category: 'ai',
         date: '2024-03-15',
         readTime: '5 min read',
+<<<<<<< HEAD
         image: 'assets/images/dino-qr-code-generator-featured.jpg',
+=======
+        image: 'assets/images/blog-1.jpg',
+>>>>>>> 40168ee3714c17fc261bc7a0404480c1c53bddd9
         imageAlt: 'Scaling Your Business with AI Automation',
         slug: 'blog-post.html',
         featured: true
@@ -990,7 +994,11 @@ function getPostsFromCMS() {
                 category: post.category,
                 date: post.date,
                 readTime: post.readTime,
+<<<<<<< HEAD
                 image: post.image || post.thumbnail || 'assets/images/dino-qr-code-generator-featured.jpg',
+=======
+                image: post.image || post.thumbnail || 'assets/images/blog-1.jpg',
+>>>>>>> 40168ee3714c17fc261bc7a0404480c1c53bddd9
                 imageAlt: post.imageAlt || post.title,
                 slug: post.slug || 'blog-post.html',
                 featured: post.featured || false,
